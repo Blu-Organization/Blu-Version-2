@@ -16,12 +16,13 @@
   align-items: center;
   height: 80px;
   max-width: 1500px;
+  gap: 100px;
 }
 
 .navbar-logo {
   position: sticky;
   justify-self: start;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   cursor: pointer;
   text-decoration: none;
   display: flex;
@@ -41,7 +42,7 @@
   text-align: center;
   width: 60vw;
   justify-content: end;
-  margin-right: 2rem;
+  margin-right: -5rem;
   margin-top: 90px;
 }
 
@@ -129,6 +130,7 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
+    margin-top: 30px;
   }
 
   .fa-times {
@@ -152,7 +154,7 @@
   }
 
   .nav-links-mobile:hover {
-    background: #7FA7F4;
+    background: #fff;
     color: #242424;
     transition: 250ms;
   }
