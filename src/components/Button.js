@@ -1,27 +1,7 @@
 import React from 'react';
 import './Button.css'
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const ButtonPrimary = styled.button`
-
-`;
-
-const ButtonOutline = styled.button`
-
-`;
-
-const ButtonMedium = styled.button`
-
-`;
-
-const ButtonLarge = styled.button`
-
-`;
-
-// const STYLES = [ButtonPrimary, ButtonOutline];
-
-// const SIZES = [ButtonMedium, ButtonLarge];
+// import styled from 'styled-components';
 
 const STYLES = ['btn--primary', 'btn--outline'];
 
