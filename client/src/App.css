@@ -5,9 +5,10 @@
   font-family: 'PT Sans', sans-serif;
 }
 
-/* .home,
-.services,
-.products,
+.home,
+.aboutus,
+.addfriend,
+.log-in,
 .sign-up {
   display: flex;
   height: 90vh;
@@ -16,29 +17,38 @@
   font-size: 3rem;
 }
 
-.services {
-  background-image: url('/images/img-2.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.aboutus {
+  background: url('images/img-1.jpg') center center/cover no-repeat;
   color: #fff;
   font-size: 100px;
 }
 
-.products {
-  background-image: url('/images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
+.addfriend {
+  background: url('images/img-3.jpg') center center/cover no-repeat;
+  color: #fff;
+  font-size: 100px;
+}
+
+.log-in {
+  background: url('images/img-4.jpg') center center/cover no-repeat;
   color: #fff;
   font-size: 100px;
 }
 
 .sign-up {
-  background-image: url('/images/img-8.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url('images/img-5.jpg') center center/cover no-repeat;
   color: #fff;
   font-size: 100px;
-} */
+}
+
+.newsfeed {
+  /* background: url('images/gameLobby.jpg') center center/cover no-repeat; */
+  background-color: #282828;
+  color: #fff;
+  height: 90vh;
+}
+
+.newsfeed h1 {
+  font-size: 3rem;
+
+}
