@@ -7,7 +7,6 @@
 
 .home,
 .aboutus,
-.addfriend,
 .log-in,
 .sign-up {
   display: flex;
@@ -23,10 +22,14 @@
   font-size: 100px;
 }
 
-.addfriend {
+.exploremore {
   background: url('images/img-3.jpg') center center/cover no-repeat;
   color: #fff;
   font-size: 100px;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .log-in {

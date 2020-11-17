@@ -12,19 +12,9 @@ const Logo = styled.img`
   }
 `;
 
-const MenuContainer = styled.div`
-  cursor: pointer;
-`;
-
 const NavItem = styled.li`
   height: 80px;
 `;
-
-const NavMenuContainer = styled.div`
-  margin-top: 4rem;
-`;
-
-
 
 const Navbar = () => {
 
@@ -70,7 +60,7 @@ const Navbar = () => {
               <Link className='nav-links' to='/aboutus' onClick={closeMobileMenu}>About Us</Link>
             </NavItem>
             <NavItem>
-              <Link className='nav-links' to='/addfriend' onClick={closeMobileMenu}>Add Friend</Link>
+              <Link className='nav-links' to='/exploremore' onClick={closeMobileMenu}>Explore</Link>
             </NavItem>
             <NavItem>
               <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
