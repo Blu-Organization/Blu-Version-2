@@ -32,6 +32,17 @@
   justify-content: center;
 }
 
+.explore-input {
+  padding: 8px 20px;
+  border-radius: 2px;
+  margin-right: 10px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  border: 1px solid #fff;
+  vertical-align: middle;
+}
+
 .log-in {
   background: url('images/img-4.jpg') center center/cover no-repeat;
   color: #fff;
