@@ -1,9 +1,13 @@
 import React from 'react';
 import '../../App.css';
+import Footer from '../Footer.js';
 
 const AboutUs = () => {
   return (
-    <h1 className='aboutus'>ABOUT US</h1>
+    <div>
+      <h1 className='aboutus'>ABOUT US</h1>
+      <Footer />
+    </div>
   )
 }
 

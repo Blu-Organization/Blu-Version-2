@@ -2,13 +2,13 @@ import React from 'react';
 import '../../App.css';
 import Footer from '../Footer.js';
 
-const NewsFeed = () => {
+const ExploreMore = () => {
   return (
     <div>
-      <h1 className='newsfeed'>Game Lobby</h1>
+      <h1 className='exploremore'>Explore More</h1>
       <Footer />
     </div>
   )
 }
 
-export default NewsFeed;
+export default ExploreMore;
