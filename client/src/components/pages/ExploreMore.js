@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
 import styled from 'styled-components';
+import axios from 'axios';
 import Footer from '../Footer.js';
 
 const SearchForm = styled.form`
@@ -26,21 +27,85 @@ const SearchButton = styled.button`
 `;
 
 const ExploreMore = () => {
+
+  const [searchText, setSearchText] = useState('');
+  const [isSearching, setIsSearching] = useState(true);
+  const [users, setUsers] = useState([{ userName: 'John123', firstName: 'John', lastName: 'Doe'}, { userName: 'Jane123', firstName: 'Jane', lastName: 'Smith'}, { userName: 'Sarah123', firstName: 'Sarah', lastName: 'Connor'}, { userName: 'Steve123', firstName: 'Steven', lastName: 'Universe'}]);
+  const [games, setGames] = useState([{ gameName: 'League of Legends' }, { gameName:'BattleField' } , { gameName: 'Among Us' }, { gameName: 'Fortnite' } , { gameName: 'Escape From Tarkov' }, { gameName: 'Valorant' }]);
+
+  //axios calls
+  const getUsersAndGames = (string) => {
+    axios.all([
+      axios.get(`/searchUsers/${string}`),
+      axios.get(`/searchGames/${string}`)
+    ])
+    .then(axios.spread((searchUsers, searchGames) => {
+      setUsers(searchUsers.data);
+      setGames(searchGames.data);
+    }))
+  }
+
+  //handle input change
+  const handleInputChange = (e) => {
+    setSearchText(e.target.value);
+  }
+
+  //handle form submit
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    //axios calls and state update
+    getUsersAndGames(searchText);
+    //render result lists
+    //setIsSearching(true);
+  }
+
+  const searchResults = () => {
+    //render results drop down
+    if (isSearching) {
+      return (
+        <div>
+          <p>
+            Users:
+          </p>
+          <ul>
+            {users.map((user, index) => {
+              return(
+                <p>{user.userName} ({user.firstName} {user.lastName})</p>
+              )
+            })}
+          </ul>
+          <p>
+            Games:
+          </p>
+          <ul>
+            {games.map((game, index) => {
+              return(
+                <p>{game.gameName}</p>
+              )
+            })}
+          </ul>
+        </div>
+      )
+    }
+  }
+
   return (
     <div>
         <div>
           <div className='exploremore'>
-            <SearchForm>
+            <SearchForm onSubmit={(e) => {handleFormSubmit(e)}}>
               <input
                 className='explore-input'
+                onChange={(e) => handleInputChange(e)}
                 name='explore'
                 type='explore'
                 placeholder='Explore BLU'
               />
-              <SearchButton>
+              <SearchButton type='submit'>
                 <SearchLogo src='images/search.png' alt='search'></SearchLogo>
               </SearchButton>
             </SearchForm>
+            {searchResults()}
           </div>
         </div>
       <Footer />

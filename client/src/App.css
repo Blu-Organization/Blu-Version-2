@@ -25,10 +25,9 @@
 .exploremore {
   background: url('images/img-3.jpg') center center/cover no-repeat;
   color: #fff;
-  font-size: 100px;
-  display: flex;
+  font-size: 12px;
+  display: block;
   height: 90vh;
-  align-items: center;
   justify-content: center;
 }
 
