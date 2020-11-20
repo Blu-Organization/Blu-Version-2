@@ -32,21 +32,21 @@ const Cards = () => {
           </ul>
           <ul className='cards__items'>
             <CardItem
-              src='images/val.jpg'
-              text='Valorant'
+              src='images/amongus.jpg'
+              text='Among Us'
+              label='Party, social deduction'
+              path='/newsfeed'
+            />
+            <CardItem
+              src='images/tarkov.jpg'
+              text='Escape From Tarkov'
               label='First Person Shooter'
               path='/newsfeed'
             />
             <CardItem
-              src='images/overwatch.jpg'
-              text='Overwatch'
+              src='images/callofduty.jpg'
+              text='Call of Duty'
               label='First Person Shooter'
-              path='/newsfeed'
-            />
-            <CardItem
-              src='images/league.png'
-              text='League Of Legends'
-              label='MOBA'
               path='/newsfeed'
             />
           </ul>
