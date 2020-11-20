@@ -213,3 +213,23 @@
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
   }
 }
+
+
+@media screen and (max-width: 960px) {
+
+  .aboutus-container-pauls {
+    flex-direction: column;
+  }
+
+  .aboutus-container-tracys {
+    flex-direction: column;
+  }
+
+  .aboutus-container-justins {
+    flex-direction: column;
+  }
+
+  .aboutus {
+    height: 283vh;
+  }
+}
