@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST, COUNT } from './types.js';
+import { FETCH_POSTS, NEW_POST, currentGame } from './types.js';
 
 export const fetchPosts = () => dispatch => {
   fetch('https://jsonplaceholder.typicode.com/posts')
@@ -9,6 +9,7 @@ export const fetchPosts = () => dispatch => {
   }))
 }
 
-export const increaseCount = () => ({
-  type: COUNT
+export const fetchCurrentGame = (game) => ({
+  type: currentGame,
+  game
   })

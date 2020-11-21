@@ -170,17 +170,6 @@
   font-size: 100px;
 }
 
-.newsfeed {
-  /* background: url('images/gameLobby.jpg') center center/cover no-repeat; */
-  background-color: #282828;
-  color: #fff;
-  height: 90vh;
-}
-
-.newsfeed h1 {
-  font-size: 3rem;
-}
-
 @keyframes pauls {
   from {
     background: url('images/paulsleesin.jpg') center center/cover no-repeat;

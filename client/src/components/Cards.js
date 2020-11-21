@@ -15,19 +15,19 @@ const Cards = () => {
               src='images/league.png'
               text='League Of Legends'
               label='MOBA'
-              path='/newsfeed'
+              path='/gamelobby'
             />
             <CardItem
               src='images/overwatch.jpg'
               text='Overwatch'
               label='First Person Shooter'
-              path='/newsfeed'
+              path='/gamelobby'
             />
             <CardItem
               src='images/val.jpg'
               text='Valorant'
               label='First Person Shooter'
-              path='/newsfeed'
+              path='/gamelobby'
             />
           </ul>
           <ul className='cards__items'>
@@ -35,19 +35,19 @@ const Cards = () => {
               src='images/amongus.jpg'
               text='Among Us'
               label='Party, social deduction'
-              path='/newsfeed'
+              path='/gamelobby'
             />
             <CardItem
               src='images/tarkov.jpg'
               text='Escape From Tarkov'
               label='First Person Shooter'
-              path='/newsfeed'
+              path='/gamelobby'
             />
             <CardItem
               src='images/callofduty.jpg'
               text='Call of Duty'
               label='First Person Shooter'
-              path='/newsfeed'
+              path='/gamelobby'
             />
           </ul>
         </div>

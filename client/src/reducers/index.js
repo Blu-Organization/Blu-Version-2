@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import postReducer from './postReducer.js';
-import countReducer from './countReducer.js';
+import currentGameReducer from './currentGameReducer.js';
 
 export default combineReducers({
   posts: postReducer,
-  count: countReducer
+  currentGameReducer: currentGameReducer
 });
