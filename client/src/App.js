@@ -6,7 +6,7 @@ import AboutUs from './components/pages/AboutUs.js';
 import ExploreMore from './components/pages/ExploreMore.js';
 import LogIn from './components/pages/LogIn.js';
 import SignUp from './components/pages/SignUp.js';
-import NewsFeed from './components/pages/NewsFeed.js';
+import GameLobby from './components/pages/GameLobby.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
 
@@ -22,7 +22,7 @@ function App() {
             <Route path='/exploremore' component={ExploreMore}></Route>
             <Route path='/log-in' component={LogIn}></Route>
             <Route path='/sign-up' component={SignUp}></Route>
-            <Route path='/newsfeed' component={NewsFeed}></Route>
+            <Route path='/gamelobby' component={GameLobby}></Route>
           </Switch>
         </Router>
       </div>

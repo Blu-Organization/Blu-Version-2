@@ -1,3 +1,3 @@
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const NEW_POST = 'NEW_POST';
-export const COUNT = 'COUNT';
+export const currentGame = 'currentGame';

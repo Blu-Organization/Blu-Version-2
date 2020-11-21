@@ -1,0 +1,18 @@
+.gamelobby-container {
+  display: flex;
+  background-color: #282828;
+  color: #fff;
+  height: 90vh;
+}
+
+.about-currentGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+}
+
+
+.gamelobby h1 {
+  font-size: 3rem;
+}
