@@ -33,6 +33,8 @@ const ExploreMore = () => {
   const [users, setUsers] = useState([{ userName: 'John123', firstName: 'John', lastName: 'Doe'}, { userName: 'Jane123', firstName: 'Jane', lastName: 'Smith'}, { userName: 'Sarah123', firstName: 'Sarah', lastName: 'Connor'}, { userName: 'Steve123', firstName: 'Steven', lastName: 'Universe'}]);
   const [games, setGames] = useState([{ gameName: 'League of Legends' }, { gameName:'BattleField' } , { gameName: 'Among Us' }, { gameName: 'Fortnite' } , { gameName: 'Escape From Tarkov' }, { gameName: 'Valorant' }]);
 
+  const [loggedIn, setLoggedIn] = useState(true);
+
   //axios calls
   const getUsersAndGames = (string) => {
     axios.all([
@@ -89,6 +91,24 @@ const ExploreMore = () => {
     }
   }
 
+  const newsFeed = () => {
+    //render results drop down
+    if (loggedIn) {
+      return (
+        <div>
+          <p>LOGGED IN - News Feed</p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <p>NOT LOGGED IN - News Feed</p>
+        </div>
+      )
+    }
+  }
+
+
   return (
     <div>
         <div>
@@ -106,6 +126,7 @@ const ExploreMore = () => {
               </SearchButton>
             </SearchForm>
             {searchResults()}
+            {newsFeed()}
           </div>
         </div>
       <Footer />
