@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS bludb;
+
+CREATE DATABASE bludb;
+
+\c bludb;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  firstName VARCHAR(255) NOT NULL,
+  lastName VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  description VARCHAR(5000) NOT NULL,
+  profilePic VARCHAR(255) NOT NULL
+)

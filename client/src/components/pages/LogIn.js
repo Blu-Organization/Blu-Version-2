@@ -7,14 +7,9 @@ const LogIn = (props) => {
   return (
     <div>
       <h1 className='log-in'>Log In</h1>
-      {/* <h1>{props.count}</h1> */}
       <Footer />
     </div>
   )
 }
 
-const mapStateToProps = (state) => ({
-  count: state.count.count
-})
-
-export default connect(mapStateToProps, {})(LogIn);
+export default LogIn;
