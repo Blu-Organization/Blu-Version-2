@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import Button from './Button.js';
+import Button from './subComponents/Button.js';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
