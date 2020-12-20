@@ -178,7 +178,6 @@ const FormInput = styled.input`
   }
 `;
 
-
 const FormLabel = styled.label`
   position: absolute;
   top: 0;
@@ -188,6 +187,14 @@ const FormLabel = styled.label`
   color: ${(props) => props.used ? `red` : `#9b9b9b`};
 `;
 
+const InvalidFormWarningDiv = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
+
+const InvalidFormText = styled.span`
+  color: red;
+`;
 
 const SignUpPage = () => {
 
@@ -199,32 +206,55 @@ const SignUpPage = () => {
   const [month, setMonth] = useState(0);
   const [day, setDay] = useState(0);
   const [year, setYear] = useState(0);
+
+  const [invalidForm, setInvalidForm] = useState(false);
   const [usernameTaken, setUsernameTaken] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [usernameLength, setUsernameLength] = useState(false);
 
   const checkValidUsername = (username) => {
 
-    //check if username exisits inside our users database pool.
-      //if so continue to say username already taken
-      //if the username is not taken then say username available!
-    axios.get('/api/user', {
-      params: {
-        username
-      }
-    })
-    .then((res) => {
-      console.log(res.data.rowCount)
-      if (res.data.rowCount > 0) {
-        setUsernameTaken(true);
-      } else {
-        setUsernameTaken(false);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    //CHECK #1: SEE IF USERNAME IS BETWEEN 4 - 25 CHARACTERS LONG
+    if (username.length >= 4 && username.length <= 25) {
+      setUsernameLength(false);
+      setInvalidForm(false);
+
+
+      //CHECK #2: SEE IF THE USERNAME EXISTS IN DATABASE
+        //check if username exisits inside our users database pool.
+        //if so continue to say username already taken
+        //if the username is not taken then say username available!
+
+      axios.get('/api/user', {
+        params: {
+          username
+        }
+      })
+      .then((res) => {
+        if (res.data.rowCount > 0) {
+          setUsernameTaken(true);
+          setInvalidForm(true);
+        } else {
+          setUsernameTaken(false);
+          setInvalidForm(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    } else {
+      setUsernameLength(true);
+      setInvalidForm(true);
+    }
+
   }
 
   const notValidUserName = () => {
+    if (usernameLength) {
+      return (
+        <UsernameWarning>Usernames must be between 4 and 25 characters!</UsernameWarning>
+      )
+    }
     if (usernameTaken) {
       return (
         <UsernameWarning>Username is already taken!</UsernameWarning>
@@ -232,24 +262,46 @@ const SignUpPage = () => {
     }
   }
 
+  const checkValidEmail = (email) => {
+    if (email[0] === '@') {
+      setInvalidEmail(true);
+    } else if (email[email.indexOf('@') + 1] === '.') {
+      setInvalidEmail(true);
+    } else {
+      setInvalidEmail(false);
+    }
+  }
+
+  const invalidFormText = () => {
+    if (invalidForm || invalidEmail) {
+      return (
+        <InvalidFormWarningDiv>
+          <InvalidFormText>One or more fields are incorrect!</InvalidFormText>
+        </InvalidFormWarningDiv>
+      )
+    }
+  }
+
   const createNewUser = (username, firstname,lastname, email, password, month, day, year ) => {
 
-    axios.post('/api/postUser', {
-      username,
-      firstname,
-      lastname,
-      email,
-      password,
-      month,
-      day,
-      year
-    })
-    .then((res) => {
-      console.log('successfully added user!');
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    if (!usernameTaken) {
+      axios.post('/api/postUser', {
+        username,
+        firstname,
+        lastname,
+        email,
+        password,
+        month,
+        day,
+        year
+      })
+      .then((res) => {
+        console.log('successfully added user!');
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    }
   }
 
   return (
@@ -259,8 +311,8 @@ const SignUpPage = () => {
     </div>
       <Form>
         <FormGroup className="form__group">
-          <FormInput used={usernameTaken} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} />
-          <FormLabel used={usernameTaken} for="userName" className="form__label">User Name</FormLabel>
+          <FormInput used={invalidForm} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} />
+          <FormLabel used={invalidForm} for="userName" className="form__label">User Name</FormLabel>
           <Div>
             {notValidUserName()}
           </Div>
@@ -277,8 +329,8 @@ const SignUpPage = () => {
         </FormGroup>
 
         <FormGroup className="form__group">
-          <FormInput type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => setEmail(e.target.value)} />
-          <FormLabel for="email" className="form__label">Email</FormLabel>
+          <FormInput used={invalidEmail} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
+          <FormLabel used={invalidEmail} for="email" className="form__label">Email</FormLabel>
         </FormGroup>
 
         <FormGroup className="form__group">
@@ -328,6 +380,8 @@ const SignUpPage = () => {
             </ButtonPTag>
           </ButtonATag>
         </ButtonDiv>
+
+        {invalidFormText()}
     </MainContainer>
   )
 }
