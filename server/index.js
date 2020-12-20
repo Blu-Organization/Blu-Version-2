@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/user', (req, res) => {
-  console.log(req.query)
   dbHelpers.getUser(req.query.username, (err, results) => {
     if (err) {
       res.status(400).send(err);
