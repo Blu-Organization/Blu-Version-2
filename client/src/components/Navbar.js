@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './Button.js'
+import Button from './subComponents/Button.js'
 import './Navbar.css';
 
 const Logo = styled.img`
