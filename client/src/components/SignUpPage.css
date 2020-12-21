@@ -44,8 +44,3 @@ div a:hover span.bg {
 div a:hover span.text:after {
   background: #ece8e1;
 }
-
-
-.signup-button-submit {
-  color: blue;
-}

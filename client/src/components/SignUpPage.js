@@ -194,11 +194,15 @@ const InvalidFormWarningDiv = styled.div`
 `;
 
 const InvalidFormText = styled.span`
-  color: red;
+  color: ${(props) => props.passwordColor ? props.passwordColor : `red`};
 `;
 
 const ValidFormText = styled.span`
   color: #7FA7F4;
+`;
+
+const ValidPasswordText = styled.span`
+  color: #52ff28;
 `;
 
 const SignUpPage = () => {
@@ -208,6 +212,7 @@ const SignUpPage = () => {
   const [lastname, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [month, setMonth] = useState(0);
   const [day, setDay] = useState(0);
   const [year, setYear] = useState(0);
@@ -220,6 +225,11 @@ const SignUpPage = () => {
   const [usernameLength, setUsernameLength] = useState(false);
   const [createdUser, setCreatedUser] = useState(false);
   const [turnEmailRed, setTurnEmailRed] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState('');
+  const [passwordColor, setPasswordColor] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(false);
+
+  //USERNAME VALIDATION
 
   const checkValidUsername = (username) => {
 
@@ -269,6 +279,8 @@ const SignUpPage = () => {
       )
     }
   }
+
+  //EMAIL VALIDATION
 
   const checkValidEmail = (email) => {
 
@@ -331,6 +343,55 @@ const SignUpPage = () => {
           <InvalidFormText>Form is empty please provide more info!</InvalidFormText>
         </InvalidFormWarningDiv>
       )
+    }
+  }
+
+  //PASSWORD VALIDATION
+
+  const checkPasswordStrength = (password) => {
+    if (password.length < 5) {
+      setPasswordStrength('Password Strength: Weak');
+      setPasswordColor('red');
+    } else if (password.length >= 5 && password.length <= 10) {
+      setPasswordStrength('Password Strength: Fair');
+      setPasswordColor('#ff9628');
+    } else {
+      setPasswordStrength('Password Strength: Strong')
+      setPasswordColor('#52ff28');
+    }
+  }
+
+  const checkPasswordMatch = (confirmPassword) => {
+    if (confirmPassword === password) {
+      setPasswordMatch(true);
+    } else {
+      setPasswordMatch(false);
+    }
+  }
+
+  const checkPreviousPasswordMatch = (prevPassword) => {
+    if (prevPassword === confirmPassword) {
+      setPasswordMatch(true);
+    } else {
+      setPasswordMatch(false);
+    }
+  }
+
+  const passwordMatchText = () => {
+    if (password.length > 0 || confirmPassword.length > 0) {
+      if (passwordMatch) {
+        return (
+          <Div>
+            <ValidPasswordText>Passwords match!</ValidPasswordText>
+          </Div>
+        )
+      } else {
+        return (
+          <Div>
+            <InvalidFormText>Passwords do not match. Please try again</InvalidFormText>
+          </Div>
+        )
+      }
     }
   }
 
@@ -404,13 +465,21 @@ const SignUpPage = () => {
         </FormGroup>
 
         <FormGroup className="form__group">
-          <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
+          <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); checkPasswordStrength(e.target.value); checkPreviousPasswordMatch(e.target.value);}} />
           <FormLabel for="password" className="form__label">Password</FormLabel>
+          <Div>
+            <InvalidFormText passwordColor={passwordColor}>
+              {passwordStrength}
+            </InvalidFormText>
+          </Div>
         </FormGroup>
 
         <FormGroup className="form__group">
-          <FormInput type="password" className="form__field" placeholder="confirm password" name="confirm-password" required />
+          <FormInput type="password" className="form__field" placeholder="confirm password" name="confirm-password" required onChange={(e) => {setConfirmPassword(e.target.value);checkPasswordMatch(e.target.value);}} />
           <FormLabel for="confirm-password" className="form__label">Confirm Password</FormLabel>
+          <Div>
+            {passwordMatchText()}
+          </Div>
         </FormGroup>
 
         <BirthdateContainer>
