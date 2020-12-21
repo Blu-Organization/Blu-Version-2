@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './SignUpPage.css';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -196,6 +197,10 @@ const InvalidFormText = styled.span`
   color: red;
 `;
 
+const ValidFormText = styled.span`
+  color: #7FA7F4;
+`;
+
 const SignUpPage = () => {
 
   const [username, setUserName] = useState('');
@@ -207,17 +212,21 @@ const SignUpPage = () => {
   const [day, setDay] = useState(0);
   const [year, setYear] = useState(0);
 
-  const [invalidForm, setInvalidForm] = useState(false);
+  const [invalidUsername, setinvalidUsername] = useState(false);
   const [usernameTaken, setUsernameTaken] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
+  const [emailTaken, setEmailTaken] = useState(false);
+  const [emptyForm, setEmptyForm] = useState(false);
   const [usernameLength, setUsernameLength] = useState(false);
+  const [createdUser, setCreatedUser] = useState(false);
+  const [turnEmailRed, setTurnEmailRed] = useState(false);
 
   const checkValidUsername = (username) => {
 
     //CHECK #1: SEE IF USERNAME IS BETWEEN 4 - 25 CHARACTERS LONG
     if (username.length >= 4 && username.length <= 25) {
       setUsernameLength(false);
-      setInvalidForm(false);
+      setinvalidUsername(false);
 
 
       //CHECK #2: SEE IF THE USERNAME EXISTS IN DATABASE
@@ -225,7 +234,7 @@ const SignUpPage = () => {
         //if so continue to say username already taken
         //if the username is not taken then say username available!
 
-      axios.get('/api/user', {
+      axios.get('/api/userUsername', {
         params: {
           username
         }
@@ -233,10 +242,10 @@ const SignUpPage = () => {
       .then((res) => {
         if (res.data.rowCount > 0) {
           setUsernameTaken(true);
-          setInvalidForm(true);
+          setinvalidUsername(true);
         } else {
           setUsernameTaken(false);
-          setInvalidForm(false);
+          setinvalidUsername(false);
         }
       })
       .catch((err) => {
@@ -244,9 +253,8 @@ const SignUpPage = () => {
       })
     } else {
       setUsernameLength(true);
-      setInvalidForm(true);
+      setinvalidUsername(true);
     }
-
   }
 
   const notValidUserName = () => {
@@ -263,56 +271,115 @@ const SignUpPage = () => {
   }
 
   const checkValidEmail = (email) => {
+
+    axios.get('/api/userEmail', {
+      params: {
+        email
+      }
+    })
+    .then((res) => {
+      if (res.data.rowCount > 0) {
+        setEmailTaken(true);
+        setTurnEmailRed(true);
+      } else {
+        setEmailTaken(false);
+        setTurnEmailRed(false);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+
+    let generic = email.substr(email.indexOf('@'));
+    let afterPeriod = generic.substr(generic.indexOf('.') + 1);
     if (email[0] === '@') {
       setInvalidEmail(true);
     } else if (email[email.indexOf('@') + 1] === '.') {
+      setInvalidEmail(true);
+    } else if (!generic.includes('.')) {
+      setInvalidEmail(true);
+    } else if (afterPeriod.length < 2) {
       setInvalidEmail(true);
     } else {
       setInvalidEmail(false);
     }
   }
 
+  const notValidEmail = () => {
+    if (invalidEmail) {
+      return (
+        <UsernameWarning>Please enter a valid email!</UsernameWarning>
+      )
+    }
+    if (emailTaken) {
+      return (
+        <UsernameWarning>Email is already taken!</UsernameWarning>
+      )
+    }
+  }
+
   const invalidFormText = () => {
-    if (invalidForm || invalidEmail) {
+    if (invalidUsername || invalidEmail || emailTaken) {
       return (
         <InvalidFormWarningDiv>
           <InvalidFormText>One or more fields are incorrect!</InvalidFormText>
+        </InvalidFormWarningDiv>
+      )
+    } else if (emptyForm) {
+      return (
+        <InvalidFormWarningDiv>
+          <InvalidFormText>Form is empty please provide more info!</InvalidFormText>
         </InvalidFormWarningDiv>
       )
     }
   }
 
   const createNewUser = (username, firstname,lastname, email, password, month, day, year ) => {
+    if (username.length && firstname.length && lastname.length && email.length && password.length) {
+      if (!invalidUsername || invalidEmail) {
+        axios.post('/api/postUser', {
+          username,
+          firstname,
+          lastname,
+          email,
+          password,
+          month,
+          day,
+          year
+        })
+        .then((res) => {
+          setEmptyForm(false);
+          setCreatedUser(true);
+          console.log('successfully added user!');
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+      }
+    } else {
+      setEmptyForm(true);
+    }
+  }
 
-    if (!usernameTaken) {
-      axios.post('/api/postUser', {
-        username,
-        firstname,
-        lastname,
-        email,
-        password,
-        month,
-        day,
-        year
-      })
-      .then((res) => {
-        console.log('successfully added user!');
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+  const successfullyCreatedUser = () => {
+    if (createdUser) {
+      return (
+        <InvalidFormWarningDiv>
+          <ValidFormText>Successfully Created Account!</ValidFormText>
+        </InvalidFormWarningDiv>
+      )
     }
   }
 
   return (
     <MainContainer>
     <div>
-      <Title>Sign Up</Title>
+      <Title>Create Account</Title>
     </div>
       <Form>
         <FormGroup className="form__group">
-          <FormInput used={invalidForm} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} />
-          <FormLabel used={invalidForm} for="userName" className="form__label">User Name</FormLabel>
+          <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} />
+          <FormLabel used={invalidUsername} for="userName" className="form__label">User Name</FormLabel>
           <Div>
             {notValidUserName()}
           </Div>
@@ -329,8 +396,11 @@ const SignUpPage = () => {
         </FormGroup>
 
         <FormGroup className="form__group">
-          <FormInput used={invalidEmail} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
-          <FormLabel used={invalidEmail} for="email" className="form__label">Email</FormLabel>
+          <FormInput used={turnEmailRed} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
+          <FormLabel used={turnEmailRed} for="email" className="form__label">Email</FormLabel>
+          <Div>
+            {notValidEmail()}
+          </Div>
         </FormGroup>
 
         <FormGroup className="form__group">
@@ -361,10 +431,10 @@ const SignUpPage = () => {
 
       </Form>
       <ButtonDiv>
-          <ButtonATag href="#">
-            <ButtonPTag>
-              <span className="bg"></span>
-              <ButtonBase></ButtonBase>
+        <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
+          <ButtonPTag>
+            <span className="bg"></span>
+            <ButtonBase></ButtonBase>
               <ButtonText onClick={() =>
                 createNewUser(
                   username,
@@ -377,10 +447,10 @@ const SignUpPage = () => {
                   year
                 )}>Submit
               </ButtonText>
-            </ButtonPTag>
-          </ButtonATag>
+          </ButtonPTag>
+        </ButtonATag>
         </ButtonDiv>
-
+        {successfullyCreatedUser()}
         {invalidFormText()}
     </MainContainer>
   )
