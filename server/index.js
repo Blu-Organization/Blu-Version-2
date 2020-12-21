@@ -12,8 +12,18 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/user', (req, res) => {
-  dbHelpers.getUser(req.query.username, (err, results) => {
+app.get('/api/userUsername', (req, res) => {
+  dbHelpers.getUserUsername(req.query.username, (err, results) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(results);
+    }
+  })
+})
+
+app.get('/api/userEmail', (req, res) => {
+  dbHelpers.getUserEmail(req.query.email, (err, results) => {
     if (err) {
       res.status(400).send(err);
     } else {

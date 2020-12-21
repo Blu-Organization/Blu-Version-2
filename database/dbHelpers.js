@@ -1,8 +1,18 @@
 const pool = require('./index.js');
 
 module.exports = {
-  getUser: (name, callback) => {
+  getUserUsername: (name, callback) => {
     let queryStr = `SELECT * FROM users WHERE username='${name}'`;
+    pool.query(queryStr, (err, result) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, result);
+      }
+    })
+  },
+  getUserEmail: (email, callback) => {
+    let queryStr = `SELECT * FROM users WHERE email='${email}'`;
     pool.query(queryStr, (err, result) => {
       if (err) {
         callback(err);
