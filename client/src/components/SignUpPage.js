@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 import './SignUpPage.css';
 import styled from 'styled-components';
 import axios from 'axios';
+import controller from '../images/controller.jpg';
 
 const MainContainer = styled.div`
-  height: 100vh;
-  background-color: #282828;
+  height: 115vh;
+  // background-color: #282828;
+  background: url(${controller}) center center/cover no-repeat;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.75);
+  object-fit: contain;
 `;
 
 const Title = styled.h1`
@@ -185,7 +192,7 @@ const FormLabel = styled.label`
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: ${(props) => props.used ? `red` : `#9b9b9b`};
+  color: ${(props) => props.used ? `red` : `#b2b2b2`};
 `;
 
 const InvalidFormWarningDiv = styled.div`
@@ -224,10 +231,13 @@ const SignUpPage = () => {
   const [emptyForm, setEmptyForm] = useState(false);
   const [usernameLength, setUsernameLength] = useState(false);
   const [createdUser, setCreatedUser] = useState(false);
-  const [turnEmailRed, setTurnEmailRed] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState('');
   const [passwordColor, setPasswordColor] = useState('');
   const [passwordMatch, setPasswordMatch] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [validMonth, setValidMonth] = useState(false);
+  const [validDay, setValidDay] = useState(false);
+  const [validYear, setValidYear] = useState(false);
 
   //USERNAME VALIDATION
 
@@ -237,7 +247,6 @@ const SignUpPage = () => {
     if (username.length >= 4 && username.length <= 25) {
       setUsernameLength(false);
       setinvalidUsername(false);
-
 
       //CHECK #2: SEE IF THE USERNAME EXISTS IN DATABASE
         //check if username exisits inside our users database pool.
@@ -292,10 +301,8 @@ const SignUpPage = () => {
     .then((res) => {
       if (res.data.rowCount > 0) {
         setEmailTaken(true);
-        setTurnEmailRed(true);
       } else {
         setEmailTaken(false);
-        setTurnEmailRed(false);
       }
     })
     .catch((err) => {
@@ -331,7 +338,7 @@ const SignUpPage = () => {
   }
 
   const invalidFormText = () => {
-    if (invalidUsername || invalidEmail || emailTaken) {
+    if (invalidUsername || invalidEmail || emailTaken || invalidPassword) {
       return (
         <InvalidFormWarningDiv>
           <InvalidFormText>One or more fields are incorrect!</InvalidFormText>
@@ -364,16 +371,20 @@ const SignUpPage = () => {
   const checkPasswordMatch = (confirmPassword) => {
     if (confirmPassword === password) {
       setPasswordMatch(true);
+      setInvalidPassword(false);
     } else {
       setPasswordMatch(false);
+      setInvalidPassword(true);
     }
   }
 
   const checkPreviousPasswordMatch = (prevPassword) => {
     if (prevPassword === confirmPassword) {
       setPasswordMatch(true);
+      setInvalidPassword(false);
     } else {
       setPasswordMatch(false);
+      setInvalidPassword(true);
     }
   }
 
@@ -390,6 +401,84 @@ const SignUpPage = () => {
           <Div>
             <InvalidFormText>Passwords do not match. Please try again</InvalidFormText>
           </Div>
+        )
+      }
+    }
+  }
+
+  //MONTH VALIDATION
+
+  const checkValidMonth = (month) => {
+    if (month > 0 && month <= 12) {
+      setValidMonth(true);
+    } else {
+      setValidMonth(false);
+    }
+  }
+
+  const monthText = () => {
+    if (month !== 0) {
+      if (!validMonth) {
+        return (
+          <Div>
+              <InvalidFormText>Please enter a valid Month!</InvalidFormText>
+          </Div>
+        )
+      } else {
+        return (
+          <Div></Div>
+        )
+      }
+    }
+  }
+
+  //DAY VALIDATION
+
+  const checkValidDay = (day) => {
+    if (day > 0 && day <= 31) {
+      setValidDay(true);
+    } else {
+      setValidDay(false);
+    }
+  }
+
+  const dayText = () => {
+    if (day !== 0) {
+      if (!validDay) {
+        return (
+          <Div>
+              <InvalidFormText>Please enter a valid Day!</InvalidFormText>
+          </Div>
+        )
+      } else {
+        return (
+          <Div></Div>
+        )
+      }
+    }
+  }
+
+  //YEAR VALIDATION
+
+  const checkValidYear = (year) => {
+    if (year > 1900 && year <= 2020) {
+      setValidYear(true);
+    } else {
+      setValidYear(false);
+    }
+  }
+
+  const yearText = () => {
+    if (year !== 0) {
+      if (!validYear) {
+        return (
+          <Div>
+              <InvalidFormText>Please enter a valid Year!</InvalidFormText>
+          </Div>
+        )
+      } else {
+        return (
+          <Div></Div>
         )
       }
     }
@@ -440,7 +529,7 @@ const SignUpPage = () => {
       <Form>
         <FormGroup className="form__group">
           <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} />
-          <FormLabel used={invalidUsername} for="userName" className="form__label">User Name</FormLabel>
+          <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">User Name</FormLabel>
           <Div>
             {notValidUserName()}
           </Div>
@@ -448,17 +537,17 @@ const SignUpPage = () => {
 
         <FormGroup className="form__group">
           <FormInput type="input" className="form__field" placeholder="FirstName" name="firstName" required onChange={(e) => setFirstName(e.target.value)} />
-          <FormLabel for="firstName" className="form__label">First Name</FormLabel>
+          <FormLabel htmlFor="firstName" className="form__label">First Name</FormLabel>
         </FormGroup>
 
         <FormGroup className="form__group">
           <FormInput type="input" className="form__field" placeholder="LastName" name="lastName" required onChange={(e) => setLastName(e.target.value)} />
-          <FormLabel for="lastName" className="form__label">Last Name</FormLabel>
+          <FormLabel htmlFor="lastName" className="form__label">Last Name</FormLabel>
         </FormGroup>
 
         <FormGroup className="form__group">
-          <FormInput used={turnEmailRed} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
-          <FormLabel used={turnEmailRed} for="email" className="form__label">Email</FormLabel>
+          <FormInput used={invalidEmail} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
+          <FormLabel used={invalidEmail} htmlFor="email" className="form__label">Email</FormLabel>
           <Div>
             {notValidEmail()}
           </Div>
@@ -466,7 +555,7 @@ const SignUpPage = () => {
 
         <FormGroup className="form__group">
           <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); checkPasswordStrength(e.target.value); checkPreviousPasswordMatch(e.target.value);}} />
-          <FormLabel for="password" className="form__label">Password</FormLabel>
+          <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
           <Div>
             <InvalidFormText passwordColor={passwordColor}>
               {passwordStrength}
@@ -476,7 +565,7 @@ const SignUpPage = () => {
 
         <FormGroup className="form__group">
           <FormInput type="password" className="form__field" placeholder="confirm password" name="confirm-password" required onChange={(e) => {setConfirmPassword(e.target.value);checkPasswordMatch(e.target.value);}} />
-          <FormLabel for="confirm-password" className="form__label">Confirm Password</FormLabel>
+          <FormLabel htmlFor="confirm-password" className="form__label">Confirm Password</FormLabel>
           <Div>
             {passwordMatchText()}
           </Div>
@@ -484,19 +573,27 @@ const SignUpPage = () => {
 
         <BirthdateContainer>
           <FormGroup className="form__group">
-            <FormInput type="number" className="form__field" placeholder="Month" name="month" min="1" max="12"required onChange={(e) => setMonth(e.target.value)} />
-            <FormLabel for="month" className="form__label">Month</FormLabel>
+            <FormInput type="number" className="form__field" placeholder="Month" name="month" min="1" max="12"required onChange={(e) => {setMonth(e.target.value); checkValidMonth(e.target.value);}} />
+            <FormLabel htmlFor="month" className="form__label">Month</FormLabel>
+            <Div>
+              {monthText()}
+            </Div>
           </FormGroup>
           <FormGroup className="form__group">
-            <FormInput type="number" className="form__field" placeholder="Day" name="day" required min="1" max="31" onChange={(e) => setDay(e.target.value)} />
-            <FormLabel for="day" className="form__label">Day</FormLabel>
+            <FormInput type="number" className="form__field" placeholder="Day" name="day" required min="1" max="31" onChange={(e) => {setDay(e.target.value); checkValidDay(e.target.value);}} />
+            <FormLabel htmlFor="day" className="form__label">Day</FormLabel>
+            <Div>
+              {dayText()}
+            </Div>
           </FormGroup>
           <FormGroup className="form__group">
-            <FormInput type="number" className="form__field" placeholder="Year" name="year" required onChange={(e) => setYear(e.target.value)} />
-            <FormLabel for="year" className="form__label">Year</FormLabel>
+            <FormInput type="number" className="form__field" placeholder="Year" name="year" required onChange={(e) => {setYear(e.target.value); checkValidYear(e.target.value);}} />
+            <FormLabel htmlFor="year" className="form__label">Year</FormLabel>
+            <Div>
+              {yearText()}
+            </Div>
           </FormGroup>
         </BirthdateContainer>
-
 
       </Form>
       <ButtonDiv>
