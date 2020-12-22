@@ -1,6 +1,6 @@
 .cards {
   padding: 4rem;
-  background: aliceblue;
+  background: #0b1622;
 }
 
 h1 {
@@ -91,6 +91,7 @@ h1 {
 
 .cards__item__info {
   padding: 20px 30px 30px;
+  background-color: #f6f6f6;
 }
 
 .cards__item__text {

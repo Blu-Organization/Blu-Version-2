@@ -1,13 +1,18 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem.js';
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  color: #f6f6f6;
+`;
 
 const Cards = () => {
   return (
     <div className='cards'>
-      <h1>
+      <Title>
         Search For Popular Games
-      </h1>
+      </Title>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
