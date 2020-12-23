@@ -6,15 +6,21 @@
   z-index: -1;
 } */
 
+.button-containers {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .hero-container {
-  background: url('../images/Dota2.jpg') center center/cover no-repeat;
+  background: url('../images/jett.png') center center/cover no-repeat;
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
   object-fit: contain;
 }
 

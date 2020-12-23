@@ -5,7 +5,7 @@ const GamePage = ({ currentGame }) => {
   return (
     <div className='gamelobby-container'>
       <div className='about-currentGame'>
-        <a>
+        <a href="#">
         <img className='' src='#' alt='#'></img>
         </a>
         <h1 className='gamelobby'>{currentGame}</h1>

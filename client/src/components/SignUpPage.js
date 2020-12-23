@@ -212,6 +212,18 @@ const ValidPasswordText = styled.span`
   color: #52ff28;
 `;
 
+const WelcomeDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const WelcomeText = styled.span`
+  color: white;
+  font-weight: 400;
+`;
+
 const SignUpPage = () => {
 
   const [username, setUserName] = useState('');
@@ -238,6 +250,7 @@ const SignUpPage = () => {
   const [validMonth, setValidMonth] = useState(false);
   const [validDay, setValidDay] = useState(false);
   const [validYear, setValidYear] = useState(false);
+  const [logInTime, setLogInTime] = useState(false);
 
   //USERNAME VALIDATION
 
@@ -521,103 +534,144 @@ const SignUpPage = () => {
     }
   }
 
+  const titleSwitch = () => {
+    if (!logInTime) {
+      return (
+        <Title>Create Account!</Title>
+      )
+    } else {
+      return (
+        <Title>Account Created!</Title>
+      )
+    }
+  }
+
+  const formContent = () => {
+    if (!logInTime) {
+      return (
+        <>
+          <Form>
+          <FormGroup className="form__group">
+            <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} value={username} />
+            <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">User Name</FormLabel>
+            <Div>
+              {notValidUserName()}
+            </Div>
+          </FormGroup>
+
+          <FormGroup className="form__group">
+            <FormInput type="input" className="form__field" placeholder="FirstName" name="firstName" required onChange={(e) => setFirstName(e.target.value)} />
+            <FormLabel htmlFor="firstName" className="form__label">First Name</FormLabel>
+          </FormGroup>
+
+          <FormGroup className="form__group">
+            <FormInput type="input" className="form__field" placeholder="LastName" name="lastName" required onChange={(e) => setLastName(e.target.value)} />
+            <FormLabel htmlFor="lastName" className="form__label">Last Name</FormLabel>
+          </FormGroup>
+
+          <FormGroup className="form__group">
+            <FormInput used={invalidEmail} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
+            <FormLabel used={invalidEmail} htmlFor="email" className="form__label">Email</FormLabel>
+            <Div>
+              {notValidEmail()}
+            </Div>
+          </FormGroup>
+
+          <FormGroup className="form__group">
+            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); checkPasswordStrength(e.target.value); checkPreviousPasswordMatch(e.target.value);}} />
+            <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
+            <Div>
+              <InvalidFormText passwordColor={passwordColor}>
+                {passwordStrength}
+              </InvalidFormText>
+            </Div>
+          </FormGroup>
+
+          <FormGroup className="form__group">
+            <FormInput type="password" className="form__field" placeholder="confirm password" name="confirm-password" required onChange={(e) => {setConfirmPassword(e.target.value);checkPasswordMatch(e.target.value);}} />
+            <FormLabel htmlFor="confirm-password" className="form__label">Confirm Password</FormLabel>
+            <Div>
+              {passwordMatchText()}
+            </Div>
+          </FormGroup>
+
+          <BirthdateContainer>
+            <FormGroup className="form__group">
+              <FormInput type="number" className="form__field" placeholder="Month" name="month" min="1" max="12"required onChange={(e) => {setMonth(e.target.value); checkValidMonth(e.target.value);}} />
+              <FormLabel htmlFor="month" className="form__label">Month</FormLabel>
+              <Div>
+                {monthText()}
+              </Div>
+            </FormGroup>
+            <FormGroup className="form__group">
+              <FormInput type="number" className="form__field" placeholder="Day" name="day" required min="1" max="31" onChange={(e) => {setDay(e.target.value); checkValidDay(e.target.value);}} />
+              <FormLabel htmlFor="day" className="form__label">Day</FormLabel>
+              <Div>
+                {dayText()}
+              </Div>
+            </FormGroup>
+            <FormGroup className="form__group">
+              <FormInput type="number" className="form__field" placeholder="Year" name="year" required onChange={(e) => {setYear(e.target.value); checkValidYear(e.target.value);}} />
+              <FormLabel htmlFor="year" className="form__label">Year</FormLabel>
+              <Div>
+                {yearText()}
+              </Div>
+            </FormGroup>
+          </BirthdateContainer>
+
+        </Form>
+        <ButtonDiv>
+          <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
+            <ButtonPTag>
+              <span className="bg"></span>
+              <ButtonBase></ButtonBase>
+                <ButtonText onClick={() =>
+                  {createNewUser(
+                    username,
+                    firstname,
+                    lastname,
+                    email,
+                    password,
+                    month,
+                    day,
+                    year
+                  ); setLogInTime(true);}}>Submit
+                </ButtonText>
+            </ButtonPTag>
+          </ButtonATag>
+        </ButtonDiv>
+          {successfullyCreatedUser()}
+          {invalidFormText()}
+        </>
+      )
+    } else {
+      return (
+        <>
+          <WelcomeDiv>
+            <WelcomeText>Welcome to the Blu family!</WelcomeText>
+            <WelcomeText>Log in to continue and start finding the perfect gaming buddies to play with!</WelcomeText>
+          </WelcomeDiv>
+          <ButtonDiv>
+            <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
+              <ButtonPTag>
+                <span className="bg"></span>
+                <ButtonBase></ButtonBase>
+                  <ButtonText onClick={() => console.log('hello')}>Log In
+                  </ButtonText>
+              </ButtonPTag>
+            </ButtonATag>
+          </ButtonDiv>
+        </>
+      )
+    }
+  }
+
   return (
     <MainContainer>
     <div>
-      <Title>Create Account</Title>
+      {titleSwitch()}
     </div>
-      <Form>
-        <FormGroup className="form__group">
-          <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} />
-          <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">User Name</FormLabel>
-          <Div>
-            {notValidUserName()}
-          </Div>
-        </FormGroup>
-
-        <FormGroup className="form__group">
-          <FormInput type="input" className="form__field" placeholder="FirstName" name="firstName" required onChange={(e) => setFirstName(e.target.value)} />
-          <FormLabel htmlFor="firstName" className="form__label">First Name</FormLabel>
-        </FormGroup>
-
-        <FormGroup className="form__group">
-          <FormInput type="input" className="form__field" placeholder="LastName" name="lastName" required onChange={(e) => setLastName(e.target.value)} />
-          <FormLabel htmlFor="lastName" className="form__label">Last Name</FormLabel>
-        </FormGroup>
-
-        <FormGroup className="form__group">
-          <FormInput used={invalidEmail} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
-          <FormLabel used={invalidEmail} htmlFor="email" className="form__label">Email</FormLabel>
-          <Div>
-            {notValidEmail()}
-          </Div>
-        </FormGroup>
-
-        <FormGroup className="form__group">
-          <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); checkPasswordStrength(e.target.value); checkPreviousPasswordMatch(e.target.value);}} />
-          <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
-          <Div>
-            <InvalidFormText passwordColor={passwordColor}>
-              {passwordStrength}
-            </InvalidFormText>
-          </Div>
-        </FormGroup>
-
-        <FormGroup className="form__group">
-          <FormInput type="password" className="form__field" placeholder="confirm password" name="confirm-password" required onChange={(e) => {setConfirmPassword(e.target.value);checkPasswordMatch(e.target.value);}} />
-          <FormLabel htmlFor="confirm-password" className="form__label">Confirm Password</FormLabel>
-          <Div>
-            {passwordMatchText()}
-          </Div>
-        </FormGroup>
-
-        <BirthdateContainer>
-          <FormGroup className="form__group">
-            <FormInput type="number" className="form__field" placeholder="Month" name="month" min="1" max="12"required onChange={(e) => {setMonth(e.target.value); checkValidMonth(e.target.value);}} />
-            <FormLabel htmlFor="month" className="form__label">Month</FormLabel>
-            <Div>
-              {monthText()}
-            </Div>
-          </FormGroup>
-          <FormGroup className="form__group">
-            <FormInput type="number" className="form__field" placeholder="Day" name="day" required min="1" max="31" onChange={(e) => {setDay(e.target.value); checkValidDay(e.target.value);}} />
-            <FormLabel htmlFor="day" className="form__label">Day</FormLabel>
-            <Div>
-              {dayText()}
-            </Div>
-          </FormGroup>
-          <FormGroup className="form__group">
-            <FormInput type="number" className="form__field" placeholder="Year" name="year" required onChange={(e) => {setYear(e.target.value); checkValidYear(e.target.value);}} />
-            <FormLabel htmlFor="year" className="form__label">Year</FormLabel>
-            <Div>
-              {yearText()}
-            </Div>
-          </FormGroup>
-        </BirthdateContainer>
-
-      </Form>
-      <ButtonDiv>
-        <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
-          <ButtonPTag>
-            <span className="bg"></span>
-            <ButtonBase></ButtonBase>
-              <ButtonText onClick={() =>
-                createNewUser(
-                  username,
-                  firstname,
-                  lastname,
-                  email,
-                  password,
-                  month,
-                  day,
-                  year
-                )}>Submit
-              </ButtonText>
-          </ButtonPTag>
-        </ButtonATag>
-        </ButtonDiv>
-        {successfullyCreatedUser()}
-        {invalidFormText()}
+      {formContent()}
     </MainContainer>
   )
 }
