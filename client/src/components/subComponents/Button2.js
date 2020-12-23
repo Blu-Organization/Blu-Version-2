@@ -103,6 +103,7 @@ const ButtonText = styled.span`
   position: absolute;
   left: 0;
   top: 0;
+  font-size: 15px;
 
   &:after {
     content: "";

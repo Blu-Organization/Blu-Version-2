@@ -4,6 +4,11 @@ import './SignUpPage.css';
 import styled from 'styled-components';
 import axios from 'axios';
 import controller from '../images/controller.jpg';
+import Button2 from './subComponents/Button2.js';
+
+const LengthOfButton = styled.div`
+  width: 250px;
+`;
 
 const MainContainer = styled.div`
   height: 115vh;
@@ -135,6 +140,7 @@ const ButtonText = styled.span`
   position: absolute;
   left: 0;
   top: 0;
+  font-size: 15px;
 
   &:after {
     content: "";
@@ -513,6 +519,7 @@ const SignUpPage = () => {
         .then((res) => {
           setEmptyForm(false);
           setCreatedUser(true);
+          setLogInTime(true);
           console.log('successfully added user!');
         })
         .catch((err) => {
@@ -635,7 +642,7 @@ const SignUpPage = () => {
                     month,
                     day,
                     year
-                  ); setLogInTime(true);}}>Submit
+                  );}}>Submit
                 </ButtonText>
             </ButtonPTag>
           </ButtonATag>
@@ -651,16 +658,10 @@ const SignUpPage = () => {
             <WelcomeText>Welcome to the Blu family!</WelcomeText>
             <WelcomeText>Log in to continue and start finding the perfect gaming buddies to play with!</WelcomeText>
           </WelcomeDiv>
-          <ButtonDiv>
-            <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
-              <ButtonPTag>
-                <span className="bg"></span>
-                <ButtonBase></ButtonBase>
-                  <ButtonText onClick={() => console.log('hello')}>Log In
-                  </ButtonText>
-              </ButtonPTag>
-            </ButtonATag>
-          </ButtonDiv>
+          <div>
+            <Button2 location={'log-in'} onClick={() => console.log('hello!!!!')} text={'Log In'}></Button2>
+            <LengthOfButton></LengthOfButton>
+          </div>
         </>
       )
     }

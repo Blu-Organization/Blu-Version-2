@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './subComponents/Button.js'
+import Button2 from './subComponents/Button2.js'
 import './Navbar.css';
 
 const Logo = styled.img`
@@ -14,6 +14,10 @@ const Logo = styled.img`
 
 const NavItem = styled.li`
   height: 80px;
+`;
+
+const LengthOfButton = styled.div`
+  width: 150px;
 `;
 
 const Navbar = () => {
@@ -34,6 +38,17 @@ const Navbar = () => {
       setButton(false);
     } else {
       setButton(true);
+    }
+  }
+
+  const buttonFunc = () => {
+    if (button) {
+      return (
+        <div>
+          <Button2 location={'sign-up'} onClick={() => console.log('hello!!!!')} text={'Sign Up'}></Button2>
+          <LengthOfButton></LengthOfButton>
+        </div>
+      )
     }
   }
 
@@ -69,7 +84,7 @@ const Navbar = () => {
               <Link className='nav-links-mobile' to='/sign-up' onClick={closeMobileMenu}>Sign Up</Link>
             </NavItem>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>Sign Up</Button>}
+          {buttonFunc()}
         </div>
       </nav>
     </div>
