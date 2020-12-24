@@ -28,8 +28,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch )
 }
 
-const mapStateToProps = (state) => ({
-  currentGame: state.currentGameReducer.currentGame
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardItem);
+export default connect(() => {}, mapDispatchToProps)(CardItem);

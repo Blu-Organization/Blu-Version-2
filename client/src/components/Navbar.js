@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button2 from './subComponents/Button2.js'
 import './Navbar.css';
+import { connect } from 'react-redux';
 
 const Logo = styled.img`
   height: 140px;
@@ -14,13 +15,22 @@ const Logo = styled.img`
 
 const NavItem = styled.li`
   height: 80px;
+  display: flex;
+  align-items: center;
 `;
 
 const LengthOfButton = styled.div`
   width: 150px;
 `;
 
-const Navbar = () => {
+const CurrentUserText = styled.span`
+  color: white;
+  margin-bottom: 6px;
+  margin-left: 10px;
+`;
+
+
+const Navbar = ({ currentUser }) => {
 
   const [clicked, setClicked] = useState(false);
   const [button, setButton] = useState(true);
@@ -42,12 +52,18 @@ const Navbar = () => {
   }
 
   const buttonFunc = () => {
-    if (button) {
+    if (button && currentUser === '') {
       return (
         <div>
-          <Button2 location={'sign-up'} onClick={() => console.log('hello!!!!')} text={'Sign Up'}></Button2>
+          <Button2 location={'sign-up'} text={'Sign Up'}></Button2>
           <LengthOfButton></LengthOfButton>
         </div>
+      )
+    } else {
+      return (
+        <CurrentUserText>
+          {currentUser}
+        </CurrentUserText>
       )
     }
   }
@@ -81,14 +97,17 @@ const Navbar = () => {
               <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
             </NavItem>
             <NavItem>
-              <Link className='nav-links-mobile' to='/sign-up' onClick={closeMobileMenu}>Sign Up</Link>
+            {buttonFunc()}
             </NavItem>
           </ul>
-          {buttonFunc()}
         </div>
       </nav>
     </div>
   )
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  currentUser: state.currentUserReducer.user
+})
+
+export default connect(mapStateToProps, () => {})(Navbar);

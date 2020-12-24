@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './SignUpPage.css';
 import styled from 'styled-components';
 import axios from 'axios';
 import controller from '../images/controller.jpg';
 import Button2 from './subComponents/Button2.js';
+import { connect } from 'react-redux';
+import { fetchCurrentUser } from '../actions/postActions.js';
+import { bindActionCreators } from 'redux';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -230,7 +232,7 @@ const WelcomeText = styled.span`
   font-weight: 400;
 `;
 
-const SignUpPage = () => {
+const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
 
   const [username, setUserName] = useState('');
   const [firstname, setFirstName] = useState('');
@@ -642,7 +644,7 @@ const SignUpPage = () => {
                     month,
                     day,
                     year
-                  );}}>Submit
+                  ); fetchCurrentUser(username)}}>Submit
                 </ButtonText>
             </ButtonPTag>
           </ButtonATag>
@@ -655,6 +657,7 @@ const SignUpPage = () => {
       return (
         <>
           <WelcomeDiv>
+            {/* <WelcomeText>{currentUser}</WelcomeText> */}
             <WelcomeText>Welcome to the Blu family!</WelcomeText>
             <WelcomeText>Log in to continue and start finding the perfect gaming buddies to play with!</WelcomeText>
           </WelcomeDiv>
@@ -677,4 +680,14 @@ const SignUpPage = () => {
   )
 }
 
-export default SignUpPage;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchCurrentUser
+  }, dispatch )
+}
+
+// const mapStateToProps = (state) => ({
+//   currentUser: state.currentUserReducer.user
+// })
+
+export default connect(() => {}, mapDispatchToProps)(SignUpPage);
