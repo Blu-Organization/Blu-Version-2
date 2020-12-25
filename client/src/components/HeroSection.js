@@ -9,13 +9,13 @@ const LengthOfButton = styled.div`
   width: 250px;
 `;
 
-const HeroSection = () => {
+const HeroSection = ({ preloaderFunc }) => {
   return (
     <div className='hero-container'>
       <div className='hero-btns'>
         <div className='button-containers'>
           <div>
-            <Button2 location={'sign-up'} onClick={() => console.log('hello!!!!')} text={'Get Started'}></Button2>
+            <Button2 location={'sign-up'} onClick={() => preloaderFunc()} text={'Get Started'}></Button2>
             <LengthOfButton></LengthOfButton>
           </div>
           <div>
