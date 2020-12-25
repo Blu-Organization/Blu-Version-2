@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const Title = styled.h1`
   color: #f6f6f6;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const Cards = () => {

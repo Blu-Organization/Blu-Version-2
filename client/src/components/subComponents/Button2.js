@@ -104,6 +104,7 @@ const ButtonText = styled.span`
   left: 0;
   top: 0;
   font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
 
   &:after {
     content: "";

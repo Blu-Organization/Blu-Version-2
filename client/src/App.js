@@ -9,10 +9,20 @@ import SignUp from './components/pages/SignUp.js';
 import GameLobby from './components/pages/GameLobby.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
+import Preload from './components/Preload';
 
 function App() {
+
+  window.addEventListener('load', () => {
+    const preload = document.querySelector('.preload');
+    setTimeout(() => {
+      preload.classList.add('preload-finish');
+    }, 2000)
+  })
+
   return (
     <Provider store={store} >
+      <Preload />
       <div className="App">
         <Router>
           <Navbar />

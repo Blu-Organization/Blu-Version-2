@@ -27,6 +27,7 @@ const Title = styled.h1`
   color: white;
   text-align: center;
   padding: 20px;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const Form = styled.form`
@@ -685,9 +686,5 @@ const mapDispatchToProps = dispatch => {
     fetchCurrentUser
   }, dispatch )
 }
-
-// const mapStateToProps = (state) => ({
-//   currentUser: state.currentUserReducer.user
-// })
 
 export default connect(() => {}, mapDispatchToProps)(SignUpPage);
