@@ -17,7 +17,7 @@ const LogInPageContainer = styled.div`
 const Title = styled.h1`
   color: #f6f6f6;
   text-align: center;
-  padding: 20px;
+  padding: 100px 20px 20px 20px;
   font-family: 'Montserrat', sans-serif;
 `;
 
@@ -159,17 +159,18 @@ const LogInPage = (props) => {
         <Button2 location={'exploremore'} text={'Log In'}></Button2>
         <LengthOfButton></LengthOfButton>
       </div>
-      <div class="empty-icon-container">
+      <div className="empty-icon-container">
 
-        <div class="animation-container">
+        <div className="animation-container">
         <Img className="bounce" src={controller} alt='controller'></Img>
         <Img2 className="bounce2" src={controller} alt='controller'></Img2>
         <Img3 className="bounce3" src={controller} alt='controller'></Img3>
         <Img4 className="bounce4" src={controller} alt='controller'></Img4>
         <Img5 className="bounce5" src={controller} alt='controller'></Img5>
-          <div class="pebble1"></div>
-          <div class="pebble2"></div>
-          <div class="pebble3"></div>
+          <div className="pebble1"></div>
+          <div className="pebble2"></div>
+          <div className="pebble3"></div>
+          <div className="sun"></div>
         </div>
       </div>
     </LogInPageContainer>
