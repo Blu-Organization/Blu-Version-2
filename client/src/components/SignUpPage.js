@@ -24,7 +24,7 @@ const MainContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: white;
+  color: #f6f6f6;
   text-align: center;
   padding: 20px;
   font-family: 'Montserrat', sans-serif;
@@ -563,7 +563,7 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
           <Form>
           <FormGroup className="form__group">
             <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} value={username} />
-            <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">User Name</FormLabel>
+            <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">Username</FormLabel>
             <Div>
               {notValidUserName()}
             </Div>
