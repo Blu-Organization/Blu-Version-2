@@ -1,0 +1,106 @@
+@keyframes bounceAnim{
+  0%, 10% { bottom: 50%; }
+
+  100% { bottom: 0%; }
+}
+@keyframes spinAnim{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-icon-container{
+  margin-top: 177px;
+  text-align:center;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animation-container{
+  position:relative;
+  display:block;
+  text-align: center;
+  height: 300px;
+  width: 100%;
+  border-bottom: solid 2px #b2b2b2;
+  overflow:hidden;
+}
+
+.bounce,
+.bounce2,
+.bounce3,
+.bounce4,
+.bounce5
+{
+  display: inline-block;
+  position:absolute;
+  bottom:0;
+  left: 40%;
+  width:30px;
+  height:30px;
+  margin-left: -20px;
+  background-size: contain;
+  animation: bounceAnim 1s cubic-bezier(.63,.09,.75,.46) infinite alternate,
+            spinAnim 3s linear infinite;
+}
+
+.bounce2 {
+  left: 45%;
+  height: 40px;
+  width: 40px;
+}
+
+.bounce3 {
+  left: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.bounce4 {
+  left: 55%;
+  height: 60px;
+  width: 60px;
+}
+
+.bounce5 {
+  left: 60%;
+  height: 70px;
+  width: 70px;
+}
+
+.pebble1{
+  position:absolute;
+  top:95%;
+  background-color:#b2b2b2;
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  animation: pebblesAnim 4.5s linear infinite;
+}
+.pebble2{
+  position:absolute;
+  top:97%;
+  background-color:#b2b2b2;
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+  animation: pebblesAnim 6s linear infinite;
+}
+.pebble3{
+  position:absolute;
+  top:98%;
+  background-color:#b2b2b2;
+  width:20px;
+  height:20px;
+  border-radius: 50%;
+  animation: pebblesAnim 3s linear infinite;
+}
+
+@keyframes pebblesAnim{
+  0% { right: -20%; }
+  100% { right: 110%; }
+}

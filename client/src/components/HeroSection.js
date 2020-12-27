@@ -15,7 +15,7 @@ const HeroSection = ({ preloaderFunc }) => {
       <div className='hero-btns'>
         <div className='button-containers'>
           <div>
-            <Button2 location={'sign-up'} onClick={() => preloaderFunc()} text={'Get Started'}></Button2>
+            <Button2 location={'sign-up'} onClick={() => console.log('hello')} text={'Get Started'}></Button2>
             <LengthOfButton></LengthOfButton>
           </div>
           <div>
