@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Button2 from './subComponents/Button2.js'
 import './Navbar.css';
 import { connect } from 'react-redux';
+import { fetchCurrentUser } from '../actions/postActions.js';
+import { bindActionCreators } from 'redux';
 
 const Logo = styled.img`
   height: 140px;
@@ -110,4 +112,10 @@ const mapStateToProps = (state) => ({
   currentUser: state.currentUserReducer.user
 })
 
-export default connect(mapStateToProps, () => {})(Navbar);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchCurrentUser
+  }, dispatch )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

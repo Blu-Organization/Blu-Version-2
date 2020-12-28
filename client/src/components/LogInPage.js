@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import Button2 from './subComponents/Button2.js';
 import controller from '../images/controller2.svg';
 import './LogInPage.css';
+import axios from 'axios';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -19,10 +19,6 @@ const Title = styled.h1`
   text-align: center;
   padding: 100px 20px 20px 20px;
   font-family: 'Montserrat', sans-serif;
-`;
-
-const FakeTitle = styled(Title)`
-  padding: 0;
 `;
 
 const Form = styled.form`
@@ -74,42 +70,6 @@ const Div = styled.div`
   margin-top: 10px;
 `;
 
-const controllerClouds = keyframes`
-  // 0% {
-  //   top: 15%;
-  //   left: 0%;
-  // }
-
-  // 100% {
-  //   left: 130%;
-  // }
-  from {
-    top: 15%;
-    left: 0%;
-    transform: rotate(0deg) translateX(150px) rotate(0deg);
-  }
-  to {
-    bottom: 0%;
-    left: 130%;
-    transform: rotate(360deg) translateX(150px) rotate(-180deg);
-  }
-`;
-
-const bounceAnim = keyframes`
-  0%, 10% { bottom: 50%; }
-
-  100% { bottom: 0%; }
-`;
-
-const spinAnim = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
 const Img = styled.img`
   filter: invert(99%) sepia(7%) saturate(172%) hue-rotate(199deg) brightness(116%) contrast(93%);
 `;
@@ -130,33 +90,104 @@ const Img5 = styled.img`
   filter: invert(69%) sepia(9%) saturate(6281%) hue-rotate(191deg) brightness(99%) contrast(93%);
 `;
 
+const InvalidFormText = styled.span`
+  color: red;
+`;
+
 const LogInPage = (props) => {
 
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [actPassword, setActPassword] = useState('');
+  const [location, setLocation] = useState('log-in');
+  const [unknownUser, setUnknownUser] = useState(false);
+  const [passwordCheck, setPasswordCheck] = useState(false);
+  const [wrongpass, setWrongpass] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  const checkUserLogIn = (username) => {
+
+    //Check if username exists in database first to decide if we should check for the password validation.
+
+    axios.get('/api/userUsername', {
+      params: {
+        username
+      }
+    })
+    .then((res) => {
+      if (res.data.rowCount > 0) {
+        setUnknownUser(false);
+        setActPassword(res.data.rows[0].password)
+      } else {
+        setUnknownUser(true);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+
+  }
+
+  const unknownUsernameText = () => {
+    if (unknownUser)
+    return (
+      <Div>
+        <InvalidFormText>This username does not exist.</InvalidFormText>
+      </Div>
+    )
+  }
+
+  const passwordValidation = (password) => {
+    if (!unknownUser) {
+      if (password === actPassword) {
+        setPasswordCheck(true);
+        setWrongpass(false);
+        handleLocation();
+      } else {
+        setPasswordCheck(false);
+        setWrongpass(true);
+      }
+    }
+  }
+
+  const wrongPasswordText = () => {
+    if (!passwordCheck && wrongpass && buttonClicked) {
+      return (
+        <Div>
+          <InvalidFormText>Please enter the correct password.</InvalidFormText>
+        </Div>
+      )
+    }
+  }
+
+  const handleLocation = () => {
+    if (passwordCheck) {
+      setLocation('exploremore')
+    }
+  }
 
   return (
     <LogInPageContainer>
       <Title>Log In</Title>
       <Form>
           <FormGroup className="form__group">
-            <FormInput type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value);}} value={username} />
-            <FormLabel htmlFor="userName" className="form__label">Username</FormLabel>
+            <FormInput used={unknownUser} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkUserLogIn(e.target.value);}} value={username} />
+            <FormLabel used={unknownUser} htmlFor="userName" className="form__label">Username</FormLabel>
             <Div>
-              <FakeTitle>{username}</FakeTitle>
+              {unknownUsernameText()}
             </Div>
           </FormGroup>
 
           <FormGroup className="form__group">
-            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value);}} value={password} />
+            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); passwordValidation(e.target.value);}} value={password} />
             <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
             <Div>
-              <FakeTitle>{password}</FakeTitle>
+              {wrongPasswordText()}
             </Div>
           </FormGroup>
       </Form>
       <div>
-        <Button2 location={'exploremore'} text={'Log In'}></Button2>
+        <Button2 location={location} text={'Log In'} onClick={() => setButtonClicked(true)}></Button2>
         <LengthOfButton></LengthOfButton>
       </div>
       <div className="empty-icon-container">

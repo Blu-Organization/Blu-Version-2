@@ -15,7 +15,7 @@ const ButtonDiv = styled.div`
           flex-flow: column;
 `;
 
-const ButtonATag = styled.a`
+const ButtonATag = styled.span`
   width: 100%;
   max-width: 240px;
   height: 54px;
