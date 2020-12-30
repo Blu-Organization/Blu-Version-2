@@ -25,15 +25,6 @@ const LengthOfButton = styled.div`
   width: 150px;
 `;
 
-const CurrentUserText = styled.span`
-  color: white;
-  margin-left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-`;
-
 
 const Navbar = ({ currentUser }) => {
 
@@ -66,10 +57,7 @@ const Navbar = ({ currentUser }) => {
       )
     } else {
       return (
-        // <CurrentUserText>
-        //   {currentUser}
-        // </CurrentUserText>
-        <Link className='profile-name' to='/sign-up' onClick={closeMobileMenu}>{currentUser}</Link>
+        <Link className='profile-name' to='/profile' onClick={closeMobileMenu}>{currentUser}</Link>
       )
     }
   }
