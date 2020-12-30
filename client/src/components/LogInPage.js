@@ -4,6 +4,9 @@ import Button2 from './subComponents/Button2.js';
 import controller from '../images/controller2.svg';
 import './LogInPage.css';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchCurrentUser } from '../actions/postActions.js';
+import { bindActionCreators } from 'redux';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -94,7 +97,7 @@ const InvalidFormText = styled.span`
   color: red;
 `;
 
-const LogInPage = (props) => {
+const LogInPage = ({ fetchCurrentUser }) => {
 
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -143,6 +146,7 @@ const LogInPage = (props) => {
         setPasswordCheck(true);
         setWrongpass(false);
         handleLocation();
+        fetchCurrentUser(username);
       } else {
         setPasswordCheck(false);
         setWrongpass(true);
@@ -160,9 +164,11 @@ const LogInPage = (props) => {
     }
   }
 
-  const handleLocation = () => {
-    if (passwordCheck) {
-      setLocation('exploremore')
+  const handleLocation = (password) => {
+    if (password === actPassword) {
+      setLocation('exploremore');
+    } else {
+      setLocation('log-in');
     }
   }
 
@@ -179,7 +185,7 @@ const LogInPage = (props) => {
           </FormGroup>
 
           <FormGroup className="form__group">
-            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); passwordValidation(e.target.value);}} value={password} />
+            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); handleLocation(e.target.value);}} value={password} />
             <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
             <Div>
               {wrongPasswordText()}
@@ -187,7 +193,7 @@ const LogInPage = (props) => {
           </FormGroup>
       </Form>
       <div>
-        <Button2 location={location} text={'Log In'} onClick={() => setButtonClicked(true)}></Button2>
+        <Button2 location={location} text={'Log In'} onClick={() => { passwordValidation(password); setButtonClicked(true);}}></Button2>
         <LengthOfButton></LengthOfButton>
       </div>
       <div className="empty-icon-container">
@@ -208,4 +214,10 @@ const LogInPage = (props) => {
   )
 }
 
-export default LogInPage;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchCurrentUser
+  }, dispatch )
+}
+
+export default connect(() => {}, mapDispatchToProps)(LogInPage);

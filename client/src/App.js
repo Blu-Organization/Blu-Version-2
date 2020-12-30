@@ -7,6 +7,7 @@ import ExploreMore from './components/pages/ExploreMore.js';
 import LogIn from './components/pages/LogIn.js';
 import SignUp from './components/pages/SignUp.js';
 import GameLobby from './components/pages/GameLobby.js';
+import Profile from './components/pages/Profile.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
 import Preload from './components/Preload';
@@ -33,6 +34,7 @@ function App() {
             <Route path='/log-in' component={LogIn}></Route>
             <Route path='/sign-up' component={SignUp}></Route>
             <Route path='/gamelobby' component={GameLobby}></Route>
+            <Route path='/profile' component={Profile}></Route>
           </Switch>
         </Router>
       </div>
