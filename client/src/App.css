@@ -28,30 +28,21 @@
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-  animation-name: pauls;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  animation: pauls 20s ease-in-out infinite alternate;
 }
 
 .aboutus-container-tracys {
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-  animation-name: tracys;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  animation: tracys 20s ease-in-out infinite alternate;
 }
 
 .aboutus-container-justins {
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-  animation-name: justins;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  animation: justins 20s ease-in-out infinite alternate;
 }
 
 .aboutus-section {

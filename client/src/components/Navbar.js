@@ -27,8 +27,11 @@ const LengthOfButton = styled.div`
 
 const CurrentUserText = styled.span`
   color: white;
-  margin-bottom: 6px;
   margin-left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
 `;
 
 
@@ -63,9 +66,23 @@ const Navbar = ({ currentUser }) => {
       )
     } else {
       return (
-        <CurrentUserText>
-          {currentUser}
-        </CurrentUserText>
+        // <CurrentUserText>
+        //   {currentUser}
+        // </CurrentUserText>
+        <Link className='profile-name' to='/sign-up' onClick={closeMobileMenu}>{currentUser}</Link>
+      )
+    }
+  }
+
+  const logInFunc = () => {
+    if (button && currentUser === '') {
+      return (
+        <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
+      )
+    } else {
+      return (
+        <>
+        </>
       )
     }
   }
@@ -96,10 +113,10 @@ const Navbar = ({ currentUser }) => {
               <Link className='nav-links' to='/exploremore' onClick={closeMobileMenu}>Explore</Link>
             </NavItem>
             <NavItem>
-              <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
+              {logInFunc()}
             </NavItem>
             <NavItem>
-            {buttonFunc()}
+              {buttonFunc()}
             </NavItem>
           </ul>
         </div>

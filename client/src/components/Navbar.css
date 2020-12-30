@@ -48,6 +48,16 @@
   height: 80px;
 }
 
+.profile-name {
+  color: white;
+  margin-left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .nav-links {
   color: #7FA7F4;
   display: flex;
