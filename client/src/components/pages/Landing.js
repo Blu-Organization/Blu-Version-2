@@ -1,16 +1,15 @@
 import React from 'react';
 import '../../App.css';
 import Footer from '../Footer.js';
-import ProfilePage from '../ProfilePage';
+import LandingPage from '../LandingPage.js';
 
-const Profile = () => {
+const Landing = (props) => {
   return (
     <div>
-      <ProfilePage />
+      <LandingPage />
       <Footer />
     </div>
   )
 }
 
-export default Profile;
-
+export default Landing;

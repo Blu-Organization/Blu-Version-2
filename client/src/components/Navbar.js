@@ -86,13 +86,13 @@ const Navbar = ({ currentUser }) => {
     <div>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}><Logo src='images/blulogoalone.png' alt='blulogo' className='Logo'></Logo></Link>
+          <Link to='/home' className='navbar-logo' onClick={closeMobileMenu}><Logo src='images/blulogoalone.png' alt='blulogo' className='Logo'></Logo></Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={clicked ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
             <NavItem>
-              <Link className='nav-links' to='/' onClick={closeMobileMenu}>Home</Link>
+              <Link className='nav-links' to='/home' onClick={closeMobileMenu}>Home</Link>
             </NavItem>
             <NavItem>
               <Link className='nav-links' to='/aboutus' onClick={closeMobileMenu}>About Us</Link>

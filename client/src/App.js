@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Landing from './components/pages/Landing.js';
 import Home from './components/pages/Home.js';
 import AboutUs from './components/pages/AboutUs.js';
 import ExploreMore from './components/pages/ExploreMore.js';
@@ -28,7 +29,8 @@ function App() {
         <Router>
           <Navbar />
           <Switch>
-            <Route path='/' exact component={Home}></Route>
+            <Route path='/' exact component={Landing}></Route>
+            <Route path='/home' component={Home}></Route>
             <Route path='/aboutus' component={AboutUs}></Route>
             <Route path='/exploremore' component={ExploreMore}></Route>
             <Route path='/log-in' component={LogIn}></Route>
