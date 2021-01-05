@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import './Themes.css';
 
-const LandingPageTheme = () => {
+const LandingPageTheme = ({children}) => {
   return (
     <>
       <div className="landing-page-blobs">
+        <main>{children}</main>
       </div>
     </>
   )
