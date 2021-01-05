@@ -12,6 +12,7 @@ import Profile from './components/pages/Profile.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
 import Preload from './components/Preload';
+import LandingPageTheme from './components/Themes/LandingPageTheme';
 
 function App() {
 
@@ -27,17 +28,17 @@ function App() {
       <Preload />
       <div className="App">
         <Router>
-          <Navbar />
-          <Switch>
-            <Route path='/' exact component={Landing}></Route>
-            <Route path='/home' component={Home}></Route>
-            <Route path='/aboutus' component={AboutUs}></Route>
-            <Route path='/exploremore' component={ExploreMore}></Route>
-            <Route path='/log-in' component={LogIn}></Route>
-            <Route path='/sign-up' component={SignUp}></Route>
-            <Route path='/gamelobby' component={GameLobby}></Route>
-            <Route path='/profile' component={Profile}></Route>
-          </Switch>
+            {/* <Navbar /> */}
+            <Switch>
+              <Route path='/' exact component={Landing}></Route>
+              <Route path='/home' component={Home}></Route>
+              <Route path='/aboutus' component={AboutUs}></Route>
+              <Route path='/exploremore' component={ExploreMore}></Route>
+              <Route path='/log-in' component={LogIn}></Route>
+              <Route path='/sign-up' component={SignUp}></Route>
+              <Route path='/gamelobby' component={GameLobby}></Route>
+              <Route path='/profile' component={Profile}></Route>
+            </Switch>
         </Router>
       </div>
     </Provider>

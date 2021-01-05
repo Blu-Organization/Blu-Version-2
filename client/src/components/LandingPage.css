@@ -1,6 +1,15 @@
-.first-blob {
+.background-blobs {
   height: 150vh;
   width: 100%;
-  background: url('../images/Blob1.svg') center/cover no-repeat;
+  background: url('../images/Group.svg') center/cover no-repeat,
+  url('../images/Blob3.svg') center/cover no-repeat;
+  z-index: 1;
+  background-color: #1F1F47;
   /* transform: matrix(-0.47, -0.84, 0.96, -0.41, 0, 0); */
 }
+
+/* .blob2 {
+  height: 150vh;
+  width: 100%;
+  background: url('../images/Blob2.svg') center/cover no-repeat;
+} */
