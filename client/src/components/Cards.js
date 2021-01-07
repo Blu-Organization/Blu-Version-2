@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const Title = styled.h1`
   color: #f6f6f6;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
 `;
 

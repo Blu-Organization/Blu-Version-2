@@ -8,6 +8,25 @@
   /* transform: matrix(-0.47, -0.84, 0.96, -0.41, 0, 0); */
 }
 
+.main-picture {
+  width: 613.15px;
+  height: 313.48px;
+  background: url('../images/bluapp.jpg') center/cover no-repeat;
+  mix-blend-mode: normal;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 40px;
+  transform: matrix(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg);
+  transition: all 1s ease;
+  box-shadow: 0px 10vw 9vw -6vw rgba(0, 0, 0, 0.5);
+  border: 5px solid black;
+}
+
+.main-picture:hover {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: all 1s ease;
+
+}
+
 /* .blob2 {
   height: 150vh;
   width: 100%;

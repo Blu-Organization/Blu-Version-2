@@ -4,6 +4,7 @@ import './LandingPage.css';
 import LandingPageTheme from './Themes/LandingPageTheme';
 
 const LandingContainerDiv = styled.div`
+  margin-right: 180px;
   margin-left: 180px;
   margin-top: 100px;
   height: 90vh;
@@ -62,16 +63,25 @@ const Text = styled.p`
   }
 `;
 
+const MainDisplayContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const LandingPage = () => {
   return (
     <LandingContainerDiv>
-      <WelcomeTextContainer>
-        <Header>
-          Welcome to Blu! Get Started with Blu today.
-        </Header>
-        <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
-        <DemoLogIn>Demo Log In</DemoLogIn>
-      </WelcomeTextContainer>
+      <MainDisplayContainer>
+        <WelcomeTextContainer>
+          <Header>
+            Welcome to Blu! Get Started with Blu today.
+          </Header>
+          <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
+          <DemoLogIn>Demo Log In</DemoLogIn>
+        </WelcomeTextContainer>
+        <div className="main-picture"></div>
+      </MainDisplayContainer>
     </LandingContainerDiv>
   )
 }
