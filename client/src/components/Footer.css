@@ -167,4 +167,7 @@
 }
 
 @media screen and (max-width: 768px) {
+  .social-logo {
+    margin-left: 0;
+  }
 }

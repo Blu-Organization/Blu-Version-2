@@ -4,5 +4,13 @@
   background: url('../../images/Group.svg') center/cover no-repeat,
   url('../../images/Blob3.svg') center/cover no-repeat;
   background-color: #1F1F47;
+  transition: all 1s ease;
   /* transform: matrix(-0.47, -0.84, 0.96, -0.41, 0, 0); */
+}
+
+@media screen and (max-width: 1300px) {
+  .landing-page-blobs {
+    height: 180vh;
+    transition: all 1s ease;
+  }
 }

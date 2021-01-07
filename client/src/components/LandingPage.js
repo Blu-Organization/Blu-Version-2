@@ -4,7 +4,7 @@ import './LandingPage.css';
 import LandingPageTheme from './Themes/LandingPageTheme';
 
 const LandingContainerDiv = styled.div`
-  margin-right: 180px;
+  margin-right: 150px;
   margin-left: 180px;
   margin-top: 100px;
   height: 90vh;
@@ -76,7 +76,14 @@ const MainDisplayContainer = styled.div`
   justify-content: space-between;
 `;
 
+const MainMirror = styled.div`
+  transform: ${(props) => props.hover ? 'matrix(1, 0, 0, 1, 0, 0)' : '(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg)'};
+`;
+
 const LandingPage = () => {
+
+  const [hover, setHover] = useState(false);
+
   return (
     <LandingContainerDiv>
       <MainDisplayContainer>
@@ -87,7 +94,9 @@ const LandingPage = () => {
           <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
           <DemoLogIn>Demo Log In</DemoLogIn>
         </WelcomeTextContainer>
-        <div className="main-picture"></div>
+          <MainMirror hover={hover} className="main-picture-mirror">
+            <div onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="main-picture"></div>
+          </MainMirror>
       </MainDisplayContainer>
     </LandingContainerDiv>
   )
