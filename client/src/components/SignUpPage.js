@@ -506,6 +506,9 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
     }
   }
 
+  //Able to log in without complete form.
+  //Fix this please.
+
   const createNewUser = (username, firstname,lastname, email, password, month, day, year ) => {
     if (username.length && firstname.length && lastname.length && email.length && password.length) {
       if (!invalidUsername || invalidEmail) {
