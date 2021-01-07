@@ -22,11 +22,11 @@ const ButtonATag = styled.a`
   padding: 8px;
   font-size: 0.8rem;
   font-weight: 900;
-  color: #7FA7F4;
+  color: #fff;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 0 0 1px inset rgba(236, 232, 225, 0.3);
+  box-shadow: 0 0 0 1px inset rgb(0 0 0 / .5);
   position: relative;
   margin: 10px 0;
 
@@ -56,9 +56,6 @@ const ButtonATag = styled.a`
             transform: translateY(-50%);
   }
 
-  &:hover {
-    color: #ece8e1;
-  }
 `;
 
 const ButtonPTag = styled.p`
@@ -80,7 +77,7 @@ const ButtonBase = styled.span`
   width: 100%;
   height: 100%;
   left: 0;
-  border: 1px solid #7FA7F4;
+  border: 1px solid black;
 
   &:before {
     content: "";
@@ -88,7 +85,7 @@ const ButtonBase = styled.span`
     height: 2px;
     left: -1px;
     top: -1px;
-    background: #0f1923;
+    background: #7089FF;
     position: absolute;
     -webkit-transition: 0.3s ease-out all;
     transition: 0.3s ease-out all;
@@ -96,7 +93,7 @@ const ButtonBase = styled.span`
 `;
 
 const ButtonText = styled.span`
-  color: #7FA7F4;
+  color: black;
   z-index: 4;
   width: 100%;
   height: 100%;
@@ -112,7 +109,7 @@ const ButtonText = styled.span`
     height: 4px;
     right: 0;
     bottom: 0;
-    background: #7FA7F4;
+    background: black;
     position: absolute;
     -webkit-transition: 0.3s ease-out all;
     transition: 0.3s ease-out all;

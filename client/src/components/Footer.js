@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Logo = styled.img`
-  height: 140px;
+  height: 90px;
+  border-radius: 50%;
 `;
 
 const Footer = () => {

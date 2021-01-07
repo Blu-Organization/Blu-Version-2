@@ -9,9 +9,11 @@ import { bindActionCreators } from 'redux';
 
 const Logo = styled.img`
   height: 140px;
+  border-radius: 50%;
   @media (max-width: 960px) {
     position: absolute;
     top: 0;
+    margin-left: 30px;
   }
 `;
 
