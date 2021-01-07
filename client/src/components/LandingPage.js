@@ -35,6 +35,13 @@ const DemoLogIn = styled.button`
   border: 1px solid black;
   cursor: pointer;
   font-size: 16px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    transition: all 0.5s ease;
+    transform: scale(1.1);
+    background: #ed70ed;
+  }
 `;
 
 const Header = styled.h1`
