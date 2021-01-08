@@ -3,6 +3,7 @@ import '../../App.css';
 import styled from 'styled-components';
 import axios from 'axios';
 import Footer from '../Footer.js';
+import Navbar from '../Navbar.js';
 
 const SearchForm = styled.form`
   margin: 0 auto;
@@ -111,6 +112,7 @@ const ExploreMore = () => {
 
   return (
     <div>
+      <Navbar />
         <div>
           <div className='exploremore'>
             <SearchForm onSubmit={(e) => {handleFormSubmit(e)}}>

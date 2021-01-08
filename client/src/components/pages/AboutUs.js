@@ -2,10 +2,12 @@ import React from 'react';
 import '../../App.css';
 import Footer from '../Footer.js';
 import { Link } from 'react-router-dom';
+import Navbar from '../Navbar.js';
 
 const AboutUs = () => {
   return (
     <div>
+      <Navbar />
       <div className='aboutus'>
         <div className='aboutus-container-pauls'>
           <div className='aboutus-section'>
