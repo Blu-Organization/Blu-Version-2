@@ -12,7 +12,6 @@ const LandingContainerDiv = styled.div`
   @media (max-width: 960px) {
     margin: 50px;
   }
-
 `;
 
 const WelcomeTextContainer = styled.div`

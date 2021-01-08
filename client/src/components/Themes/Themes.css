@@ -14,3 +14,10 @@
     transition: all 1s ease;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .landing-page-blobs {
+    height: 220vh;
+    transition: all 1s ease;
+  }
+}
