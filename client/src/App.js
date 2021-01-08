@@ -1,5 +1,4 @@
 import './App.css';
-import Navbar from './components/Navbar.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './components/pages/Landing.js';
 import Home from './components/pages/Home.js';
@@ -12,7 +11,6 @@ import Profile from './components/pages/Profile.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
 import Preload from './components/Preload';
-import LandingPageTheme from './components/Themes/LandingPageTheme';
 
 function App() {
 
@@ -28,7 +26,6 @@ function App() {
       <Preload />
       <div className="App">
         <Router>
-            {/* <Navbar /> */}
             <Switch>
               <Route path='/' exact component={Landing}></Route>
               <Route path='/home' component={Home}></Route>

@@ -115,10 +115,6 @@ const ButtonText = styled.span`
     transition: 0.3s ease-out all;
     z-index: 5;
   }
-
-  &:hover {
-    color: #f6f6f6;
-  }
 `;
 
 const Button2 = ({location, onClick, text }) => {

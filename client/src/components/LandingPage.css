@@ -1,21 +1,15 @@
-.background-blobs {
-  height: 150vh;
-  width: 100%;
-  background: url('../images/Group.svg') center/cover no-repeat,
-  url('../images/Blob3.svg') center/cover no-repeat;
-  z-index: 1;
-  background-color: #1F1F47;
-  /* transform: matrix(-0.47, -0.84, 0.96, -0.41, 0, 0); */
-}
 
 .main-picture {
-  width: 613.15px;
+  width: 100%;
   height: 313.48px;
   background: url('../images/bluapp.jpg') center/cover no-repeat;
+  background-size: contain;
+  background-color: black;
   mix-blend-mode: normal;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 40px;
-  transform: matrix(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg);
+  margin-top: -30px;
+  margin-left: -30px;
   transition: all 1s ease;
   box-shadow: 0px 10vw 9vw -6vw rgba(0, 0, 0, 0.5);
   border: 5px solid black;
@@ -26,7 +20,48 @@
   transition: all 1s ease;
 }
 
+.main-picture-mirror {
+  margin-left: 50px;
+  width: 100%;
+  max-width: 613.15px;
+  height: 313.48px;
+  background: linear-gradient(355.72deg, #103783 -17.15%, #9BAFD9 104.24%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 40px;
+  transform: matrix(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg);
+  mix-blend-mode: normal;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: all 1s ease;
+}
 
+.side-picture {
+  width: 350px;
+  height: 200px;
+  margin-top: -30px;
+  margin-left: -30px;
+  background: url('../images/bluapp2.jpg') center/cover no-repeat;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 40px;
+  /* transform: matrix(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg); */
+  mix-blend-mode: normal;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: all 1s ease;
+}
+
+.side-picture-mirror {
+  position: absolute;
+  left: 45%;
+  top: 18%;
+  width: 350px;
+  height: 200px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 40px;
+  transform: matrix(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg);
+  background: linear-gradient(108.11deg, #D7D7D7 1.46%, #368799 101.12%);
+  mix-blend-mode: normal;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: all 1s ease;
+}
 
 /* .blob2 {
   height: 150vh;
