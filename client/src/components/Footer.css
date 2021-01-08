@@ -1,5 +1,6 @@
 .footer-container {
   background-color: #1F1F47;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
