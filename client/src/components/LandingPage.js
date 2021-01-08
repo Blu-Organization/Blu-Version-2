@@ -50,11 +50,18 @@ const Header = styled.h1`
   font-weight: bold;
   font-size: 48px;
   line-height: 57px;
+  display: inline-block;
 
   @media (max-width: 960px) {
     font-size: 28px;
     line-height: 37px;
   }
+`;
+
+const HeaderColored = styled(Header)`
+  background: -webkit-linear-gradient(355.72deg, #103783 -17.15%, #9BAFD9 104.24%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const Text = styled.p`
@@ -80,6 +87,16 @@ const MainMirror = styled.div`
   transform: ${(props) => props.hover ? 'matrix(1, 0, 0, 1, 0, 0)' : '(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg)'};
 `;
 
+const SidePicture = styled.div`
+  transform: ${(props) => props.hover ? 'matrix(1, 0, 0, 1, 0, 0)' : '(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg)'};
+
+
+  @media (max-width: 1200px) {
+    left: 540px;
+    top: 180px;
+  }
+`;
+
 const LandingPage = () => {
 
   const [hover, setHover] = useState(false);
@@ -89,11 +106,12 @@ const LandingPage = () => {
       <MainDisplayContainer>
         <WelcomeTextContainer>
           <Header>
-            Welcome to Blu! Get Started with Blu today.
+            Welcome to <HeaderColored>Blu!</HeaderColored> Created for gamers from all around the world.
           </Header>
           <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
           <DemoLogIn>Demo Log In</DemoLogIn>
         </WelcomeTextContainer>
+          <SidePicture hover={hover} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="side-picture"></SidePicture>
           <MainMirror hover={hover} className="main-picture-mirror">
             <div onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="main-picture"></div>
           </MainMirror>
