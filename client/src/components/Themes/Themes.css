@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 1300px) {
   .landing-page-blobs {
-    height: 180vh;
+    height: 190vh;
     transition: all 1s ease;
   }
 }

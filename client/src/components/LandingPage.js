@@ -81,20 +81,61 @@ const MainDisplayContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 25px;
+
+  @media (max-width: 885px) {
+    flex-direction: column;
+  }
 `;
 
 const MainMirror = styled.div`
   transform: ${(props) => props.hover ? 'matrix(1, 0, 0, 1, 0, 0)' : '(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg)'};
+  transition: all 1s ease;
+
+  @media (max-width: 1200px) {
+    margin-left: 50px;
+  }
+
+  @media (max-width: 960px) {
+    margin-top: 200px;
+    transition: all 1s ease;
+  }
+
+  @media (max-width: 885px) {
+    margin-top: 50px;
+    margin-left: 5px;
+  }
 `;
 
 const SidePicture = styled.div`
   transform: ${(props) => props.hover ? 'matrix(1, 0, 0, 1, 0, 0)' : '(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg)'};
 
+  @media (max-width: 420px) {
+    width: 300px;
+  }
+
+`;
+
+const SidePictureMirror = styled.div`
+  transform: ${(props) => props.hover ? 'matrix(1, 0, 0, 1, 0, 0)' : '(1, 0.16, -0.16, 1, 0, 0) rotateY(-20deg) rotateX(20deg)'};
 
   @media (max-width: 1200px) {
-    left: 540px;
-    top: 180px;
+    margin-left: 50px;
   }
+
+  @media (max-width: 885px) {
+    position: unset;
+    padding: 8px;
+  }
+
+  @media (max-width: 420px) {
+    width: 300px;
+    margin: 15px 15px 30px 15px;
+  }
+`;
+
+const Div = styled.div`
+  margin-top: 50px;
 `;
 
 const LandingPage = () => {
@@ -111,10 +152,14 @@ const LandingPage = () => {
           <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
           <DemoLogIn>Demo Log In</DemoLogIn>
         </WelcomeTextContainer>
-          <SidePicture hover={hover} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="side-picture"></SidePicture>
-          <MainMirror hover={hover} className="main-picture-mirror">
-            <div onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="main-picture"></div>
-          </MainMirror>
+        <Div>
+          <SidePictureMirror hover={hover} className="side-picture-mirror">
+            <SidePicture hover={hover} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="side-picture"></SidePicture>
+          </SidePictureMirror>
+        </Div>
+        <MainMirror hover={hover} className="main-picture-mirror">
+          <div onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)} className="main-picture"></div>
+        </MainMirror>
       </MainDisplayContainer>
     </LandingContainerDiv>
   )
