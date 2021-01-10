@@ -4,15 +4,18 @@ import React from 'react';
 import Cards from '../Cards.js';
 import Footer from '../Footer.js';
 import Navbar from '../Navbar.js';
+import HomePageTheme from '../Themes/HomePageTheme';
 
 const Home = () => {
 
   return (
     <div>
-      <Navbar />
-      <HeroSection />
-      <Cards />
-      <Footer />
+      <HomePageTheme>
+        <Navbar />
+        <HeroSection />
+        <Cards />
+        <Footer />
+      </HomePageTheme>
     </div>
   )
 }

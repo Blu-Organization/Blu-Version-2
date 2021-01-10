@@ -8,9 +8,32 @@
   /* transform: matrix(-0.47, -0.84, 0.96, -0.41, 0, 0); */
 }
 
+.home-page-theme {
+  height: 140vh;
+  width: 100%;
+  background: url('../../images/HomePageBG1.svg') center/cover no-repeat,
+  url('../../images/HomePageBG2.svg') center/cover no-repeat;
+}
+
+.polygon1 {
+  position: absolute;
+  width: 461px;
+  height: 961px;
+  left: -150px;
+  top: 319px;
+  background: url('../../images/Polygon1.svg') no-repeat;
+}
+
 @media screen and (max-width: 1300px) {
   .landing-page-blobs {
     height: 190vh;
+    transition: all 1s ease;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .landing-page-blobs {
+    height: 220vh;
     transition: all 1s ease;
   }
 }
