@@ -4,7 +4,7 @@ import CardItem from './CardItem.js';
 import styled from 'styled-components';
 
 const Title = styled.h1`
-  color: #f6f6f6;
+  color: black;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 `;

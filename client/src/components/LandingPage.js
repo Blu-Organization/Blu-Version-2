@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import './LandingPage.css';
-import LandingPageTheme from './Themes/LandingPageTheme';
+import { connect } from 'react-redux';
+import { fetchCurrentUser } from '../actions/postActions.js';
+import { bindActionCreators } from 'redux';
 
 const LandingContainerDiv = styled.div`
   margin-right: 150px;
@@ -137,7 +140,7 @@ const Div = styled.div`
   margin-top: 50px;
 `;
 
-const LandingPage = () => {
+const LandingPage = ({ fetchCurrentUser }) => {
 
   const [hover, setHover] = useState(false);
 
@@ -149,7 +152,9 @@ const LandingPage = () => {
             Welcome to <HeaderColored>Blu!</HeaderColored> Created for gamers from all around the world.
           </Header>
           <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
-          <DemoLogIn>Demo Log In</DemoLogIn>
+          <Link to='/home' onClick={() => fetchCurrentUser('Demo-User')}>
+            <DemoLogIn>Demo Log In</DemoLogIn>
+          </Link>
         </WelcomeTextContainer>
         <Div>
           <SidePictureMirror hover={hover} className="side-picture-mirror">
@@ -164,4 +169,10 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchCurrentUser
+  }, dispatch )
+}
+
+export default connect(() => {}, mapDispatchToProps)(LandingPage);
