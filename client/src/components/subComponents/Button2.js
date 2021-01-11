@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const ButtonDiv = styled.div`
   display: -webkit-box;
   display: flex;
+  z-index: 20;
 
   -webkit-box-align: center;
           align-items: center;
@@ -29,13 +30,14 @@ const ButtonATag = styled.a`
   box-shadow: 0 0 0 1px inset rgb(0 0 0 / .5);
   position: relative;
   margin: 10px 0;
+  z-index: 20;
 
   &:after {
     content: "";
     width: 1px;
     position: absolute;
     height: 8px;
-    background: #0f1923;
+    background: white;
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -49,7 +51,7 @@ const ButtonATag = styled.a`
     width: 1px;
     position: absolute;
     height: 8px;
-    background: #0f1923;
+    background: white;
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -68,6 +70,7 @@ const ButtonPTag = styled.p`
   width: 100%;
   position: relative;
   overflow: hidden;
+  z-index: 20;
 `;
 
 const ButtonBase = styled.span`
@@ -78,6 +81,7 @@ const ButtonBase = styled.span`
   height: 100%;
   left: 0;
   border: 1px solid black;
+  z-index: 20;
 
   &:before {
     content: "";
@@ -102,6 +106,7 @@ const ButtonText = styled.span`
   top: 0;
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
+  z-index: 20;
 
   &:after {
     content: "";
@@ -115,6 +120,7 @@ const ButtonText = styled.span`
     transition: 0.3s ease-out all;
     z-index: 5;
   }
+
 `;
 
 const Button2 = ({location, onClick, text }) => {
