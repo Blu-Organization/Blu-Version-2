@@ -53,6 +53,63 @@
   background: url('../../images/Polygon4.svg') no-repeat;
 }
 
+.ellipse20 {
+  position: absolute;
+  z-index: 3;
+  left: 51%;
+  top: 13%;
+  width: 150px;
+  height: 150px;
+  background: url('../../images/Ellipse20.svg') no-repeat;
+}
+
+.ellipse21 {
+  position: absolute;
+  left: 33%;
+  top: -4%;
+  width: 320px;
+  height: 320px;
+  background: url('../../images/Ellipse21.svg') no-repeat;
+}
+
+.ellipse22 {
+  position: absolute;
+  z-index: 2;
+  left: 57%;
+  top: 5%;
+  width: 270px;
+  height: 270px;
+  background: url('../../images/Ellipse22.svg') no-repeat;
+}
+
+.ellipse23 {
+  position: absolute;
+  left: 83%;
+  top: 25%;
+  width: 150px;
+  height: 150px;
+  background: url('../../images/Ellipse23.svg') no-repeat;
+}
+
+.ellipse24 {
+  position: absolute;
+  right: 0%;
+  top: 65%;
+  width: 275px;
+  height: 400px;
+  background: url('../../images/Ellipse24.svg') no-repeat;
+}
+
+.ellipse25 {
+  position: absolute;
+  right: 10%;
+  top: 58%;
+  width: 200px;
+  height: 300px;
+  background: url('../../images/Ellipse25.svg') no-repeat;
+}
+
+
 @media screen and (max-width: 1300px) {
   .landing-page-blobs {
     height: 190vh;

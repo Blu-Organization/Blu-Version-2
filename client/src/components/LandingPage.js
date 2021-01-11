@@ -152,7 +152,7 @@ const LandingPage = ({ fetchCurrentUser }) => {
             Welcome to <HeaderColored>Blu!</HeaderColored> Created for gamers from all around the world.
           </Header>
           <Text>We are here to connect like minded gamers to create social groups and parties before launching into a game. Come sign up and join millions of users today!</Text>
-          <Link to='/home' onClick={() => fetchCurrentUser('Demo-User')}>
+          <Link className="demo-log-in-button" to='/home' onClick={() => fetchCurrentUser('Demo-User')}>
             <DemoLogIn>Demo Log In</DemoLogIn>
           </Link>
         </WelcomeTextContainer>
