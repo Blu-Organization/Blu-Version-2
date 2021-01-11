@@ -27,7 +27,7 @@
 .bg {
   left: -5%;
   position: absolute;
-  background: #7FA7F4;
+  background: linear-gradient(90deg, #8DE9D5 0%, #8DE9D5 0.01%, rgba(50, 196, 192, 0.2) 108.5%);
   width: 0;
   height: 100%;
   z-index: 3;

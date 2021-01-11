@@ -17,11 +17,40 @@
 
 .polygon1 {
   position: absolute;
+  z-index: 10;
   width: 461px;
   height: 961px;
-  left: -150px;
-  top: 319px;
+  top: 70%;
   background: url('../../images/Polygon1.svg') no-repeat;
+}
+
+.polygon2 {
+  position: absolute;
+  z-index: 10;
+  width: 461px;
+  height: 961px;
+  left: 26%;
+  top: 91%;
+  background: url('../../images/Polygon2.svg') no-repeat;
+}
+
+.polygon3 {
+  position: absolute;
+  z-index: 9;
+  width: 637px;
+  height: 1300px;
+  left: 3%;
+  top: 53%;
+  background: url('../../images/Polygon3.svg') no-repeat;
+}
+
+.polygon4 {
+  position: absolute;
+  width: 350px;
+  height: 534px;
+  left: 61%;
+  top: 99%;
+  background: url('../../images/Polygon4.svg') no-repeat;
 }
 
 @media screen and (max-width: 1300px) {

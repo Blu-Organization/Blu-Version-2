@@ -6,6 +6,9 @@ const HomePageTheme = ({children}) => {
     <>
       <div className="home-page-theme">
         <div className="polygon1"></div>
+        <div className="polygon2"></div>
+        <div className="polygon3"></div>
+        <div className="polygon4"></div>
         <main>{children}</main>
       </div>
     </>
