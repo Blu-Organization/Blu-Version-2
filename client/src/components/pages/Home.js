@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div>
-      <HomePageTheme>
+      <HomePageTheme >
         <Navbar />
         <HeroSection />
         <Cards />
