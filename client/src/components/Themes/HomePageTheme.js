@@ -1,7 +1,9 @@
 import React from 'react';
 import './Themes.css';
+import styled, { keyframes } from 'styled-components';
 
 const HomePageTheme = ({children}) => {
+
   return (
     <>
       <div className="home-page-theme">
@@ -10,8 +12,8 @@ const HomePageTheme = ({children}) => {
         <div className="polygon3"></div>
         <div className="polygon4"></div>
         <div className="ellipse20"></div>
-        <div className="ellipse21"></div>
         <div className="ellipse22"></div>
+        <div className="ellipse21"></div>
         <div className="ellipse23"></div>
         <div className="ellipse24"></div>
         <div className="ellipse25"></div>

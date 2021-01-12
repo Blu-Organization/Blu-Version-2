@@ -50,6 +50,11 @@
   margin-left: 4px;
 }
 
+.line-wrap {
+  overflow: hidden;
+  height: 80px;
+}
+
 @media screen and (max-width: 960px) {
   .hero-container > h1 {
     font-size: 70px;
