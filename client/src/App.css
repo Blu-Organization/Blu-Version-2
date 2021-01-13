@@ -155,12 +155,6 @@
   font-size: 100px;
 }
 
-.sign-up {
-  background: url('images/img-5.jpg') center center/cover no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
 @keyframes pauls {
   from {
     background: url('images/paulsleesin.jpg') center center/cover no-repeat;
