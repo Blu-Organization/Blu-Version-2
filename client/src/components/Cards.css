@@ -30,6 +30,7 @@
 
 .cards__item__link {
   display: flex;
+  z-index: 30;
   flex-flow: column;
   width: 380px;
   box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
