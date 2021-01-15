@@ -32,19 +32,23 @@ const HeroSection = () => {
   return (
     <div className='hero-container'>
       <div className='hero-btns'>
-        <div className='button-containers'>
-          <div className="line-wrap" >
-            <div ref={el => (button1 = el)}>
-              <Button2 location={'sign-up'} onClick={() => console.log('hello')} text={'Get Started'}></Button2>
-              <LengthOfButton></LengthOfButton>
+        <div className="hero-content-containter">
+          <span className="hero-text">To get started click "Get Started" to create an account with Blu!</span>
+          <div className='button-containers'>
+            <div className="line-wrap" >
+              <div ref={el => (button1 = el)}>
+                <Button2 location={'sign-up'} onClick={() => console.log('hello')} text={'Get Started'}></Button2>
+                <LengthOfButton></LengthOfButton>
+              </div>
+            </div>
+            <div className="line-wrap" >
+              <div ref={el => (button2 = el)} >
+                <Button2 location={'sign-up'} onClick={() => console.log('hello!!!!')} text={'Watch Demo'}></Button2>
+                <LengthOfButton></LengthOfButton>
+              </div>
             </div>
           </div>
-          <div className="line-wrap" >
-            <div ref={el => (button2 = el)} >
-              <Button2 location={'sign-up'} onClick={() => console.log('hello!!!!')} text={'Watch Demo'}></Button2>
-              <LengthOfButton></LengthOfButton>
-            </div>
-          </div>
+          <span className="hero-text">To see a preview of what Blu is all about, click "Watch Demo" to watch a live demo.</span>
         </div>
       </div>
     </div>
