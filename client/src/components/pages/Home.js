@@ -6,6 +6,8 @@ import Footer from '../Footer.js';
 import Navbar from '../Navbar.js';
 import HomePageTheme from '../Themes/HomePageTheme';
 
+//test commit
+
 const Home = () => {
 
   return (
