@@ -16,6 +16,12 @@
   height: 560px;
 }
 
+.create-new-team-text-container {
+  margin-top: 12em;
+  height: 560px;
+  width: 400px;
+}
+
 .hero-text-container {
   width: 400px;
 }
@@ -42,7 +48,7 @@
   height: 120vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   object-fit: contain;
 }
 
@@ -62,6 +68,7 @@
 
 .hero-btns {
   margin-top: 10em;
+  z-index: 30;
 }
 
 .hero-btns .btn {
@@ -77,6 +84,150 @@
   overflow: hidden;
   height: 80px;
 }
+
+.cloud1 {
+  position: absolute;
+  width: 167.71px;
+  height: 66px;
+  left: 0%;
+  top: 40%;
+  background: url('../images/coloredCloud.svg') no-repeat;
+}
+
+.cloud2 {
+  position: absolute;
+  z-index: 20;
+  width: 167.71px;
+  height: 66px;
+  left: 25%;
+  top: 38%;
+  background: url('../images/coloredCloud.svg') no-repeat;
+}
+
+.cloud3 {
+  position: absolute;
+  width: 278px;
+  height: 126px;
+  left: 10%;
+  top: 25%;
+  background: url('../images/bigcoloredCloud.svg') no-repeat;
+}
+
+.polygon1 {
+  position: absolute;
+  z-index: 10;
+  width: 461px;
+  height: 961px;
+  top: 70%;
+  left: 0%;
+  background: url('../images/Polygon1.svg') no-repeat;
+}
+
+.polygon2 {
+  position: absolute;
+  z-index: 10;
+  width: 461px;
+  height: 961px;
+  left: 26%;
+  top: 91%;
+  background: url('../images/Polygon2.svg') no-repeat;
+}
+
+.polygon3 {
+  position: absolute;
+  z-index: 9;
+  width: 637px;
+  height: 1300px;
+  left: 3%;
+  top: 41%;
+  background: url('../images/Polygon3.svg') no-repeat;
+}
+
+.polygon4 {
+  position: absolute;
+  width: 350px;
+  height: 534px;
+  left: 61%;
+  top: 99%;
+  background: url('../images/Polygon4.svg') no-repeat;
+}
+
+.ellipse20 {
+  position: absolute;
+  z-index: 3;
+  left: 51%;
+  top: 13%;
+  width: 150px;
+  height: 150px;
+  background: url('../images/Ellipse20.svg') no-repeat;
+}
+
+.ellipse21 {
+  position: absolute;
+  left: 33%;
+  top: -4%;
+  width: 320px;
+  height: 320px;
+  background: url('../images/Ellipse21.svg') no-repeat;
+}
+
+.ellipse22 {
+  position: absolute;
+  z-index: 2;
+  left: 57%;
+  top: 5%;
+  width: 270px;
+  height: 270px;
+  background: url('../images/Ellipse22.svg') no-repeat;
+}
+
+.ellipse23 {
+  position: absolute;
+  left: 83%;
+  top: 25%;
+  width: 150px;
+  height: 150px;
+  background: url('../images/Ellipse23.svg') no-repeat;
+}
+
+.ellipse24 {
+  position: absolute;
+  right: 0%;
+  top: 65%;
+  width: 275px;
+  height: 400px;
+  background: url('../images/Ellipse24.svg') no-repeat;
+}
+
+.ellipse25 {
+  position: absolute;
+  right: 10%;
+  top: 58%;
+  width: 200px;
+  height: 300px;
+  background: url('../images/Ellipse25.svg') no-repeat;
+}
+
+.ellipse26 {
+  position: absolute;
+  z-index: 2;
+  left: 75%;
+  top: 27%;
+  width: 270px;
+  height: 270px;
+  background: url('../images/Ellipse26.svg') no-repeat;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+
 
 @media screen and (max-width: 960px) {
   .hero-container > h1 {

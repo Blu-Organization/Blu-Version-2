@@ -16,8 +16,7 @@
 }
 
 .aboutus {
-  background-color: #242424;
-  height: 112vh;
+  height: 125vh;
   color: #fff;
   font-size: 20px;
   display: flex;
@@ -28,21 +27,18 @@
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-  animation: pauls 20s ease-in-out infinite alternate;
 }
 
 .aboutus-container-tracys {
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-  animation: tracys 20s ease-in-out infinite alternate;
 }
 
 .aboutus-container-justins {
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-  animation: justins 20s ease-in-out infinite alternate;
 }
 
 .aboutus-section {
@@ -104,16 +100,35 @@
 }
 
 .aboutus-header {
-  font-size: 40px;
-  color: #7FA7F4;
+  color: black;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  padding: 10px;
 }
 
 .aboutus-header2 {
+  color: black;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
   font-size: 30px;
-  color: #7FA7F4;
+  line-height: 40px;
+  text-align: center;
+  padding: 10px;
 }
 
 .aboutus-text {
+  color: white;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
   width: 200px;
 }
 
@@ -130,7 +145,6 @@
 }
 
 .exploremore {
-  background: url('images/img-3.jpg') center center/cover no-repeat;
   color: #fff;
   font-size: 12px;
   display: block;
@@ -149,44 +163,7 @@
   vertical-align: middle;
 }
 
-.log-in {
-  background: url('images/img-4.jpg') center center/cover no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
 
-@keyframes pauls {
-  from {
-    background: url('images/paulsleesin.jpg') center center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-  }
-  to {
-    background: url('images/paulsvalorant.jpg') center center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-  }
-}
-
-@keyframes tracys {
-  from {
-    background: url('images/tracyassassin.png') center center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-  }
-  to {
-    background: url('images/tracyleague.png') center center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-  }
-}
-
-@keyframes justins {
-  from {
-    background: url('images/img-2.jpg') center center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-  }
-  to {
-    background: url('images/img-1.jpg') center center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-  }
-}
 
 
 @media screen and (max-width: 960px) {

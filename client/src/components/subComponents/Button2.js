@@ -123,7 +123,7 @@ const ButtonText = styled.span`
 
 `;
 
-const Button2 = ({location, onClick, text }) => {
+const Button2 = ({location, onClick, text, onMouseOver }) => {
   return (
     <ButtonDiv>
       <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
@@ -131,7 +131,7 @@ const Button2 = ({location, onClick, text }) => {
           <span className="bg"></span>
           <ButtonBase></ButtonBase>
           <Link to={location}>
-            <ButtonText onClick={onClick}>
+            <ButtonText onMouseOver={onMouseOver} onClick={onClick}>
               {text}
             </ButtonText>
           </Link>

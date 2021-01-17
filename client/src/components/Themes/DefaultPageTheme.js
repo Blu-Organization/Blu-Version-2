@@ -1,15 +1,15 @@
 import React from 'react';
 import './Themes.css';
 
-const HomePageTheme = ({children}) => {
+const DefaultPageTheme = ({children}) => {
 
   return (
     <>
-      <div className="home-page-theme">
+      <div className="default-page-theme">
         <main>{children}</main>
       </div>
     </>
   )
 }
 
-export default HomePageTheme;
+export default DefaultPageTheme;

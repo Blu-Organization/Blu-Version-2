@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Footer from '../Footer.js';
 import Navbar from '../Navbar.js';
+import DefaultPageTheme from '../Themes/DefaultPageTheme';
 
 const SearchForm = styled.form`
   margin: 0 auto;
@@ -112,26 +113,28 @@ const ExploreMore = () => {
 
   return (
     <div>
-      <Navbar />
-        <div>
-          <div className='exploremore'>
-            <SearchForm onSubmit={(e) => {handleFormSubmit(e)}}>
-              <input
-                className='explore-input'
-                onChange={(e) => handleInputChange(e)}
-                name='explore'
-                type='explore'
-                placeholder='Explore BLU'
-              />
-              <SearchButton type='submit'>
-                <SearchLogo src='images/search.png' alt='search'></SearchLogo>
-              </SearchButton>
-            </SearchForm>
-            {searchResults()}
-            {newsFeed()}
+      <DefaultPageTheme>
+        <Navbar />
+          <div>
+            <div className='exploremore'>
+              <SearchForm onSubmit={(e) => {handleFormSubmit(e)}}>
+                <input
+                  className='explore-input'
+                  onChange={(e) => handleInputChange(e)}
+                  name='explore'
+                  type='explore'
+                  placeholder='Explore BLU'
+                />
+                <SearchButton type='submit'>
+                  <SearchLogo src='images/search.png' alt='search'></SearchLogo>
+                </SearchButton>
+              </SearchForm>
+              {searchResults()}
+              {newsFeed()}
+            </div>
           </div>
-        </div>
-      <Footer />
+        <Footer />
+      </DefaultPageTheme>
     </div>
   )
 }
