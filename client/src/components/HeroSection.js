@@ -12,6 +12,20 @@ const LengthOfButton = styled.div`
   width: 250px;
 `;
 
+const Cloud = styled.div`
+  top: ${(props) => props.show ? '60%' : '40%'};
+  transition: all 1s ease;
+`;
+
+const Cloud2 = styled(Cloud)`
+  top: ${(props) => props.show ? '68%' : '38%'};
+  left: ${(props) => props.show ? '20%' : '25%'};
+`;
+
+const Cloud3 = styled(Cloud)`
+  top: ${(props) => props.show ? '20%' : '25%'};
+`;
+
 const Polygon = styled.div`
   top: ${(props) => props.show ? '60%' : '43%'};
   transition: all 1s ease;
@@ -31,6 +45,7 @@ const NewTeamText = styled.span`
   line-height: 40px;
   transition: all 3s ease;
   opacity: ${(props) => props.show ? 1 : 0};
+  pointer-events: none;
 `;
 
 const DemoVidText = styled(NewTeamText)`
@@ -58,6 +73,9 @@ const HeroSection = () => {
 
   return (
     <div className='hero-container'>
+        <Cloud show={showMountains} className="cloud1"></Cloud>
+        <Cloud2 show={showMountains} className="cloud2"></Cloud2>
+        <Cloud3 show={showMountains} className="cloud3"></Cloud3>
         <div className="polygon1"></div>
         <div className="polygon2"></div>
         <Polygon show={showMountains} className="polygon3"></Polygon>
