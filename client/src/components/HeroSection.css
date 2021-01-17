@@ -90,6 +90,7 @@
   width: 461px;
   height: 961px;
   top: 70%;
+  left: 0%;
   background: url('../images/Polygon1.svg') no-repeat;
 }
 
@@ -109,7 +110,7 @@
   width: 637px;
   height: 1300px;
   left: 3%;
-  top: 53%;
+  top: 41%;
   background: url('../images/Polygon3.svg') no-repeat;
 }
 

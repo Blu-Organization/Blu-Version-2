@@ -151,7 +151,7 @@ const LandingPage = ({ fetchCurrentUser }) => {
           <Header>
             Welcome to <HeaderColored>Blu!</HeaderColored> Created for Valorant player's from all around the world.
           </Header>
-          <Text>This application allows Valorant players to form teams and compete for rank. You can join a team or create your own Valorant team and find a team to play against in your own team rank level.</Text>
+          <Text>Blu allows Valorant players to form teams and compete for rank. You can join a team or create your own Valorant team and find a team to play against in your own team rank level.</Text>
           <Link className="demo-log-in-button" to='/home' onClick={() => fetchCurrentUser('Demo-User')}>
             <DemoLogIn>Demo Log In</DemoLogIn>
           </Link>

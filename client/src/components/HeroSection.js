@@ -13,7 +13,7 @@ const LengthOfButton = styled.div`
 `;
 
 const Polygon = styled.div`
-  opacity: ${(props) => props.show ? 0 : 1};
+  top: ${(props) => props.show ? '60%' : '43%'};
   transition: all 1s ease;
 `;
 
@@ -58,16 +58,16 @@ const HeroSection = () => {
 
   return (
     <div className='hero-container'>
-        <Polygon show={showMountains} className="polygon1"></Polygon>
-        <Polygon show={showMountains} className="polygon2"></Polygon>
+        <div className="polygon1"></div>
+        <div className="polygon2"></div>
         <Polygon show={showMountains} className="polygon3"></Polygon>
-        <Polygon show={showMountains} className="polygon4"></Polygon>
-        <Circle show={showCircles} className="ellipse20"></Circle>
-        <Circle show={showCircles} className="ellipse22"></Circle>
-        <Circle show={showCircles} className="ellipse21"></Circle>
+        <div className="polygon4"></div>
+        <div className="ellipse20"></div>
+        <div className="ellipse22"></div>
+        <div className="ellipse21"></div>
         <Circle show={showCircles} className="ellipse23"></Circle>
-        <Circle show={showCircles} className="ellipse24"></Circle>
-        <Circle show={showCircles} className="ellipse25"></Circle>
+        <div className="ellipse24"></div>
+        <div className="ellipse25"></div>
         <div className="create-new-team-text-container">
           <NewTeamText show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
         </div>
@@ -76,7 +76,7 @@ const HeroSection = () => {
           <div className='button-containers'>
             <div className="line-wrap" >
               <div ref={el => (button1 = el)}>
-                <Button2 location={'sign-up'} text={'Create new Team'} onMouseOver={() => setShowMountains(true)}></Button2>
+                <Button2 location={'sign-up'} text={'Create a Team'} onMouseOver={() => setShowMountains(true)}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </div>
