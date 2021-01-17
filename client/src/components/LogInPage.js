@@ -14,14 +14,18 @@ const LengthOfButton = styled.div`
 
 const LogInPageContainer = styled.div`
   height: 90vh;
-  background: #090f16;
 `;
 
 const Title = styled.h1`
-  color: #f6f6f6;
+  color: black;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
   text-align: center;
   padding: 100px 20px 20px 20px;
-  font-family: 'Montserrat', sans-serif;
+
 `;
 
 const Form = styled.form`
@@ -42,7 +46,7 @@ const FormInput = styled.input`
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid #9b9b9b;`};
+  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid black;`};
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -66,7 +70,7 @@ const FormLabel = styled.label`
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: ${(props) => props.used ? `red` : `#b2b2b2`};
+  color: ${(props) => props.used ? `red` : `#d3cece`};
 `;
 
 const Div = styled.div`

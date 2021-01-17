@@ -32,8 +32,13 @@ const Polygon = styled.div`
 `;
 
 const Circle = styled.div`
-  opacity: ${(props) => props.show ? 0 : 1};
+  top: ${(props) => props.show ? '15%' : '25%'};
   transition: all 1s ease;
+`;
+
+const Circle2 = styled(Circle)`
+  top: ${(props) => props.show ? '53%' : '27%'};
+  left: ${(props) => props.show ? '64%' : '75%'};
 `;
 
 const NewTeamText = styled.span`
@@ -86,6 +91,7 @@ const HeroSection = () => {
         <Circle show={showCircles} className="ellipse23"></Circle>
         <div className="ellipse24"></div>
         <div className="ellipse25"></div>
+        <Circle2 show={showCircles} className="ellipse26"></Circle2>
         <div className="create-new-team-text-container">
           <NewTeamText show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
         </div>
