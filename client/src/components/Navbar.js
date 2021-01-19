@@ -27,6 +27,26 @@ const LengthOfButton = styled.div`
   width: 150px;
 `;
 
+const DropDown = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const ProfileDropDown = styled.div`
+  background: lightblue;
+  position: absolute;
+  right: -5px;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+`;
+
+const DropDownListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
 
 const Navbar = ({ currentUser }) => {
 
@@ -59,7 +79,17 @@ const Navbar = ({ currentUser }) => {
       )
     } else {
       return (
-        <Link className='profile-name' to='/profile' onClick={closeMobileMenu}>{currentUser}</Link>
+        <DropDown>
+          <span className='profile-name' onClick={closeMobileMenu}>{currentUser}</span>
+          <ProfileDropDown>
+            <DropDownListContainer>
+              <Link to='/profile'>Profile</Link>
+              <Link to='/profile'>Friends</Link>
+              <Link to='/settings'>Settings</Link>
+              <Link to='/settings'>Log Out</Link>
+            </DropDownListContainer>
+          </ProfileDropDown>
+        </DropDown>
       )
     }
   }

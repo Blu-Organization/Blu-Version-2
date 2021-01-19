@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch )
 }
 
-export default connect(() => {}, mapDispatchToProps)(CardItem);
+export default connect(() => ({}), mapDispatchToProps)(CardItem);

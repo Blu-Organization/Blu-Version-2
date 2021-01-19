@@ -25,45 +25,45 @@ const AboutUs = () => {
               <a
                 href='https://www.instagram.com/paulchoiiii/'
                 rel="noreferrer"
-                class='social-icon-link instagram'
+                className='social-icon-link instagram'
                 target='_blank'
                 aria-label='Instagram'
               >
-                <i class='fab fa-instagram' />
+                <i className='fab fa-instagram' />
               </a>
               <Link
-                class='social-icon-link youtube'
+                className='social-icon-link youtube'
                 to='/'
                 target='_blank'
                 aria-label='Youtube'
               >
-                <i class='fab fa-youtube' />
+                <i className='fab fa-youtube' />
               </Link>
               <Link
-                class='social-icon-link twitter'
+                className='social-icon-link twitter'
                 to='/'
                 target='_blank'
                 aria-label='Twitter'
               >
-                <i class='fab fa-twitter' />
+                <i className='fab fa-twitter' />
               </Link>
               <a
                 href='https://www.linkedin.com/in/paulsoonminchoi/'
                 rel="noreferrer"
-                class='social-icon-link linkedin'
+                className='social-icon-link linkedin'
                 target='_blank'
                 aria-label='LinkedIn'
               >
-                <i class='fab fa-linkedin' />
+                <i className='fab fa-linkedin' />
               </a>
               <a
-                class='social-icon-link github'
+                className='social-icon-link github'
                 href='https://github.com/PaulSoonMinChoi'
                 rel="noreferrer"
                 target='_blank'
                 aria-label='Github'
               >
-                <i class='fab fa-github' />
+                <i className='fab fa-github' />
               </a>
             </div>
           </div>
@@ -83,47 +83,47 @@ const AboutUs = () => {
             <div className='aboutus-section'>
               <h2 className='aboutus-header2'>Contact Me</h2>
               <a
-                class='social-icon-link instagram'
+                className='social-icon-link instagram'
                 href='https://www.instagram.com/tracetea/'
                 rel="noreferrer"
                 target='_blank'
                 aria-label='Instagram'
               >
-                <i class='fab fa-instagram' />
+                <i className='fab fa-instagram' />
               </a>
               <Link
-                class='social-icon-link youtube'
+                className='social-icon-link youtube'
                 to='/'
                 target='_blank'
                 aria-label='Youtube'
               >
-                <i class='fab fa-youtube' />
+                <i className='fab fa-youtube' />
               </Link>
               <Link
-                class='social-icon-link twitter'
+                className='social-icon-link twitter'
                 to='/'
                 target='_blank'
                 aria-label='Twitter'
               >
-                <i class='fab fa-twitter' />
+                <i className='fab fa-twitter' />
               </Link>
               <a
-                class='social-icon-link linkedin'
+                className='social-icon-link linkedin'
                 href='https://www.linkedin.com/in/tracythutran/'
                 rel="noreferrer"
                 target='_blank'
                 aria-label='LinkedIn'
               >
-                <i class='fab fa-linkedin' />
+                <i className='fab fa-linkedin' />
               </a>
               <a
-                class='social-icon-link github'
+                className='social-icon-link github'
                 href='https://github.com/enobot'
                 rel="noreferrer"
                 target='_blank'
                 aria-label='Github'
               >
-                <i class='fab fa-github' />
+                <i className='fab fa-github' />
               </a>
             </div>
           </div>
@@ -143,46 +143,46 @@ const AboutUs = () => {
             <div className='aboutus-section'>
               <h2 className='aboutus-header2'>Contact Me</h2>
               <Link
-                class='social-icon-link instagram'
+                className='social-icon-link instagram'
                 to='/'
                 target='_blank'
                 aria-label='Instagram'
               >
-                <i class='fab fa-instagram' />
+                <i className='fab fa-instagram' />
               </Link>
               <Link
-                class='social-icon-link youtube'
+                className='social-icon-link youtube'
                 to='/'
                 target='_blank'
                 aria-label='Youtube'
               >
-                <i class='fab fa-youtube' />
+                <i className='fab fa-youtube' />
               </Link>
               <Link
-                class='social-icon-link twitter'
+                className='social-icon-link twitter'
                 to='/'
                 target='_blank'
                 aria-label='Twitter'
               >
-                <i class='fab fa-twitter' />
+                <i className='fab fa-twitter' />
               </Link>
               <a
-                class='social-icon-link linkedin'
+                className='social-icon-link linkedin'
                 href='https://www.linkedin.com/in/justin-murakami/'
                 rel="noreferrer"
                 target='_blank'
                 aria-label='LinkedIn'
               >
-                <i class='fab fa-linkedin' />
+                <i className='fab fa-linkedin' />
               </a>
               <a
-                class='social-icon-link github'
+                className='social-icon-link github'
                 href='https://github.com/JustinMurakami'
                 rel="noreferrer"
                 target='_blank'
                 aria-label='Github'
               >
-                <i class='fab fa-github' />
+                <i className='fab fa-github' />
               </a>
             </div>
           </div>

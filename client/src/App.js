@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './components/pages/Landing.js';
@@ -11,6 +12,7 @@ import Profile from './components/pages/Profile.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
 import Preload from './components/Preload';
+
 
 function App() {
 
