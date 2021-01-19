@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './SignUpPage.css';
 import styled from 'styled-components';
 import axios from 'axios';
-import controller from '../images/controller.jpg';
 import Button2 from './subComponents/Button2.js';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
@@ -238,7 +237,7 @@ const WelcomeText = styled.span`
   line-height: 40px;
 `;
 
-const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
+const SignUpPage = ({ fetchCurrentUser }) => {
 
   const [username, setUserName] = useState('');
   const [firstname, setFirstName] = useState('');
@@ -683,7 +682,6 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
       return (
         <>
           <WelcomeDiv>
-            <WelcomeText>{currentUser}</WelcomeText>
             <WelcomeText>Welcome to the Blu family! Start exploring the best Valorant Teams or create your own roster and schedule a match between another team!</WelcomeText>
           </WelcomeDiv>
           <div>
