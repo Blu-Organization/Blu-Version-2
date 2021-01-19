@@ -224,4 +224,6 @@ const mapDispatchToProps = dispatch => {
   }, dispatch )
 }
 
-export default connect(() => {}, mapDispatchToProps)(LogInPage);
+
+
+export default connect(() => ({}), mapDispatchToProps)(LogInPage);

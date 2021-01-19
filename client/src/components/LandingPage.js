@@ -175,4 +175,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch )
 }
 
-export default connect(() => {}, mapDispatchToProps)(LandingPage);
+export default connect(() => ({}), mapDispatchToProps)(LandingPage);

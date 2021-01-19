@@ -231,7 +231,11 @@ const WelcomeDiv = styled.div`
 
 const WelcomeText = styled.span`
   color: white;
-  font-weight: 400;
+  font-weight: 300;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 40px;
 `;
 
 const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
@@ -484,7 +488,7 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
   //YEAR VALIDATION
 
   const checkValidYear = (year) => {
-    if (year > 1900 && year <= 2020) {
+    if (year > 1900 && year <= 2021) {
       setValidYear(true);
     } else {
       setValidYear(false);
@@ -511,7 +515,7 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
   //Fix this please.
 
   const createNewUser = (username, firstname,lastname, email, password, month, day, year ) => {
-    if (username.length && firstname.length && lastname.length && email.length && password.length) {
+    if (username.length && firstname.length && lastname.length && email.length && password.length && month > 0 && day > 0 && year > 0) {
       if (!invalidUsername || invalidEmail) {
         axios.post('/api/postUser', {
           username,
@@ -662,12 +666,11 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
       return (
         <>
           <WelcomeDiv>
-            {/* <WelcomeText>{currentUser}</WelcomeText> */}
-            <WelcomeText>Welcome to the Blu family!</WelcomeText>
-            <WelcomeText>Log in to continue and start finding the perfect gaming buddies to play with!</WelcomeText>
+            <WelcomeText>{currentUser}</WelcomeText>
+            <WelcomeText>Welcome to the Blu family! Start exploring the best Valorant Teams or create your own roster and schedule a match between another team!</WelcomeText>
           </WelcomeDiv>
           <div>
-            <Button2 location={'log-in'} onClick={() => console.log('hello!!!!')} text={'Log In'}></Button2>
+            <Button2 location={'log-in'} onClick={() => console.log(localStorage)} text={'Log In'}></Button2>
             <LengthOfButton></LengthOfButton>
           </div>
         </>
@@ -691,4 +694,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch )
 }
 
-export default connect(() => {}, mapDispatchToProps)(SignUpPage);
+export default connect(() => ({}), mapDispatchToProps)(SignUpPage);
