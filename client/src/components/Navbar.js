@@ -29,6 +29,7 @@ const LengthOfButton = styled.div`
 
 
 const Navbar = ({ currentUser }) => {
+  console.log(currentUser)
 
   const [clicked, setClicked] = useState(false);
   const [button, setButton] = useState(true);

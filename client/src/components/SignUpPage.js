@@ -542,6 +542,23 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
     }
   }
 
+  const storeUser = () => {
+    let user = {
+        username,
+        firstname,
+        lastname,
+        email,
+        password,
+        month,
+        day,
+        year
+    }
+
+    //set the user into the local storage
+    localStorage.setItem('user', JSON.stringify(user));
+    fetchCurrentUser(username);
+  }
+
   const successfullyCreatedUser = () => {
     if (createdUser) {
       return (
@@ -653,7 +670,7 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
                     month,
                     day,
                     year
-                  ); fetchCurrentUser(username)}}>Submit
+                  ); storeUser();}}>Submit
                 </ButtonText>
             </ButtonPTag>
           </ButtonATag>
@@ -670,7 +687,7 @@ const SignUpPage = ({ fetchCurrentUser, currentUser }) => {
             <WelcomeText>Welcome to the Blu family! Start exploring the best Valorant Teams or create your own roster and schedule a match between another team!</WelcomeText>
           </WelcomeDiv>
           <div>
-            <Button2 location={'log-in'} onClick={() => console.log(localStorage)} text={'Log In'}></Button2>
+            <Button2 location={'log-in'} onClick={() => console.log('this is the local storage of this application ==>',localStorage.getItem('user'))} text={'Log In'}></Button2>
             <LengthOfButton></LengthOfButton>
           </div>
         </>
