@@ -74,7 +74,7 @@ const OverLay = styled.div`
 `;
 
 
-const Navbar = ({ currentUser }) => {
+const Navbar = ({ fetchCurrentUser, currentUser }) => {
 
   const [clicked, setClicked] = useState(false);
   const [button, setButton] = useState(true);
@@ -96,6 +96,11 @@ const Navbar = ({ currentUser }) => {
     }
   }
 
+  const handleLogOut = () => {
+    localStorage.clear();
+    fetchCurrentUser('');
+  }
+
   const showDropDownMenu = () => {
     if (showDropDown) {
       return (
@@ -104,7 +109,7 @@ const Navbar = ({ currentUser }) => {
             <Link className="drop-down-list-item" to='/profile'>Profile</Link>
             <Link className="drop-down-list-item" to='/profile'>Friends</Link>
             <Link className="drop-down-list-item" to='/settings'>Settings</Link>
-            <Link className="drop-down-list-item" to='/settings'>Log Out</Link>
+            <Link className="drop-down-list-item" to='/home' onClick={() => handleLogOut()}>Log Out</Link>
           </DropDownListContainer>
         </ProfileDropDown>
       )
