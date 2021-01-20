@@ -33,25 +33,52 @@ const DropDown = styled.div`
 `;
 
 const ProfileDropDown = styled.div`
-  background: lightblue;
+  background: #35383a;
   position: absolute;
-  right: -5px;
-  width: 100px;
+  right: -28px;
+  width: 120px;
   border: 1px solid black;
   border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  z-index: 10;
 `;
 
 const DropDownListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+`;
+
+const ProfileName = styled.span`
+  color: black;
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
+const OverLay = styled.div`
+  box-sizing: border-box;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: ${(props) => (props.active ? 'auto' : 'none')};
 `;
 
 
-const Navbar = ({ currentUser }) => {
+const Navbar = ({ fetchCurrentUser, currentUser }) => {
 
   const [clicked, setClicked] = useState(false);
   const [button, setButton] = useState(true);
+  const [showDropDown, setShowDropDown] = useState(false);
 
   const handleClick = () => {
     setClicked(!clicked)
@@ -69,6 +96,31 @@ const Navbar = ({ currentUser }) => {
     }
   }
 
+  const handleLogOut = () => {
+    localStorage.clear();
+    fetchCurrentUser('');
+  }
+
+  const showDropDownMenu = () => {
+    if (showDropDown) {
+      return (
+        <ProfileDropDown>
+          <DropDownListContainer>
+            <Link className="drop-down-list-item" to='/profile'>Profile</Link>
+            <Link className="drop-down-list-item" to='/profile'>Friends</Link>
+            <Link className="drop-down-list-item" to='/settings'>Settings</Link>
+            <Link className="drop-down-list-item" to='/home' onClick={() => handleLogOut()}>Log Out</Link>
+          </DropDownListContainer>
+        </ProfileDropDown>
+      )
+    } else {
+      return (
+        <>
+        </>
+      )
+    }
+  }
+
   const buttonFunc = () => {
     if (button && currentUser === '') {
       return (
@@ -80,15 +132,10 @@ const Navbar = ({ currentUser }) => {
     } else {
       return (
         <DropDown>
-          <span className='profile-name' onClick={closeMobileMenu}>{currentUser}</span>
-          <ProfileDropDown>
-            <DropDownListContainer>
-              <Link to='/profile'>Profile</Link>
-              <Link to='/profile'>Friends</Link>
-              <Link to='/settings'>Settings</Link>
-              <Link to='/settings'>Log Out</Link>
-            </DropDownListContainer>
-          </ProfileDropDown>
+          <ProfileName onClick={() => {closeMobileMenu(); setShowDropDown(true);}}>
+            {currentUser}
+          </ProfileName>
+          {showDropDownMenu()}
         </DropDown>
       )
     }
@@ -97,7 +144,9 @@ const Navbar = ({ currentUser }) => {
   const logInFunc = () => {
     if (button && currentUser === '') {
       return (
-        <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
+        <NavItem>
+          <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
+        </NavItem>
       )
     } else {
       return (
@@ -132,14 +181,13 @@ const Navbar = ({ currentUser }) => {
             <NavItem>
               <Link className='nav-links' to='/exploremore' onClick={closeMobileMenu}>Explore</Link>
             </NavItem>
-            <NavItem>
               {logInFunc()}
-            </NavItem>
             <NavItem>
               {buttonFunc()}
             </NavItem>
           </ul>
         </div>
+        <OverLay active={showDropDown} onClick={() => setShowDropDown(false)}></OverLay>
       </nav>
     </div>
   )

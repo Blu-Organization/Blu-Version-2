@@ -111,6 +111,7 @@ const LogInPage = ({ fetchCurrentUser }) => {
   const [passwordCheck, setPasswordCheck] = useState(false);
   const [wrongpass, setWrongpass] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [userData, setUserData] = useState('');
 
   const checkUserLogIn = (username) => {
 
@@ -124,7 +125,8 @@ const LogInPage = ({ fetchCurrentUser }) => {
     .then((res) => {
       if (res.data.rowCount > 0) {
         setUnknownUser(false);
-        setActPassword(res.data.rows[0].password)
+        setActPassword(res.data.rows[0].password);
+        setUserData(res.data.rows[0]);
       } else {
         setUnknownUser(true);
       }
@@ -151,6 +153,7 @@ const LogInPage = ({ fetchCurrentUser }) => {
         setWrongpass(false);
         handleLocation();
         fetchCurrentUser(username);
+        localStorage.setItem('user', JSON.stringify(userData));
       } else {
         setPasswordCheck(false);
         setWrongpass(true);
