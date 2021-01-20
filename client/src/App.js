@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './components/pages/Landing.js';
@@ -14,7 +14,7 @@ import store from './store.js';
 import Preload from './components/Preload';
 
 
-function App() {
+function App({fetchCurrentUser}) {
 
   window.addEventListener('load', () => {
     const preload = document.querySelector('.preload');

@@ -25,6 +25,7 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .fa-typo3 {
@@ -41,20 +42,11 @@
   width: 60vw;
   justify-content: end;
   margin-right: -5rem;
+  z-index: 10;
 }
 
 .nav-item {
   height: 80px;
-}
-
-.profile-name {
-  color: black;
-  margin-left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .nav-links {
@@ -62,15 +54,17 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
-  font-size: 15px;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 10px;
 }
 
 .nav-links:hover {
-  border-bottom: 4px solid black;
+  border-bottom: 3px solid black;
   transition: all 0.2s ease-out;
 }
 
@@ -84,6 +78,23 @@
 
 .menu-icon {
   display: none;
+}
+
+.drop-down-list-item {
+  padding: 10px;
+  text-decoration: none;
+  color: #e1e1e1;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  border-radius: 5px;
+}
+
+.drop-down-list-item:hover {
+  background: #b7c9cf;
+  color: rgb(20, 20, 20);
 }
 
 @media screen and (max-width: 960px) {
