@@ -12,15 +12,21 @@ const LengthOfButton = styled.div`
 `;
 
 const NewTeamText = styled.span`
-  color: white;
+  color: ${(props) => props.color ? props.color : 'white'};
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 300;
-  font-size: 25px;
-  line-height: 40px;
-  transition: all 3s ease;
+  font-size: 20px;
+  line-height: 35px;
+  transition: all 4s ease;
   opacity: ${(props) => props.show ? 1 : 0};
   pointer-events: none;
+`;
+
+const TextContainerCover = styled.div`
+  transition: all 2s ease;
+  opacity: ${(props) => props.show ? 1 : 0};
+
 `;
 
 const DemoVidText = styled(NewTeamText)`
@@ -53,24 +59,26 @@ const HeroSection = () => {
           <div className="valorant-background-cover"></div>
         </div>
       </div>
-        {/* <div className="create-new-team-text-container">
-          <NewTeamText show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
-        </div> */}
       <div className='hero-btns'>
         <div className="hero-content-containter">
-          <div className='button-containers'>
+        <div className='button-containers'>
             <div className="line-wrap" >
               <div ref={el => (button1 = el)}>
-                <Button2 location={'sign-up'} text={'Create a Team'} onMouseOver={() => setShowMountains(true)}></Button2>
+                <Button2 color='#BDF3FF' location={'sign-up'} text={'Create a Team'} onMouseOver={() => setShowMountains(true)}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </div>
             <div className="line-wrap" >
               <div ref={el => (button2 = el)} >
-                <Button2 location={'sign-up'} onMouseOver={() => setShowCircles(true)} text={'Watch Demo'}></Button2>
+                <Button2 color='#F5DBE2' location={'sign-up'} onMouseOver={() => setShowCircles(true)} text={'Watch Demo'}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </div>
+          </div>
+          <div className="create-new-team-text-container">
+            <TextContainerCover show={showMountains} className="text-container-cover">
+              <NewTeamText color='#BDF3FF' show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
+            </TextContainerCover>
           </div>
         </div>
       </div>

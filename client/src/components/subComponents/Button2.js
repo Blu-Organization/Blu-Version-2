@@ -97,7 +97,7 @@ const ButtonBase = styled.span`
 `;
 
 const ButtonText = styled.span`
-  color: black;
+  color: ${(props) => props.color ? props.color : 'black'};
   z-index: 4;
   width: 100%;
   height: 100%;
@@ -121,9 +121,13 @@ const ButtonText = styled.span`
     z-index: 5;
   }
 
+  // &:hover {
+  //   color: black;
+  // }
+
 `;
 
-const Button2 = ({location, onClick, text, onMouseOver }) => {
+const Button2 = ({location, onClick, text, onMouseOver, color }) => {
   return (
     <ButtonDiv>
       <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
@@ -131,7 +135,7 @@ const Button2 = ({location, onClick, text, onMouseOver }) => {
           <span className="bg"></span>
           <ButtonBase></ButtonBase>
           <Link to={location}>
-            <ButtonText onMouseOver={onMouseOver} onClick={onClick}>
+            <ButtonText color={color} onMouseOver={onMouseOver} onClick={onClick}>
               {text}
             </ButtonText>
           </Link>

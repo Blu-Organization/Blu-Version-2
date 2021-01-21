@@ -20,7 +20,6 @@
 .navbar-logo {
   position: sticky;
   justify-self: start;
-  margin-top: 30px;
   cursor: pointer;
   text-decoration: none;
   display: flex;
