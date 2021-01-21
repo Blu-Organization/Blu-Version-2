@@ -1,10 +1,26 @@
 .hero-content-containter {
   display: flex;
   flex-direction: column;
-  text-align: left;
   justify-content: center;
   align-items: center;
-  height: 560px;
+}
+
+
+.valorant-background-cover {
+  background: url('../images/valbgcover.svg') no-repeat;
+  width: 1240px;
+  height: 530px;
+  margin-top: -6px;
+  margin-left: -15px;
+
+}
+
+.valorant-background {
+  background: url('../images/valbg2.jpg') center/cover no-repeat;
+  width: 1210px;
+  height: 520px;
+  z-index: 32;
+  margin-top: 3em;
 }
 
 .create-new-team-text-container {
@@ -39,7 +55,8 @@
   height: 120vh;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
   object-fit: contain;
 }
 
@@ -57,11 +74,6 @@
     'Lucida Sans', Arial, sans-serif;
 }
 
-.hero-btns {
-  margin-top: 10em;
-  z-index: 30;
-}
-
 .hero-btns .btn {
   margin: 6px;
 }
@@ -76,7 +88,7 @@
   height: 80px;
 }
 
-.cloud1 {
+/* .cloud1 {
   position: absolute;
   width: 167.71px;
   height: 66px;
@@ -207,7 +219,7 @@
   width: 270px;
   height: 270px;
   background: url('../images/Ellipse26.svg') no-repeat;
-}
+} */
 
 @keyframes fadeOut {
   0% {
