@@ -9,14 +9,48 @@
 }
 
 .home-page-theme {
-  height: 140vh;
+  height: 240vh;
   width: 100%;
-  background: url('../../images/HomepageBG4.svg') center/cover no-repeat,
-  url('../../images/HomepageBG5.svg') center/cover no-repeat;
+  background: url('../../images/Rectangle155.svg') center/cover no-repeat;
+}
+
+.rect-143 {
+  background: url('../../images/Rectangle143.svg') no-repeat;
+  position: absolute;
+  width: 11px;
+  height: 237.7vh;
+  left: 5%;
+  top: 0;
+}
+
+.rect-144 {
+  background: url('../../images/Rectangle143.svg') no-repeat;
+  position: absolute;
+  width: 11px;
+  height: 237.7vh;
+  left: 8%;
+  top: 0;
+}
+
+.rect-147 {
+  background: url('../../images/Rectangle147.svg') no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 11px;
+  top: 13%;
+}
+
+.rect-148 {
+  background: url('../../images/Rectangle147.svg') no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 11px;
+  top: 17%;
 }
 
 .default-page-theme {
-  background: linear-gradient(179.08deg, #9898CA -2.75%, #1F1F47 103.82%);  height: 140vh;
+  background: linear-gradient(179.08deg, #9898CA -2.75%, #1F1F47 103.82%);
+  height: 140vh;
   width: 100%;
 }
 

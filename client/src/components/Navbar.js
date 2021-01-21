@@ -8,7 +8,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 
 const Logo = styled.img`
-  height: 140px;
+  height: 112px;
   border-radius: 50%;
   @media (max-width: 960px) {
     position: absolute;
