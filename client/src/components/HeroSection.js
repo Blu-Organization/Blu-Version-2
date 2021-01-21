@@ -78,7 +78,7 @@ const HeroSection = () => {
 
   return (
     <div className='hero-container'>
-        <Cloud show={showMountains} className="cloud1"></Cloud>
+        {/* <Cloud show={showMountains} className="cloud1"></Cloud>
         <Cloud2 show={showMountains} className="cloud2"></Cloud2>
         <Cloud3 show={showMountains} className="cloud3"></Cloud3>
         <div className="polygon1"></div>
@@ -91,7 +91,7 @@ const HeroSection = () => {
         <Circle show={showCircles} className="ellipse23"></Circle>
         <div className="ellipse24"></div>
         <div className="ellipse25"></div>
-        <Circle2 show={showCircles} className="ellipse26"></Circle2>
+        <Circle2 show={showCircles} className="ellipse26"></Circle2> */}
         <div className="create-new-team-text-container">
           <NewTeamText show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
         </div>
