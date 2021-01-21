@@ -48,8 +48,10 @@ const HeroSection = () => {
 
   return (
     <div className='hero-container'>
+      <div className="valorant-background-container">
         <div className="valorant-background">
           <div className="valorant-background-cover"></div>
+        </div>
       </div>
         {/* <div className="create-new-team-text-container">
           <NewTeamText show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
