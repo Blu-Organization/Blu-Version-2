@@ -49,6 +49,7 @@
 
 .hero-btns {
   margin-top: 2em;
+  background: #13090c1f;
 }
 
 .hero-text-container {
@@ -124,6 +125,20 @@
   .hero-container > h1 {
     font-size: 70px;
     margin-top: -150px;
+  }
+
+  .valorant-background-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .valorant-background {
+    height: 380px;
+  }
+
+  .valorant-background-cover {
+    background: url('../images/valbgcoversmaller.svg') no-repeat;
+    right: -200px;
   }
 }
 
