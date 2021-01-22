@@ -15,6 +15,7 @@ const CardItem = ({ src, text, label, path, fetchCurrentGame }) => {
           </figure>
           <div className='cards__item__info'>
             <h5 className='cards__item__text'>{text}</h5>
+            <h5>Members: 20</h5>
           </div>
         </Link>
       </li>

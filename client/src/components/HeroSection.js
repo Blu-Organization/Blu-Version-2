@@ -18,15 +18,27 @@ const NewTeamText = styled.span`
   font-weight: 300;
   font-size: 20px;
   line-height: 35px;
-  transition: all 4s ease;
   opacity: ${(props) => props.show ? 1 : 0};
+  transition: all 4s ease;
   pointer-events: none;
+
+  @media (max-width: 500px) {
+    font-size: 16px;
+  }
 `;
 
 const TextContainerCover = styled.div`
   transition: all 2s ease;
-  opacity: ${(props) => props.show ? 1 : 0};
 
+  @media (max-width: 500px) {
+    padding: 40px 35px 20px;
+  }
+
+  @media (max-width: 440px) {
+    width: 100%;
+    padding: 40px;
+    margin-left: 0;
+  }
 `;
 
 const DemoVidText = styled(NewTeamText)`
@@ -37,8 +49,8 @@ const HeroSection = () => {
 
   let button1 = useRef(null);
   let button2 = useRef(null);
-  const [showMountains, setShowMountains] = useState(false);
-  const [showCircles, setShowCircles] = useState(false);
+  const [showTeamText, setShowTeamText] = useState(false);
+  const [showDemoText, setShowDemoText] = useState(false);
 
   useEffect(() => {
     gsap.from([button1, button2], 0.8, {
@@ -52,6 +64,20 @@ const HeroSection = () => {
 
   }, [button1, button2])
 
+
+  const showMessage = () => {
+    if (showTeamText) {
+      return (
+        <NewTeamText color='#BDF3FF' show={showTeamText} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
+      )
+    }
+    if (showDemoText) {
+      return (
+        <NewTeamText color='#F5DBE2' show={showDemoText} >To find out how to use Blu, watch the demo video provided to learn how to get started and begin climbing the leaderboards today!</NewTeamText>
+      )
+    }
+  }
+
   return (
     <div className='hero-container'>
       <div className="valorant-background-container">
@@ -64,27 +90,24 @@ const HeroSection = () => {
         <div className='button-containers'>
             <div className="line-wrap" >
               <div ref={el => (button1 = el)}>
-                <Button2 color='#BDF3FF' location={'sign-up'} text={'Create a Team'} onMouseOver={() => setShowMountains(true)}></Button2>
+                <Button2 color='#BDF3FF' location={'sign-up'} text={'Create a Team'} onMouseOver={() => {setShowTeamText(true); setShowDemoText(false)}}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </div>
             <div className="line-wrap" >
               <div ref={el => (button2 = el)} >
-                <Button2 color='#F5DBE2' location={'sign-up'} onMouseOver={() => setShowCircles(true)} text={'Watch Demo'}></Button2>
+                <Button2 color='#F5DBE2' location={'sign-up'} onMouseOver={() => {setShowDemoText(true); setShowTeamText(false)}} text={'Watch Demo'}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </div>
           </div>
           <div className="create-new-team-text-container">
-            <TextContainerCover show={showMountains} className="text-container-cover">
-              <NewTeamText color='#BDF3FF' show={showMountains} >Create a Valorant Team and start inviting your friends to build a roster. You can also search for friends / players to join your team based on roles / characters.</NewTeamText>
+            <TextContainerCover className="text-container-cover">
+              {showMessage()}
             </TextContainerCover>
           </div>
         </div>
       </div>
-      {/* <div className="create-new-team-text-container">
-          <DemoVidText show={showCircles} >To find out how to use Blu, watch the demo video provided to learn how to get started and begin climbing the leaderboards today!</DemoVidText>
-        </div> */}
     </div>
   )
 }

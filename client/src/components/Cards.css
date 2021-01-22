@@ -1,19 +1,22 @@
 .cards {
   padding: 4rem;
+  margin-top: 7em;
+  position: relative;
 }
 
 .cards__container {
   display: flex;
   flex-flow: column;
   align-items: center;
-  max-width: 1120px;
-  width: 90%;
+  width: 86%;
   margin: 0 auto;
+  background-color: #1d1f22;
+  height: 90vh;
 }
 
 .cards__wrapper {
   position: relative;
-  margin: 50px 0 45px;
+  margin: 65px 0 45px;
 }
 
 .cards__items {
@@ -87,7 +90,8 @@
 
 .cards__item__info {
   padding: 20px 30px 30px;
-  background-color: #f6f6f6;
+  background-color: #d5d5d5;
+  text-align: center;
 }
 
 .cards__item__text {
@@ -106,6 +110,12 @@
 @media only screen and (min-width: 1240px) {
   .cards__items {
     display: flex;
+  }
+}
+
+@media only screen and (max-width: 1240px) {
+  .cards__container {
+    overflow: scroll;
   }
 }
 
