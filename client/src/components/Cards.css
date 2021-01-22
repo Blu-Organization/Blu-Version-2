@@ -113,6 +113,12 @@
   }
 }
 
+@media only screen and (max-width: 1240px) {
+  .cards__container {
+    overflow: scroll;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .cards__item {
     margin-bottom: 2rem;

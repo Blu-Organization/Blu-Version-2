@@ -21,11 +21,24 @@ const NewTeamText = styled.span`
   opacity: ${(props) => props.show ? 1 : 0};
   transition: all 4s ease;
   pointer-events: none;
+
+  @media (max-width: 500px) {
+    font-size: 16px;
+  }
 `;
 
 const TextContainerCover = styled.div`
   transition: all 2s ease;
 
+  @media (max-width: 500px) {
+    padding: 40px 35px 20px;
+  }
+
+  @media (max-width: 440px) {
+    width: 100%;
+    padding: 40px;
+    margin-left: 0;
+  }
 `;
 
 const DemoVidText = styled(NewTeamText)`

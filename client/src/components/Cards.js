@@ -3,6 +3,8 @@ import './Cards.css';
 import CardItem from './CardItem.js';
 import styled from 'styled-components';
 import smallBorder from '../images/smallborder.svg';
+import extrasmallBorder from '../images/extrasmallborder.svg';
+
 
 const Title = styled.h1`
   position: absolute;
@@ -23,6 +25,29 @@ const Title = styled.h1`
   height: 80px;
   width: 660px;
   padding: 15px;
+  transition: all 1s ease;
+
+  @media (max-width: 1240px) {
+    left: 23.5%;
+  }
+
+  @media (max-width: 960px) {
+    left: 15.5%;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 25px;
+    height: 50px;
+    width: 390px;
+    padding: 5px;
+    background: url(${extrasmallBorder}) no-repeat;
+    top: 4%;
+  }
+
+  @media (max-width: 500px) {
+    width: 290px;
+    top: 2%;
+  }
 `;
 
 const Cards = () => {
