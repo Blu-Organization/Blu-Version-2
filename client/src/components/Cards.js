@@ -5,55 +5,59 @@ import styled from 'styled-components';
 
 const Title = styled.h1`
   color: black;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
 `;
 
 const Cards = () => {
   return (
     <div className='cards'>
       <Title>
-        Search For Popular Games
+        Newly Created Valorant Teams
       </Title>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
-              src='images/league.png'
-              text='League Of Legends'
-              label='MOBA'
+              src='images/nrg.jpg'
+              text='Energy Gaming'
+              label='NRG'
               path='/gamelobby'
             />
             <CardItem
-              src='images/overwatch.jpg'
-              text='Overwatch'
-              label='First Person Shooter'
+              src='images/blu.png'
+              text='Buddies Like U'
+              label='BLU'
               path='/gamelobby'
             />
             <CardItem
-              src='images/val.jpg'
-              text='Valorant'
-              label='First Person Shooter'
+              src='images/c9.jpg'
+              text='Cloud Gaming'
+              label='C9'
               path='/gamelobby'
             />
           </ul>
           <ul className='cards__items'>
             <CardItem
-              src='images/amongus.jpg'
-              text='Among Us'
-              label='Party, social deduction'
+              src='images/TL.png'
+              text='Team Liquid'
+              label='TL'
               path='/gamelobby'
             />
             <CardItem
-              src='images/tarkov.jpg'
-              text='Escape From Tarkov'
-              label='First Person Shooter'
+              src='images/faze.jpg'
+              text='Faze Clan'
+              label='FC'
               path='/gamelobby'
             />
             <CardItem
-              src='images/callofduty.jpg'
-              text='Call of Duty'
-              label='First Person Shooter'
+              src='images/100t.jpg'
+              text='100 Thieves'
+              label='100t'
               path='/gamelobby'
             />
           </ul>

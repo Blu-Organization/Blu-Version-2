@@ -87,7 +87,8 @@
 
 .cards__item__info {
   padding: 20px 30px 30px;
-  background-color: #f6f6f6;
+  background-color: #d5d5d5;
+  text-align: center;
 }
 
 .cards__item__text {
