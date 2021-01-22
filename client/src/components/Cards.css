@@ -1,19 +1,22 @@
 .cards {
   padding: 4rem;
+  margin-top: 2em;
+  position: relative;
 }
 
 .cards__container {
   display: flex;
   flex-flow: column;
   align-items: center;
-  max-width: 1120px;
-  width: 90%;
+  width: 86%;
   margin: 0 auto;
+  background-color: #1d1f22;
+  height: 90vh;
 }
 
 .cards__wrapper {
   position: relative;
-  margin: 50px 0 45px;
+  margin: 65px 0 45px;
 }
 
 .cards__items {
