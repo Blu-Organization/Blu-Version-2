@@ -226,15 +226,74 @@ const WelcomeDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #13090c1f;
+  padding: 40px;
 `;
 
 const WelcomeText = styled.span`
   color: white;
-  font-weight: 300;
+  font-weight: 600;
+  font-family: SF Pro Display;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const DisplayContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 3em;
+`;
+
+const DisplayCard = styled.div`
+  width: 350px;
+  height: 470px;
+  background: linear-gradient(169.98deg,#5c5b89 2.82%,#9b938d 96.25%);
+  border-radius: 10px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.31);
+  }
+`;
+
+const DisplayTitleContainer = styled.div`
+  text-align: center;
+  margin: 2em 4em;
+`;
+
+const DisplayTitle = styled.span`
   font-family: SF Pro Display;
   font-style: normal;
+  font-weight: bold;
   font-size: 20px;
-  line-height: 40px;
+  line-height: 24px;
+  color: #e1e1e1;
+  text-align: center;
+`;
+
+const DisplayEntryContainer = styled.div`
+  margin: 1em 2em;
+`;
+
+const DisplayCardSteps = styled.span`
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  color: #dbcaff;
+  margin-right: 5px;
+`;
+
+const DisplayCardText = styled.span`
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 18px;
+  color: #e1e1e1;
 `;
 
 const SignUpPage = ({ fetchCurrentUser }) => {
@@ -684,10 +743,49 @@ const SignUpPage = ({ fetchCurrentUser }) => {
           <WelcomeDiv>
             <WelcomeText>Welcome to the Blu family! Start exploring the best Valorant Teams or create your own roster and schedule a match between another team!</WelcomeText>
           </WelcomeDiv>
-          <div>
-            <Button2 location={'log-in'} onClick={() => console.log('this is the local storage of this application ==>',localStorage.getItem('user'))} text={'Log In'}></Button2>
-            <LengthOfButton></LengthOfButton>
-          </div>
+          <DisplayContainer>
+            <DisplayCard>
+              <DisplayTitleContainer>
+                <DisplayTitle>
+                  Create a new Valorant Team
+                </DisplayTitle>
+              </DisplayTitleContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #1:</DisplayCardSteps>
+                <DisplayCardText>Choose a team name to represent your roster!</DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #2:</DisplayCardSteps>
+                <DisplayCardText>Choose a 3 letter team tag.</DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #3:</DisplayCardSteps>
+                <DisplayCardText>Invite your Valorant friends and add them to your team/roster.</DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #4:</DisplayCardSteps>
+                <DisplayCardText>Select specific roles for each player / champion to help organize your roster before competing.</DisplayCardText>
+              </DisplayEntryContainer>
+              <div>
+                <Button2 color="#F5DBE2" location={''} text={'Create Team'}></Button2>
+                <LengthOfButton></LengthOfButton>
+              </div>
+            </DisplayCard>
+            <DisplayCard>
+              <DisplayTitleContainer>
+                <DisplayTitle>
+                  Join an existing Valorant Team
+                </DisplayTitle>
+              </DisplayTitleContainer>
+            </DisplayCard>
+            <DisplayCard>
+              <DisplayTitleContainer>
+                <DisplayTitle>
+                  Explore the Leaderboards
+                </DisplayTitle>
+              </DisplayTitleContainer>
+            </DisplayCard>
+          </DisplayContainer>
         </>
       )
     }
