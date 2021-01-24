@@ -14,7 +14,7 @@ const LengthOfButton = styled.div`
 `;
 
 const MainContainer = styled.div`
-  height: 95vh;
+  height: 105vh;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -228,7 +228,7 @@ const FormInput = styled.input`
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid black;`};
+  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid #EFEFEF;`};
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -289,6 +289,7 @@ const WelcomeText = styled.span`
   line-height: 40px;
   text-align: center;
   max-width: 800px;
+  margin-top: 4em;
 `;
 
 
@@ -298,6 +299,9 @@ const DisplayContainer = styled.div`
   justify-content: center;
   margin-top: 3em;
   flex-wrap: wrap;
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
+}
 `;
 
 const DisplayCard = styled.div`
@@ -350,6 +354,11 @@ const DisplayCardText = styled.span`
   line-height: 18px;
   color: #e1e1e1;
 `;
+
+const FormContainer = styled.div`
+  margin-top: 5em;
+`;
+
 
 const SignUpPage = ({ fetchCurrentUser }) => {
 
@@ -685,7 +694,9 @@ const SignUpPage = ({ fetchCurrentUser }) => {
   const titleSwitch = () => {
     if (!logInTime) {
       return (
-        <Title>Create Account!</Title>
+        <div>
+          <Title>Create Account!</Title>
+        </div>
       )
     } else {
       return (
@@ -699,6 +710,7 @@ const SignUpPage = ({ fetchCurrentUser }) => {
       return (
         <>
           <Form>
+          <FormContainer></FormContainer>
           <FormGroup className="form__group">
             <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} value={username} />
             <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">Username</FormLabel>

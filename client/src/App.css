@@ -29,18 +29,6 @@
   padding: 1em 2em;
 }
 
-.aboutus-container-tracys {
-  display: flex;
-  justify-content: center;
-  padding: 1em 2em;
-}
-
-.aboutus-container-justins {
-  display: flex;
-  justify-content: center;
-  padding: 1em 2em;
-}
-
 .aboutus-section {
   display: flex;
   flex-direction: column;
@@ -60,22 +48,6 @@
   width: 170px;
   border-radius: 5px;
 }
-
-.aboutus-profile-pic-tracy {
-  background: url('images/tracy.jpg') center center/cover no-repeat;
-  height: 207px;
-  width: 170px;
-  border-radius: 5px;
-}
-
-.aboutus-profile-pic-justin {
-  background: url('images/justin.JPG') center center/cover no-repeat;
-  height: 207px;
-  width: 170px;
-  border-radius: 5px;
-}
-
-
 
 .aboutus-section::after {
   content: "";

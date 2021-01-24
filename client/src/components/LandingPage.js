@@ -38,11 +38,12 @@ const DemoLogIn = styled.button`
   cursor: pointer;
   font-size: 16px;
   transition: all 0.5s ease;
+  color: #EFEFEF;
 
   &:hover {
     transition: all 0.5s ease;
     transform: scale(1.1);
-    background: #ed70ed;
+    background: #f84343;
   }
 `;
 
@@ -53,6 +54,7 @@ const Header = styled.h1`
   font-size: 48px;
   line-height: 57px;
   display: inline-block;
+  color: #EFEFEF;
 
   @media (max-width: 960px) {
     font-size: 28px;
@@ -72,6 +74,7 @@ const Text = styled.p`
   font-weight: 300;
   font-size: 20px;
   line-height: 35px;
+  color: #EFEFEF;
 
   @media (max-width: 960px) {
     font-size: 15px;

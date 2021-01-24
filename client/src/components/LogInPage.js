@@ -7,6 +7,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
+import smallBorder from '../images/smallborder.svg';
+import extrasmallBorder from '../images/extrasmallborder.svg';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -14,17 +16,51 @@ const LengthOfButton = styled.div`
 
 const LogInPageContainer = styled.div`
   height: 90vh;
+  position: relative;
 `;
 
 const Title = styled.h1`
-  color: black;
-  font-family: SF Pro Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 40px;
-  text-align: center;
-  padding: 100px 20px 20px 20px;
+position: absolute;
+color: #F5DBE2;
+font-family: SF Pro Display;
+font-style: italic;
+font-weight: 600;
+font-size: 45px;
+line-height: 40px;
+text-align: center;
+z-index: 31;
+left: 30.5%;
+top: 2%;
+text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+10px 20px 5px rgba(0,0,0,0.05),
+-10px 20px 5px rgba(0,0,0,0.05);
+background: url(${smallBorder}) no-repeat;
+height: 80px;
+width: 660px;
+padding: 15px;
+transition: all 1s ease;
+
+@media (max-width: 1240px) {
+  left: 23.5%;
+}
+
+@media (max-width: 960px) {
+  left: 15.5%;
+}
+
+@media (max-width: 800px) {
+  font-size: 25px;
+  height: 50px;
+  width: 390px;
+  padding: 5px;
+  background: url(${extrasmallBorder}) no-repeat;
+  top: 4%;
+}
+
+@media (max-width: 500px) {
+  width: 290px;
+  top: 2%;
+}
 
 `;
 
@@ -46,7 +82,7 @@ const FormInput = styled.input`
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid black;`};
+  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid #EFEFEF;`};
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -99,6 +135,15 @@ const Img5 = styled.img`
 
 const InvalidFormText = styled.span`
   color: red;
+`;
+
+const MarginDiv = styled.div`
+  margin-top: 8.5em;
+`;
+
+const BackgroundLayer = styled.div`
+  // background: #1d1f22;
+  width: 100%;
 `;
 
 const LogInPage = ({ fetchCurrentUser }) => {
@@ -182,27 +227,30 @@ const LogInPage = ({ fetchCurrentUser }) => {
   return (
     <LogInPageContainer>
       <Title>Log In</Title>
-      <Form>
-          <FormGroup className="form__group">
-            <FormInput used={unknownUser} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkUserLogIn(e.target.value);}} value={username} />
-            <FormLabel used={unknownUser} htmlFor="userName" className="form__label">Username</FormLabel>
-            <Div>
-              {unknownUsernameText()}
-            </Div>
-          </FormGroup>
+      <BackgroundLayer>
+        <Form>
+        <MarginDiv></MarginDiv>
+            <FormGroup className="form__group">
+              <FormInput used={unknownUser} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkUserLogIn(e.target.value);}} value={username} />
+              <FormLabel used={unknownUser} htmlFor="userName" className="form__label">Username</FormLabel>
+              <Div>
+                {unknownUsernameText()}
+              </Div>
+            </FormGroup>
 
-          <FormGroup className="form__group">
-            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); handleLocation(e.target.value);}} value={password} />
-            <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
-            <Div>
-              {wrongPasswordText()}
-            </Div>
-          </FormGroup>
-      </Form>
-      <div>
-        <Button2 location={location} text={'Log In'} onClick={() => { passwordValidation(password); setButtonClicked(true);}}></Button2>
-        <LengthOfButton></LengthOfButton>
-      </div>
+            <FormGroup className="form__group">
+              <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); handleLocation(e.target.value);}} value={password} />
+              <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
+              <Div>
+                {wrongPasswordText()}
+              </Div>
+            </FormGroup>
+        </Form>
+        <div>
+          <Button2 location={location} text={'Log In'} onClick={() => { passwordValidation(password); setButtonClicked(true);}}></Button2>
+          <LengthOfButton></LengthOfButton>
+        </div>
+      </BackgroundLayer>
       <div className="empty-icon-container">
 
         <div className="animation-container">
