@@ -6,28 +6,79 @@ import Button2 from './subComponents/Button2.js';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
+import smallBorder from '../images/smallborder.svg';
+import extrasmallBorder from '../images/extrasmallborder.svg';
 
 const LengthOfButton = styled.div`
   width: 250px;
 `;
 
 const MainContainer = styled.div`
-  height: 115vh;
+  height: 105vh;
   width: 100%;
   justify-content: center;
   align-items: center;
   object-fit: contain;
+
+  @media (max-width: 1243px) {
+    height: 150vh;
+  }
+
+  @media (max-width: 830px) {
+    height: 220vh;
+  }
+
+  @media (max-width: 375px) {
+    height: 260vh;
+  }
+`;
+
+const ContentContainer = styled.div`
+  position: relative;
 `;
 
 const Title = styled.h1`
-  color: black;
-  font-family: SF Pro Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 40px;
-  text-align: center;
-  padding: 20px;
+position: absolute;
+color: #F5DBE2;
+font-family: SF Pro Display;
+font-style: italic;
+font-weight: 600;
+font-size: 45px;
+line-height: 40px;
+text-align: center;
+z-index: 31;
+left: 30.5%;
+top: 2%;
+text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+10px 20px 5px rgba(0,0,0,0.05),
+-10px 20px 5px rgba(0,0,0,0.05);
+background: url(${smallBorder}) no-repeat;
+height: 80px;
+width: 660px;
+padding: 15px;
+transition: all 1s ease;
+
+@media (max-width: 1240px) {
+  left: 23.5%;
+}
+
+@media (max-width: 960px) {
+  left: 15.5%;
+}
+
+@media (max-width: 800px) {
+  font-size: 25px;
+  height: 50px;
+  width: 390px;
+  padding: 5px;
+  background: url(${extrasmallBorder}) no-repeat;
+  top: 4%;
+}
+
+@media (max-width: 500px) {
+  width: 290px;
+  top: 2%;
+}
 `;
 
 const Form = styled.form`
@@ -177,7 +228,7 @@ const FormInput = styled.input`
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid black;`};
+  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid #EFEFEF;`};
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -237,13 +288,20 @@ const WelcomeText = styled.span`
   font-size: 25px;
   line-height: 40px;
   text-align: center;
+  max-width: 800px;
+  margin-top: 4em;
 `;
+
 
 const DisplayContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 3em;
+  flex-wrap: wrap;
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
+}
 `;
 
 const DisplayCard = styled.div`
@@ -252,6 +310,7 @@ const DisplayCard = styled.div`
   background: linear-gradient(169.98deg,#5c5b89 2.82%,#9b938d 96.25%);
   border-radius: 10px;
   transition: all 0.5s ease;
+  margin: 2em;
 
   &:hover {
     box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.31);
@@ -295,6 +354,11 @@ const DisplayCardText = styled.span`
   line-height: 18px;
   color: #e1e1e1;
 `;
+
+const FormContainer = styled.div`
+  margin-top: 5em;
+`;
+
 
 const SignUpPage = ({ fetchCurrentUser }) => {
 
@@ -630,7 +694,9 @@ const SignUpPage = ({ fetchCurrentUser }) => {
   const titleSwitch = () => {
     if (!logInTime) {
       return (
-        <Title>Create Account!</Title>
+        <div>
+          <Title>Create Account!</Title>
+        </div>
       )
     } else {
       return (
@@ -644,6 +710,7 @@ const SignUpPage = ({ fetchCurrentUser }) => {
       return (
         <>
           <Form>
+          <FormContainer></FormContainer>
           <FormGroup className="form__group">
             <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} value={username} />
             <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">Username</FormLabel>
@@ -767,7 +834,7 @@ const SignUpPage = ({ fetchCurrentUser }) => {
                 <DisplayCardText>Select specific roles for each player / champion to help organize your roster before competing.</DisplayCardText>
               </DisplayEntryContainer>
               <div>
-                <Button2 color="#F5DBE2" location={''} text={'Create Team'}></Button2>
+                <Button2 color="#F5DBE2" location={''} text={'Create a Team'}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </DisplayCard>
@@ -777,13 +844,49 @@ const SignUpPage = ({ fetchCurrentUser }) => {
                   Join an existing Valorant Team
                 </DisplayTitle>
               </DisplayTitleContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #1:</DisplayCardSteps>
+                <DisplayCardText>Explore Valorant teams that are actively recruiting. </DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #2:</DisplayCardSteps>
+                <DisplayCardText>After choosing a Valorant team, send the team a request to join the roster. </DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #3:</DisplayCardSteps>
+                <DisplayCardText>If the team accepts your request, then you’re all set! Start chatting with your team and begin competing!</DisplayCardText>
+              </DisplayEntryContainer>
+              <div>
+                <Button2 color="#F5DBE2" location={''} text={'Find a Team'}></Button2>
+                <LengthOfButton></LengthOfButton>
+              </div>
             </DisplayCard>
             <DisplayCard>
               <DisplayTitleContainer>
                 <DisplayTitle>
-                  Explore the Leaderboards
+                  Some important tips and rules!
                 </DisplayTitle>
               </DisplayTitleContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #1:</DisplayCardSteps>
+                <DisplayCardText>Bring the competetive spirit and drive.</DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #2:</DisplayCardSteps>
+                <DisplayCardText>Strive to reach to the top of the leaderboards!</DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #3:</DisplayCardSteps>
+                <DisplayCardText>No rude, racial slurs, or bullying will be accepted.</DisplayCardText>
+              </DisplayEntryContainer>
+              <DisplayEntryContainer>
+                <DisplayCardSteps>Step #4:</DisplayCardSteps>
+                <DisplayCardText>Always have fun and enjoy this platform!</DisplayCardText>
+              </DisplayEntryContainer>
+              <div>
+                <Button2 color="#F5DBE2" location={''} text={'Explore More'}></Button2>
+                <LengthOfButton></LengthOfButton>
+              </div>
             </DisplayCard>
           </DisplayContainer>
         </>
@@ -793,10 +896,10 @@ const SignUpPage = ({ fetchCurrentUser }) => {
 
   return (
     <MainContainer>
-    <div>
+    <ContentContainer>
       {titleSwitch()}
-    </div>
       {formContent()}
+    </ContentContainer>
     </MainContainer>
   )
 }

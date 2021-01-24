@@ -49,7 +49,7 @@
 }
 
 .nav-links {
-  color: black;
+  color: #EFEFEF;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -63,7 +63,7 @@
 }
 
 .nav-links:hover {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #EFEFEF;
   transition: all 0.2s ease-out;
 }
 

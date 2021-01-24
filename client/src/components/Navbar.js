@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 const Logo = styled.img`
   height: 112px;
   border-radius: 50%;
+  border: 1px solid #5194fe;
   @media (max-width: 960px) {
     position: absolute;
     top: 0;
@@ -50,7 +51,7 @@ const DropDownListContainer = styled.div`
 `;
 
 const ProfileName = styled.span`
-  color: black;
+  color: #f84343;
   margin-left: 10px;
   text-transform: uppercase;
   font-family: SF Pro Display;

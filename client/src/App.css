@@ -27,18 +27,8 @@
   display: flex;
   justify-content: center;
   padding: 1em 2em;
-}
-
-.aboutus-container-tracys {
-  display: flex;
-  justify-content: center;
-  padding: 1em 2em;
-}
-
-.aboutus-container-justins {
-  display: flex;
-  justify-content: center;
-  padding: 1em 2em;
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
 }
 
 .aboutus-section {
@@ -60,22 +50,6 @@
   width: 170px;
   border-radius: 5px;
 }
-
-.aboutus-profile-pic-tracy {
-  background: url('images/tracy.jpg') center center/cover no-repeat;
-  height: 207px;
-  width: 170px;
-  border-radius: 5px;
-}
-
-.aboutus-profile-pic-justin {
-  background: url('images/justin.JPG') center center/cover no-repeat;
-  height: 207px;
-  width: 170px;
-  border-radius: 5px;
-}
-
-
 
 .aboutus-section::after {
   content: "";
@@ -100,7 +74,7 @@
 }
 
 .aboutus-header {
-  color: black;
+  color: #EFEFEF;
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 500;
@@ -111,7 +85,7 @@
 }
 
 .aboutus-header2 {
-  color: black;
+  color: #EFEFEF;
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 500;
@@ -122,7 +96,7 @@
 }
 
 .aboutus-text {
-  color: white;
+  color: #EFEFEF;
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 300;

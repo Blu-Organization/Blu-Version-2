@@ -27,7 +27,7 @@ const ButtonATag = styled.a`
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 0 0 1px inset rgb(0 0 0 / .5);
+  box-shadow: 0 0 0 1px inset rgb(80 149 255);
   position: relative;
   margin: 10px 0;
   z-index: 20;
@@ -80,7 +80,7 @@ const ButtonBase = styled.span`
   width: 100%;
   height: 100%;
   left: 0;
-  border: 1px solid black;
+  border: 1px solid #EFEFEF;
   z-index: 20;
 
   &:before {
@@ -97,7 +97,7 @@ const ButtonBase = styled.span`
 `;
 
 const ButtonText = styled.span`
-  color: ${(props) => props.color ? props.color : 'black'};
+  color: ${(props) => props.color ? props.color : '#EFEFEF'};
   z-index: 4;
   width: 100%;
   height: 100%;
@@ -120,11 +120,6 @@ const ButtonText = styled.span`
     transition: 0.3s ease-out all;
     z-index: 5;
   }
-
-  // &:hover {
-  //   color: black;
-  // }
-
 `;
 
 const Button2 = ({location, onClick, text, onMouseOver, color }) => {
