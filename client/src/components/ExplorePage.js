@@ -56,6 +56,7 @@ const ExplorePage = () => {
         </SearchForm>
         <Title>
           <TitleText>hello</TitleText>
+          <TitleText>GOODBYEEE</TitleText>
         </Title>
       </div>
     </div>
