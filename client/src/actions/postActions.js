@@ -1,6 +1,5 @@
 import {
   FETCH_POSTS,
-  NEW_POST,
   currentGame,
   currentUser
 } from './types.js';
