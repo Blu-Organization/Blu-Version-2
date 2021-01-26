@@ -118,27 +118,6 @@
   justify-content: center;
 }
 
-.exploremore {
-  color: #fff;
-  font-size: 12px;
-  display: block;
-  height: 90vh;
-  justify-content: center;
-}
-
-.explore-input {
-  padding: 7px 20px;
-  border-radius: 3px;
-  margin-right: 10px;
-  outline: none;
-  border: none;
-  font-size: 18px;
-  border: 1px solid #fff;
-  vertical-align: middle;
-}
-
-
-
 
 @media screen and (max-width: 960px) {
 

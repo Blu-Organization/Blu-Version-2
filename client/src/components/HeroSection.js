@@ -41,10 +41,6 @@ const TextContainerCover = styled.div`
   }
 `;
 
-const DemoVidText = styled(NewTeamText)`
-  color: black;
-`;
-
 const HeroSection = () => {
 
   let button1 = useRef(null);
