@@ -1,6 +1,7 @@
 const pool = require('./index.js');
 
 module.exports = {
+
   getUserUsername: (name, callback) => {
     let queryStr = `SELECT * FROM users WHERE username='${name}'`;
     pool.query(queryStr, (err, result) => {
@@ -11,6 +12,7 @@ module.exports = {
       }
     })
   },
+
   getUserEmail: (email, callback) => {
     let queryStr = `SELECT * FROM users WHERE email='${email}'`;
     pool.query(queryStr, (err, result) => {
@@ -45,4 +47,6 @@ module.exports = {
       }
     })
   }
+
+
 }

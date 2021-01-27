@@ -20,7 +20,7 @@ app.get('/api/userUsername', (req, res) => {
       res.status(200).send(results);
     }
   })
-})
+});
 
 app.get('/api/userEmail', (req, res) => {
   dbHelpers.getUserEmail(req.query.email, (err, results) => {
@@ -30,7 +30,7 @@ app.get('/api/userEmail', (req, res) => {
       res.status(200).send(results);
     }
   })
-})
+});
 
 app.post('/api/postUser', (req, res) => {
   dbHelpers.signUpUser(req.body, (err, results) => {
@@ -40,6 +40,8 @@ app.post('/api/postUser', (req, res) => {
       res.status(200).send('Successful post to users!')
     }
   })
-})
+});
+
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
