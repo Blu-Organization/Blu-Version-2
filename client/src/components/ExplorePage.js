@@ -78,6 +78,7 @@ const ExploreMoreText = styled.span`
   font-size: 20px;
   padding: 15px;
   cursor: pointer;
+  color: #D2CEFF;
 
   &:hover {
     background: #101025;
@@ -122,7 +123,8 @@ const TitleDiv = styled.div`
 
 const ExploreMoreFooter = styled.div`
   display: flex;
-  margin-top: 3em;
+  margin-top: 5em;
+  margin-bottom: 3em;
 `;
 
 const LeaderboardsContainer = styled.div`
