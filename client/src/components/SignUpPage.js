@@ -857,7 +857,7 @@ const SignUpPage = ({ fetchCurrentUser }) => {
                 <DisplayCardText>If the team accepts your request, then you’re all set! Start chatting with your team and begin competing!</DisplayCardText>
               </DisplayEntryContainer>
               <div>
-                <Button2 color="#F5DBE2" location={''} text={'Find a Team'}></Button2>
+                <Button2 color="#F5DBE2" location={''} text={'Explore Teams'}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </DisplayCard>
@@ -883,10 +883,6 @@ const SignUpPage = ({ fetchCurrentUser }) => {
                 <DisplayCardSteps>Step #4:</DisplayCardSteps>
                 <DisplayCardText>Always have fun and enjoy this platform!</DisplayCardText>
               </DisplayEntryContainer>
-              <div>
-                <Button2 color="#F5DBE2" location={''} text={'Explore More'}></Button2>
-                <LengthOfButton></LengthOfButton>
-              </div>
             </DisplayCard>
           </DisplayContainer>
         </>

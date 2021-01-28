@@ -64,7 +64,7 @@ const LeaderboardTitle = styled(Title)`
 
 const ExploreMoreTitle = styled.h1`
   color: #EFEFEF;
-  min-width: 182px;
+  min-width: 400px;
   text-align: center;
   line-height: 0em;
   letter-spacing: 2px;
@@ -84,6 +84,10 @@ const ExploreMoreText = styled.span`
     background: #101025;
     border-radius: 6px;
   }
+`;
+
+const ExploreMoreFromTeam = styled(ExploreMoreTitle)`
+  min-width: 313px;
 `;
 
 const SmallLines = styled.div`
@@ -355,9 +359,9 @@ const ExplorePage = () => {
 
           <ExploreMoreFooter>
             <SmallLines></SmallLines>
-            <ExploreMoreTitle>
-              <ExploreMoreText>Explore More</ExploreMoreText>
-            </ExploreMoreTitle>
+            <ExploreMoreFromTeam>
+              <ExploreMoreText>Explore More From Teams</ExploreMoreText>
+            </ExploreMoreFromTeam>
             <SmallLines></SmallLines>
           </ExploreMoreFooter>
 
@@ -539,6 +543,14 @@ const ExplorePage = () => {
               </LeaderboardList>
 
           </LeaderboardsContainer>
+
+          <ExploreMoreFooter>
+            <SmallLines></SmallLines>
+            <ExploreMoreTitle>
+              <ExploreMoreText>Explore More From Leaderboards</ExploreMoreText>
+            </ExploreMoreTitle>
+            <SmallLines></SmallLines>
+          </ExploreMoreFooter>
 
         </MainContentContainer>
       </ExploreMore>
