@@ -46,109 +46,146 @@ const teams = [
   {
     name: 'Energy Gaming',
     label: 'NRG',
-    image: 'https://ih1.redbubble.net/image.605886123.3520/flat,750x1000,075,f.u2.jpg'
+    image: 'https://ih1.redbubble.net/image.605886123.3520/flat,750x1000,075,f.u2.jpg',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Buddies Like U',
     label: 'BLU',
-    image: 'images/blu.png'
+    image: 'images/blu.png',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Cloud Gaming',
     label: 'C9',
-    image: 'images/c9.jpg'
+    image: 'images/c9.jpg',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Team Liquid',
     label: 'TL',
-    image: 'images/TL.png'
+    image: 'images/TL.png',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Faze Clan',
     label: 'FC',
-    image: 'images/faze.jpg'
+    image: 'images/faze.jpg',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: '100 Thieves',
     label: '100t',
-    image: 'images/100t.jpg'
+    image: 'images/100t.jpg',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Sentinals',
     label: 'SEN',
-    image: 'images/senti.jpg'
+    image: 'images/senti.jpg',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Team Solo Mid',
     label: 'TSM',
-    image: 'images/tsm.png'
+    image: 'images/tsm.png',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'GenG Legends',
     label: 'GenG',
-    image: 'images/geng.png'
+    image: 'images/geng.png',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'G2 Esports',
     label: 'G2',
-    image: 'images/g2.png'
+    image: 'images/g2.png',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   },
   {
     name: 'Team Envy',
     label: 'ENVY',
-    image: 'images/envy.png'
+    image: 'images/envy.png',
     rank: checkRank().rank,
     rating: checkRank().ratingNum,
-    members: randomNumberGenerator(100),
-    wins: randomNumberGenerator(200);
+    members: randomNumberGenerator(0, 100),
+    wins: randomNumberGenerator(0, 200)
   }
 
 ]
 
 
-const CreateRandomTeams = () => {
+const createRandomTeams = () => {
   const teamArr = [];
-  for (let i = 0; i < 100; i++) {
 
+  for (let i = 0; i < 100; i++) {
+    teamArr.push(teams[randomNumberGenerator(0, 10)])
   }
+
+  return teamArr;
 }
+
+const insertTeamsData = () => {
+  const teamData = createRandomTeams();
+
+  teamData.forEach((team) => {
+    db.query(`INSERT INTO teams(
+      teamname,
+      teamimage,
+      tagname,
+      teammembers,
+      teamrating,
+      teamrank,
+      teamwins
+      )
+    VALUES(
+      '${team.name}',
+      '${team.image}',
+      '${team.label}',
+      ${team.members},
+      ${team.rating},
+      '${team.rank}',
+      ${team.wins}
+    )`,  (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('TEAM SEED SUCCESS!');
+      }
+    });
+  })
+}
+
+
+insertTeamsData();

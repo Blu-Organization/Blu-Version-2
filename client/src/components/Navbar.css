@@ -68,7 +68,7 @@
 }
 
 .fa-bars {
-  color: black;
+  color: rgb(228, 228, 228);
 }
 
 .nav-links-mobile {
@@ -156,7 +156,7 @@
   }
 
   .fa-times {
-    color: black;
+    color: rgb(192, 33, 33);
     font-size: 2rem;
   }
 

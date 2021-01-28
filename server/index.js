@@ -7,7 +7,6 @@ const port = 5000;
 
 const dbHelpers = require('../database/dbHelpers');
 
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,6 +40,20 @@ app.post('/api/postUser', (req, res) => {
     }
   })
 });
+
+app.get('/api/teams', (req, res) => {
+  dbHelpers.getTeams((err, results) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(results);
+    }
+  })
+})
+
+app.get('/api/test', (req, res) => {
+  res.status(200).send('HELLO FROM SERVER');
+})
 
 
 
