@@ -46,6 +46,17 @@ module.exports = {
         callback(null, result);
       }
     })
+  },
+
+  getTeams: (callback) => {
+    let queryStr = `SELECT * FROM teams`;
+    pool.query(queryStr, (err, result) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, result);
+      }
+    })
   }
 
 

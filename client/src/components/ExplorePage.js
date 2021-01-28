@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CardItem from './CardItem.js';
+import axios from 'axios';
 
 const MainContentContainer = styled.div`
   margin: 0 60px;
@@ -213,6 +214,55 @@ const Div15 = styled.div`
 `;
 
 const ExplorePage = () => {
+
+  const [teamData, setTeamData] = useState([]);
+  const [smallTeamData, setSmallTeamData] = useState([]);
+
+
+  useEffect(() => {
+    getTeamData();
+  }, [])
+
+  const randomNumberGenerator = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  const getTeamData = () => {
+    axios.get('/api/teams')
+      .then((res) => {
+        let cardArr = [];
+        for (let i = 0; i < 14; i++) {
+          const teamCard = res.data.rows[randomNumberGenerator(0, res.data.rows.length - 1)];
+          cardArr.push(teamCard);
+        }
+        setSmallTeamData(cardArr);
+        setTeamData(res.data.rows);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  }
+
+
+  const displayTeamCards = () => {
+    return (
+      smallTeamData.map((team, index) => {
+        return (
+          <CardItem
+            key={index}
+            src={team.teamimage}
+            text={team.teamname}
+            textClass='small__cards__item__text'
+            label={team.tagname}
+            path='/gamelobby'
+            classSize='small__cards__item__link'
+          />
+        )
+      })
+    )
+  }
+
+
   return (
     <div>
       <ExploreMore>
@@ -241,120 +291,7 @@ const ExplorePage = () => {
           </TitleContainer>
 
           <CardsList>
-            <CardItem
-              src='images/nrg.jpg'
-              text='Energy Gaming'
-              textClass='small__cards__item__text'
-              label='NRG'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/blu.png'
-              text='Buddies Like U'
-              textClass='small__cards__item__text'
-              label='BLU'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/c9.jpg'
-              text='Cloud Gaming'
-              textClass='small__cards__item__text'
-              label='C9'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/TL.png'
-              text='Team Liquid'
-              textClass='small__cards__item__text'
-              label='TL'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/faze.jpg'
-              text='Faze Clan'
-              textClass='small__cards__item__text'
-              label='FC'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/100t.jpg'
-              text='100 Thieves'
-              textClass='small__cards__item__text'
-              label='100t'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-
-
-            <CardItem
-              src='images/senti.jpg'
-              text='Sentinals'
-              textClass='small__cards__item__text'
-              label='SEN'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/tsm.png'
-              text='Team Solo Mid'
-              textClass='small__cards__item__text'
-              label='TSM'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/geng.png'
-              text='GenG Legends'
-              textClass='small__cards__item__text'
-              label='GenG'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/g2.png'
-              text='G2 Esports'
-              textClass='small__cards__item__text'
-              label='G2'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/envy.png'
-              text='Team Envy'
-              textClass='small__cards__item__text'
-              label='ENVY'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/geng.png'
-              text='GenG Legends'
-              textClass='small__cards__item__text'
-              label='GenG'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/g2.png'
-              text='G2 Esports'
-              textClass='small__cards__item__text'
-              label='G2'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
-            <CardItem
-              src='images/envy.png'
-              text='Team Envy'
-              textClass='small__cards__item__text'
-              label='ENVY'
-              path='/gamelobby'
-              classSize='small__cards__item__link'
-            />
+            {displayTeamCards()}
           </CardsList>
 
           <ExploreMoreFooter>
