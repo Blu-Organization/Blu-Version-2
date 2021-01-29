@@ -176,6 +176,11 @@ const LeaderboardText = styled.span`
   color: #F0F0F0;
 `;
 
+const LeaderboardRankText = styled(LeaderboardText)`
+  font-size: 30px;
+  color: #ce1454;
+`;
+
 const LeaderboardList = styled.ul`
   width: 100%;
   list-style: none;
@@ -216,11 +221,13 @@ const Div15 = styled.div`
 const ExplorePage = () => {
 
   const [teamData, setTeamData] = useState([]);
+  const [top10Teams, setTop10Teams] = useState([]);
   const [smallTeamData, setSmallTeamData] = useState([]);
 
 
   useEffect(() => {
     getTeamData();
+    getTop10Teams();
   }, [])
 
   const randomNumberGenerator = (min, max) => {
@@ -243,6 +250,16 @@ const ExplorePage = () => {
       })
   }
 
+  const getTop10Teams = () => {
+    axios.get('/api/top10teams')
+      .then((res) => {
+        setTop10Teams(res.data.rows);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  }
+
 
   const displayTeamCards = () => {
     return (
@@ -257,6 +274,35 @@ const ExplorePage = () => {
             path='/gamelobby'
             classSize='small__cards__item__link'
           />
+        )
+      })
+    )
+  }
+
+  //Add star for top 3 or for just top 1 team.
+
+  const displayTeamLeaderboards = () => {
+    return (
+      top10Teams.map((team, index) => {
+        return (
+          <LeaderboardEntry>
+            <Div10>
+            <LeaderboardRankText>{index + 1}</LeaderboardRankText>
+              {/* <RankImg src={team.teamrank} alt='radiant' /> */}
+            </Div10>
+            <Div10>
+              <LeaderboardText>{team.teamrating}</LeaderboardText>
+            </Div10>
+            <Div50TeamName>
+              <LeaderboardText>{team.teamname}</LeaderboardText>
+            </Div50TeamName>
+            <Div15>
+              <LeaderboardText>{team.teammembers}</LeaderboardText>
+            </Div15>
+            <Div15>
+              <LeaderboardText>{team.teamwins}</LeaderboardText>
+            </Div15>
+          </LeaderboardEntry>
         )
       })
     )
@@ -333,149 +379,7 @@ const ExplorePage = () => {
                   </Div15>
                 </TitleListEntry>
 
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/radiant.png' alt='radiant' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>736</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>Blu Gaming</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>28</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>100</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/radiant.png' alt='radiant' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>712</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>100 Theives</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>120</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>90</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/radiant.png' alt='radiant' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>680</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>Team Solo Mid</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>89</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>85</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/radiant.png' alt='radiant' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>610</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>Team Envy</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>140</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>79</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/immortal.png' alt='immortal' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>510</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>Team Liquid</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>92</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>59</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/immortal.png' alt='immortal' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>480</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>Faze Clan</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>20</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>51</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/immortal.png' alt='immortal' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>460</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>Sentinals</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>30</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>102</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
-
-                <LeaderboardEntry>
-                  <Div10>
-                    <RankImg src='images/immortal.png' alt='immortal' />
-                  </Div10>
-                  <Div10>
-                    <LeaderboardText>442</LeaderboardText>
-                  </Div10>
-                  <Div50TeamName>
-                    <LeaderboardText>G2 Esports</LeaderboardText>
-                  </Div50TeamName>
-                  <Div15>
-                    <LeaderboardText>59</LeaderboardText>
-                  </Div15>
-                  <Div15>
-                    <LeaderboardText>23</LeaderboardText>
-                  </Div15>
-                </LeaderboardEntry>
+                {displayTeamLeaderboards()}
 
               </LeaderboardList>
 

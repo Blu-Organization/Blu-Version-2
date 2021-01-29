@@ -57,6 +57,17 @@ module.exports = {
         callback(null, result);
       }
     })
+  },
+
+  getTop10Teams: (callback) => {
+    let queryStr = `select distinct * from teams order by teamrating  desc limit 10;`;
+    pool.query(queryStr, (err, result) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, result);
+      }
+    })
   }
 
 
