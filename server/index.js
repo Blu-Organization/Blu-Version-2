@@ -49,6 +49,16 @@ app.get('/api/teams', (req, res) => {
       res.status(200).send(results);
     }
   })
+});
+
+app.get('/api/top10teams', (req, res) => {
+  dbHelpers.getTop10Teams((err, results) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).json(results);
+    }
+  })
 })
 
 app.get('/api/test', (req, res) => {

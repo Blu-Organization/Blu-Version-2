@@ -6,8 +6,8 @@
   background-color: black;
   mix-blend-mode: normal;
   border-radius: 40px;
-  margin-top: -30px;
-  margin-left: -30px;
+  margin-top: -15px;
+  margin-left: -15px;
   transition: all 1s ease;
   box-shadow: 0px 10vw 9vw -6vw rgba(0, 0, 0, 0.5);
 }
@@ -34,8 +34,8 @@
 .side-picture {
   width: 350px;
   height: 200px;
-  margin-top: -30px;
-  margin-left: -30px;
+  margin-top: -15px;
+  margin-left: -15px;
   background: url('../images/bluhome2.png') center/cover no-repeat;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
   border-radius: 40px;
