@@ -8,6 +8,7 @@ import ExploreMore from './components/pages/ExploreMore.js';
 import LogIn from './components/pages/LogIn.js';
 import SignUp from './components/pages/SignUp.js';
 import GameLobby from './components/pages/GameLobby.js';
+import CreateTeam from './components/pages/CreateTeam.js';
 import Profile from './components/pages/Profile.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
@@ -37,6 +38,7 @@ function App({fetchCurrentUser}) {
               <Route path='/sign-up' component={SignUp}></Route>
               <Route path='/gamelobby' component={GameLobby}></Route>
               <Route path='/profile' component={Profile}></Route>
+              <Route path='/create-team' component={CreateTeam}></Route>
             </Switch>
         </Router>
       </div>

@@ -223,9 +223,20 @@ const ExplorePage = () => {
   const [teamData, setTeamData] = useState([]);
   const [top10Teams, setTop10Teams] = useState([]);
   const [smallTeamData, setSmallTeamData] = useState([]);
+  const [test, setTest] = useState('');
 
 
   useEffect(() => {
+    // fetch('https://na.api.riotgames.com/val/content/v1/contents?api_key=RGAPI-946cae44-0e44-4f0a-a843-3eca5a317588')
+    //   .then((response) => {
+    //     response.json();
+    //   })
+    //   .then((data) => {
+    //     setTest(data);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   })
     getTeamData();
     getTop10Teams();
   }, [])
