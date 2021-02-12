@@ -1,0 +1,25 @@
+//Text Colors
+$textColorWhite: #EFEFEF;
+
+//Button Colors:
+$btnTextBlue: #BDF3FF;
+$btnTextPink: #F5DBE2;
+
+//Background Layer Colors:
+$backgroundLayer: #1d1f22;
+
+//Fonts:
+$primaryFont: 'Montserrat', sans-serif;
+
+//Display Positions:
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexColumnCenter {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
