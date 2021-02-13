@@ -25,7 +25,6 @@ const ButtonATag = styled.a`
   font-weight: 900;
   color: #fff;
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
   box-shadow: 0 0 0 1px inset rgb(80 149 255);
   position: relative;
@@ -104,7 +103,7 @@ const ButtonText = styled.span`
   position: absolute;
   left: 0;
   top: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   z-index: 20;
 
