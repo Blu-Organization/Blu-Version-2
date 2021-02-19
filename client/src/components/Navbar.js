@@ -6,6 +6,7 @@ import './Navbar.css';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
+import { textColor, neutrals } from '../utils/index';
 
 const Logo = styled.img`
   height: 112px;
@@ -34,7 +35,7 @@ const DropDown = styled.div`
 `;
 
 const ProfileDropDown = styled.div`
-  background: #35383a;
+  background: ${neutrals.dark[200]};
   position: absolute;
   right: -28px;
   width: 120px;
@@ -51,9 +52,8 @@ const DropDownListContainer = styled.div`
 `;
 
 const ProfileName = styled.span`
-  color: #f84343;
+  color: ${textColor.subText[100]};
   margin-left: 10px;
-  text-transform: uppercase;
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 600;

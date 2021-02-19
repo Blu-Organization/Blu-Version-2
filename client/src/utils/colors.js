@@ -27,7 +27,8 @@ export const neutrals = {
     100: "#d3cece"
   },
   dark: {
-    100: "#13090c1f"
+    100: "#13090c1f",
+    200: "#35383a"
   }
 }
 
