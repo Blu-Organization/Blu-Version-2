@@ -15,7 +15,7 @@ const NewTeamText = styled.span`
   color: ${(props) => props.color ? props.color : 'white'};
   font-family: SF Pro Display;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 20px;
   line-height: 35px;
   opacity: ${(props) => props.show ? 1 : 0};
