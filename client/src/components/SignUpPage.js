@@ -8,6 +8,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
+import { textColor, colors, neutrals, validationColors } from '../utils/index.js';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -39,7 +40,7 @@ const ContentContainer = styled.div`
 
 const Title = styled.h1`
 position: absolute;
-color: #F5DBE2;
+color: ${textColor[200]};
 font-family: SF Pro Display;
 font-style: italic;
 font-weight: 600;
@@ -114,9 +115,8 @@ const ButtonATag = styled.a`
   padding: 8px;
   font-size: 0.8rem;
   font-weight: 900;
-  color: #7FA7F4;
+  color: ${colors.primary};
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
   box-shadow: 0 0 0 1px inset rgba(236, 232, 225, 0.3);
   position: relative;
@@ -172,7 +172,7 @@ const ButtonBase = styled.span`
   width: 100%;
   height: 100%;
   left: 0;
-  border: 1px solid #7FA7F4;
+  border: 1px solid ${colors.primary};
 
   &:before {
     content: "";
@@ -202,7 +202,7 @@ const ButtonText = styled.span`
     height: 4px;
     right: 0;
     bottom: 0;
-    background: #7FA7F4;
+    background: ${colors.primary};
     position: absolute;
     -webkit-transition: 0.3s ease-out all;
     transition: 0.3s ease-out all;
@@ -211,7 +211,7 @@ const ButtonText = styled.span`
 `;
 
 const UsernameWarning = styled.span`
-  color: red;
+  color: ${validationColors[100]};
 `;
 
 const Div = styled.div`
@@ -228,7 +228,7 @@ const FormInput = styled.input`
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid #EFEFEF;`};
+  border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -241,7 +241,7 @@ const FormInput = styled.input`
     padding-bottom: 6px;
     font-weight: 700;
     border-width: 3px;
-    border-image: ${(props) => props.used ? `linear-gradient(to right, red, red)` : `linear-gradient(to right, #7FA7F4, #63eb97)`};
+    border-image: ${(props) => props.used ? `linear-gradient(to right, red, red)` : `linear-gradient(to right, ${colors.primary}, ${neutrals[100]})`};
     border-image-slice: 1;
   }
 `;
@@ -252,7 +252,7 @@ const FormLabel = styled.label`
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: ${(props) => props.used ? `red` : `#d3cece`};
+  color: ${(props) => props.used ? `${validationColors[100]}` : `${neutrals.light[100]}`};
 `;
 
 const InvalidFormWarningDiv = styled.div`
@@ -261,15 +261,15 @@ const InvalidFormWarningDiv = styled.div`
 `;
 
 const InvalidFormText = styled.span`
-  color: ${(props) => props.passwordColor ? props.passwordColor : `red`};
+  color: ${(props) => props.passwordColor ? props.passwordColor : `${validationColors[100]}`};
 `;
 
 const ValidFormText = styled.span`
-  color: #7FA7F4;
+  color: ${colors.primary};
 `;
 
 const ValidPasswordText = styled.span`
-  color: #52ff28;
+  color: ${validationColors[300]};
 `;
 
 const WelcomeDiv = styled.div`
@@ -277,12 +277,12 @@ const WelcomeDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #13090c1f;
+  background: ${neutrals.dark[100]};
   padding: 40px;
 `;
 
 const WelcomeText = styled.span`
-  color: white;
+  color: ${textColor[100]};
   font-weight: 600;
   font-family: SF Pro Display;
   font-size: 25px;
@@ -299,8 +299,8 @@ const DisplayContainer = styled.div`
   justify-content: center;
   margin-top: 3em;
   flex-wrap: wrap;
-  border-top: 1px solid #EFEFEF;
-  border-bottom: 1px solid #EFEFEF;
+  border-top: 1px solid ${textColor[100]};
+  border-bottom: 1px solid ${textColor[100]};
 }
 `;
 
@@ -328,7 +328,7 @@ const DisplayTitle = styled.span`
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
-  color: #e1e1e1;
+  color: ${neutrals.light[100]};
   text-align: center;
 `;
 
@@ -342,7 +342,7 @@ const DisplayCardSteps = styled.span`
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
-  color: #dbcaff;
+  color: ${textColor.subText[500]};
   margin-right: 5px;
 `;
 
@@ -352,7 +352,7 @@ const DisplayCardText = styled.span`
   font-weight: 400;
   font-size: 17px;
   line-height: 18px;
-  color: #e1e1e1;
+  color: ${textColor[100]};
 `;
 
 const FormContainer = styled.div`
@@ -507,13 +507,13 @@ const SignUpPage = ({ fetchCurrentUser }) => {
   const checkPasswordStrength = (password) => {
     if (password.length < 5) {
       setPasswordStrength('Password Strength: Weak');
-      setPasswordColor('red');
+      setPasswordColor(validationColors[100]);
     } else if (password.length >= 5 && password.length <= 10) {
       setPasswordStrength('Password Strength: Fair');
-      setPasswordColor('#ff9628');
+      setPasswordColor(validationColors[200]);
     } else {
       setPasswordStrength('Password Strength: Strong')
-      setPasswordColor('#52ff28');
+      setPasswordColor(validationColors[300]);
     }
   }
 

@@ -5,6 +5,7 @@ import './LandingPage.css';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
+import { textColor } from '../utils/index.js';
 
 const LandingContainerDiv = styled.div`
   margin-right: 150px;
@@ -38,7 +39,7 @@ const DemoLogIn = styled.button`
   cursor: pointer;
   font-size: 16px;
   transition: all 0.5s ease;
-  color: #EFEFEF;
+  color: ${textColor[100]};
 
   &:hover {
     transition: all 0.5s ease;
@@ -54,7 +55,7 @@ const Header = styled.h1`
   font-size: 48px;
   line-height: 57px;
   display: inline-block;
-  color: #EFEFEF;
+  color: ${textColor[100]};
 
   @media (max-width: 960px) {
     font-size: 28px;
@@ -74,7 +75,7 @@ const Text = styled.p`
   font-weight: 300;
   font-size: 20px;
   line-height: 35px;
-  color: #EFEFEF;
+  color: ${textColor[100]};
 
   @media (max-width: 960px) {
     font-size: 15px;

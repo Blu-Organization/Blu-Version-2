@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { textColor, colors } from '../../utils/index.js';
 
 const ButtonDiv = styled.div`
   display: -webkit-box;
@@ -23,9 +24,8 @@ const ButtonATag = styled.a`
   padding: 8px;
   font-size: 0.8rem;
   font-weight: 900;
-  color: #fff;
+  color: ${textColor[100]};
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
   box-shadow: 0 0 0 1px inset rgb(80 149 255);
   position: relative;
@@ -80,7 +80,7 @@ const ButtonBase = styled.span`
   width: 100%;
   height: 100%;
   left: 0;
-  border: 1px solid #EFEFEF;
+  border: 1px solid ${textColor[100]};
   z-index: 20;
 
   &:before {
@@ -97,14 +97,14 @@ const ButtonBase = styled.span`
 `;
 
 const ButtonText = styled.span`
-  color: ${(props) => props.color ? props.color : '#EFEFEF'};
+  color: ${(props) => props.color ? props.color : `${textColor[100]}`};
   z-index: 4;
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   z-index: 20;
 
