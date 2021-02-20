@@ -12,14 +12,11 @@ export const textColor = {
   }
 }
 
-export const colors = {
-  primary: "#7FA7F4"
-}
-
-export const validationColors = {
-  100: "red",
-  200: "#ff9628",
-  300: "#52ff28"
+export const backgroundColors = {
+  100: "#1F2046",
+  200: "#1D1F22",
+  300: "#D5D5D5",
+  400: "linear-gradient(179.08deg, #000000 -2.75%, #4F4F8D 103.82%)"
 }
 
 export const neutrals = {
@@ -34,3 +31,14 @@ export const neutrals = {
     500: "#232323"
   }
 }
+export const colors = {
+  primary: "#7FA7F4",
+  primary2: "#4F4F8D"
+}
+
+export const validationColors = {
+  100: "#FF0000",
+  200: "#ff9628",
+  300: "#52ff28"
+}
+
