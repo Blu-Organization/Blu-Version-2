@@ -4,15 +4,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Button2 from './subComponents/Button2.js';
 import { gsap } from 'gsap';
+import { textColor } from '../utils/index';
 
-//test commit for forked
 
 const LengthOfButton = styled.div`
   width: 250px;
 `;
 
 const NewTeamText = styled.span`
-  color: ${(props) => props.color ? props.color : 'white'};
+  color: ${(props) => props.color ? props.color : `${textColor[100]}`};
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 400;

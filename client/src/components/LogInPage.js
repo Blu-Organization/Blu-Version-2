@@ -9,6 +9,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
+import { textColor, neutrals, validationColors } from '../utils/index';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -21,7 +22,7 @@ const LogInPageContainer = styled.div`
 
 const Title = styled.h1`
 position: absolute;
-color: #F5DBE2;
+color: ${textColor[200]};
 font-family: SF Pro Display;
 font-style: italic;
 font-weight: 600;
@@ -82,7 +83,7 @@ const FormInput = styled.input`
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid red;` : `2px solid #EFEFEF;`};
+  border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -106,7 +107,7 @@ const FormLabel = styled.label`
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: ${(props) => props.used ? `red` : `#d3cece`};
+  color: ${(props) => props.used ? `${validationColors[100]}` : `${neutrals.light[100]}`};
 `;
 
 const Div = styled.div`
@@ -134,7 +135,7 @@ const Img5 = styled.img`
 `;
 
 const InvalidFormText = styled.span`
-  color: red;
+  color: ${validationColors[100]};
 `;
 
 const MarginDiv = styled.div`
@@ -142,7 +143,6 @@ const MarginDiv = styled.div`
 `;
 
 const BackgroundLayer = styled.div`
-  // background: #1d1f22;
   width: 100%;
 `;
 

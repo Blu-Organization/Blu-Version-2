@@ -5,7 +5,7 @@ import './LandingPage.css';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
-import { textColor } from '../utils/index.js';
+import { textColor, colors } from '../utils/index.js';
 
 const LandingContainerDiv = styled.div`
   margin-right: 150px;
@@ -32,7 +32,7 @@ const WelcomeTextContainer = styled.div`
 const DemoLogIn = styled.button`
   width: 160px;
   height: 40px;
-  background: #7089FF;
+  background: ${colors.primary};
   border-radius: 20px;
   outline: none;
   border: 1px solid black;

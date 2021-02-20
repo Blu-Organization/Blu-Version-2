@@ -28,12 +28,9 @@ export const neutrals = {
   },
   dark: {
     100: "#13090c1f",
-    200: "#35383a"
-  }
-}
-
-export const gradients = {
-  light: {
-
+    200: "#35383a",
+    300: "#101025",
+    400: "#1D1F22",
+    500: "#232323"
   }
 }

@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CardItem from './CardItem.js';
 import axios from 'axios';
+import { textColor, neutrals, colors } from '../utils/index';
+
 
 const MainContentContainer = styled.div`
   margin: 0 60px;
 `;
 
 const ExploreMore = styled.div`
-  color: #fff;
+  color: ${textColor[100]};
   font-size: 12px;
   display: block;
   justify-content: center;
@@ -36,7 +38,7 @@ const SearchLogo = styled.img`
 
 const SearchButton = styled.button`
   background-color: transparent;
-  color: #7FA7F4;
+  color: ${colors.primary};
   padding-top: 4px;
   padding-bottom: 3px;
   padding-right: 8px;
@@ -52,7 +54,7 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #EFEFEF;
+  color: ${textColor[100]};
   min-width: 190px;
   margin: 10px 0px 25px;
   letter-spacing: 2px;
@@ -64,7 +66,7 @@ const LeaderboardTitle = styled(Title)`
 `;
 
 const ExploreMoreTitle = styled.h1`
-  color: #EFEFEF;
+  color: ${textColor[100]};
   min-width: 400px;
   text-align: center;
   line-height: 0em;
@@ -82,7 +84,7 @@ const ExploreMoreText = styled.span`
   color: #D2CEFF;
 
   &:hover {
-    background: #101025;
+    background: ${neutrals.dark[300]};
     border-radius: 6px;
   }
 `;
@@ -134,7 +136,7 @@ const ExploreMoreFooter = styled.div`
 
 const LeaderboardsContainer = styled.div`
   width: 100%;
-  background: #1D1F22;
+  background: ${neutrals.dark[400]};
   display: flex;
   margin-bottom: 50px;
 `;
@@ -145,20 +147,20 @@ const LeaderboardsTitle = styled.h3`
   font-weight: 800;
   font-size: 24px;
   line-height: 29px;
-  color: #CE1155;
+  color: ${textColor.subText[100]};
   letter-spacing: 2px;
 `;
 
 const RatingTitle = styled(LeaderboardsTitle)`
-  color: #0fe77f;
+  color: ${textColor.subText[200]};
 `;
 
 const BlueTitle = styled(LeaderboardsTitle)`
-  color: #8AD5FF;
+  color: ${textColor.subText[300]};
 `;
 
 const WinsTitle = styled(LeaderboardsTitle)`
-  color: #FFD600;
+  color: ${textColor.subText[400]};
 `;
 
 const RankImg = styled.img`
@@ -173,12 +175,12 @@ const LeaderboardText = styled.span`
   font-weight: 600;
   font-size: 20px;
   line-height: 29px;
-  color: #F0F0F0;
+  color: ${textColor[100]};
 `;
 
 const LeaderboardRankText = styled(LeaderboardText)`
   font-size: 30px;
-  color: #ce1454;
+  color: ${textColor.subText[100]};
 `;
 
 const LeaderboardList = styled.ul`
@@ -210,7 +212,7 @@ const Div50 = styled.div`
 const Div50TeamName = styled(Div50)`
   min-height: 100px;
   padding-top: 34px;
-  background: #232323;
+  background: ${neutrals.dark[500]};
 `;
 
 const Div15 = styled.div`
@@ -223,7 +225,6 @@ const ExplorePage = () => {
   const [teamData, setTeamData] = useState([]);
   const [top10Teams, setTop10Teams] = useState([]);
   const [smallTeamData, setSmallTeamData] = useState([]);
-  const [test, setTest] = useState('');
 
 
   useEffect(() => {
