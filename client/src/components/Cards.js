@@ -4,11 +4,11 @@ import CardItem from './CardItem.js';
 import styled from 'styled-components';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-
+import { textColor } from '../utils/index';
 
 const Title = styled.h1`
   position: absolute;
-  color: #F5DBE2;
+  color: ${textColor[200]};
   font-family: SF Pro Display;
   font-style: italic;
   font-weight: 600;

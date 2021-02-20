@@ -4,6 +4,7 @@ import Button from './subComponents/Button.js';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+
 const Logo = styled.img`
   height: 90px;
   border-radius: 50%;
