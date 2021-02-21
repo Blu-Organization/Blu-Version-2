@@ -8,7 +8,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-import { textColor, colors, neutrals, validationColors, primaryFont, secondayFont, typeScale } from '../utils/index.js';
+import { textColor, colors, neutrals, validationColors, primaryFont, secondaryFont, typeScale } from '../utils/index.js';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -42,9 +42,8 @@ const Title = styled.h1`
   position: absolute;
   color: ${textColor[200]};
   font-family: ${primaryFont};
-  letter-spacing: 10px;
   font-size: ${typeScale.header1};
-  line-height: 55px;
+  line-height: 50px;
   text-align: center;
   z-index: 31;
   left: 30.5%;
@@ -222,7 +221,7 @@ const FormGroup = styled.div`
 `;
 
 const FormInput = styled.input`
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   width: 100%;
   border: 0;
   border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};
@@ -281,7 +280,7 @@ const WelcomeDiv = styled.div`
 const WelcomeText = styled.span`
   color: ${textColor[100]};
   font-weight: 600;
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   font-size: ${typeScale.header4};
   line-height: 40px;
   text-align: center;
@@ -319,7 +318,7 @@ const DisplayTitleContainer = styled.div`
 `;
 
 const DisplayTitle = styled.span`
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: bold;
   font-size: ${typeScale.header4};
@@ -333,7 +332,7 @@ const DisplayEntryContainer = styled.div`
 `;
 
 const DisplayCardSteps = styled.span`
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 400;
   font-size: ${typeScale.header5};
@@ -343,7 +342,7 @@ const DisplayCardSteps = styled.span`
 `;
 
 const DisplayCardText = styled.span`
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 400;
   font-size: ${typeScale.paragraph};

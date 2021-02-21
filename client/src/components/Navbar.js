@@ -6,7 +6,7 @@ import './Navbar.css';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
-import { textColor, neutrals, secondayFont, typeScale } from '../utils/index';
+import { textColor, neutrals, secondaryFont, typeScale } from '../utils/index';
 
 const Logo = styled.img`
   height: 112px;
@@ -54,7 +54,7 @@ const DropDownListContainer = styled.div`
 const ProfileName = styled.span`
   color: ${textColor.subText[100]};
   margin-left: 10px;
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 600;
   font-size: ${typeScale.paragraph};

@@ -9,7 +9,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-import { textColor, neutrals, validationColors, primaryFont, secondayFont, typeScale } from '../utils/index';
+import { textColor, neutrals, validationColors, primaryFont, secondaryFont, typeScale } from '../utils/index';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -24,9 +24,8 @@ const Title = styled.h1`
 position: absolute;
 color: ${textColor[200]};
 font-family: ${primaryFont};
-letter-spacing: 10px;
 font-size: ${typeScale.header1};
-line-height: 55px;
+line-height: 50px;
 text-align: center;
 z-index: 31;
 left: 30.5%;
@@ -79,7 +78,7 @@ const FormGroup = styled.div`
 `;
 
 const FormInput = styled.input`
-  font-family: ${secondayFont};
+  font-family: ${secondaryFont};
   width: 100%;
   border: 0;
   border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CardItem from './CardItem.js';
 import axios from 'axios';
-import { textColor, neutrals, colors } from '../utils/index';
+import { textColor, neutrals, colors, primaryFont, secondaryFont, typeScale } from '../utils/index';
 
 
 const MainContentContainer = styled.div`
@@ -11,7 +11,7 @@ const MainContentContainer = styled.div`
 
 const ExploreMore = styled.div`
   color: ${textColor[100]};
-  font-size: 12px;
+  font-size: ${typeScale.helperText};
   display: block;
   justify-content: center;
 `;
@@ -22,7 +22,7 @@ const ExploreInput = styled.input`
   margin-right: 10px;
   outline: none;
   border: none;
-  font-size: 18px;
+  font-size: ${typeScale.paragraph};
   border: 1px solid #fff;
   vertical-align: middle;
 `;
@@ -75,10 +75,10 @@ const ExploreMoreTitle = styled.h1`
 `;
 
 const ExploreMoreText = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: ${typeScale.header5};
   padding: 15px;
   cursor: pointer;
   color: #D2CEFF;
@@ -100,19 +100,18 @@ const SmallLines = styled.div`
 
 
 const TitleText = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${primaryFont};
   font-style: normal;
-  font-weight: 800;
-  font-size: 50px;
+  font-size: ${typeScale.header1};
   padding-right: 25px;
   width: 100%;
 `;
 
 const TitleSubText = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 600;
-  font-size: 32px;
+  font-size: ${typeScale.header3};
   line-height: 38px;
   color: #D3D3D3;
 `;
@@ -142,10 +141,10 @@ const LeaderboardsContainer = styled.div`
 `;
 
 const LeaderboardsTitle = styled.h3`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 800;
-  font-size: 24px;
+  font-size: ${typeScale.header4};
   line-height: 29px;
   color: ${textColor.subText[100]};
   letter-spacing: 2px;
@@ -170,16 +169,16 @@ const RankImg = styled.img`
 `;
 
 const LeaderboardText = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: ${typeScale.header5};
   line-height: 29px;
   color: ${textColor[100]};
 `;
 
 const LeaderboardRankText = styled(LeaderboardText)`
-  font-size: 30px;
+  font-size: ${typeScale.header3};
   color: ${textColor.subText[100]};
 `;
 

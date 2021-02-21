@@ -1,6 +1,6 @@
-export const primaryFont = '"Bebas Neue", cursive';
+export const primaryFont = '"Roboto", sans-serif';
 
-export const secondayFont = '"Roboto", sans-serif';
+export const secondaryFont = 'SF Pro Display';
 
 export const typeScale = {
   header1: "3.052rem",
