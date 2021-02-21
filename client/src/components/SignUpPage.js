@@ -42,7 +42,7 @@ const Title = styled.h1`
   position: absolute;
   color: ${textColor[200]};
   font-family: ${primaryFont};
-  letter-spacing: 3px;
+  letter-spacing: 10px;
   font-size: ${typeScale.header1};
   line-height: 55px;
   text-align: center;
@@ -298,7 +298,6 @@ const DisplayContainer = styled.div`
   flex-wrap: wrap;
   border-top: 1px solid ${textColor[100]};
   border-bottom: 1px solid ${textColor[100]};
-}
 `;
 
 const DisplayCard = styled.div`

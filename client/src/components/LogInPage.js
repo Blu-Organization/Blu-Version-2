@@ -9,7 +9,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-import { textColor, neutrals, validationColors } from '../utils/index';
+import { textColor, neutrals, validationColors, primaryFont, secondayFont, typeScale } from '../utils/index';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -23,11 +23,10 @@ const LogInPageContainer = styled.div`
 const Title = styled.h1`
 position: absolute;
 color: ${textColor[200]};
-font-family: SF Pro Display;
-font-style: italic;
-font-weight: 600;
-font-size: 45px;
-line-height: 40px;
+font-family: ${primaryFont};
+letter-spacing: 10px;
+font-size: ${typeScale.header1};
+line-height: 55px;
 text-align: center;
 z-index: 31;
 left: 30.5%;
@@ -50,7 +49,7 @@ transition: all 1s ease;
 }
 
 @media (max-width: 800px) {
-  font-size: 25px;
+  font-size: ${typeScale.header4};
   height: 50px;
   width: 390px;
   padding: 5px;
@@ -80,12 +79,12 @@ const FormGroup = styled.div`
 `;
 
 const FormInput = styled.input`
-  font-family: inherit;
+  font-family: ${secondayFont};
   width: 100%;
   border: 0;
   border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};
   outline: 0;
-  font-size: 1.3rem;
+  font-size: ${typeScale.header5};
   color: #fff;
   padding: 7px 0;
   background: transparent;
@@ -106,7 +105,7 @@ const FormLabel = styled.label`
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 1rem;
+  font-size: ${typeScale.paragraph};
   color: ${(props) => props.used ? `${validationColors[100]}` : `${neutrals.light[100]}`};
 `;
 
