@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Button2 from './subComponents/Button2.js';
 import { gsap } from 'gsap';
-import { textColor } from '../utils/index';
+import { textColor, primaryFont, secondaryFont, typeScale } from '../utils/index';
 
 
 const LengthOfButton = styled.div`
@@ -13,10 +13,10 @@ const LengthOfButton = styled.div`
 
 const NewTeamText = styled.span`
   color: ${(props) => props.color ? props.color : `${textColor[100]}`};
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: ${typeScale.paragraph};
   line-height: 35px;
   opacity: ${(props) => props.show ? 1 : 0};
   transition: all 4s ease;

@@ -5,7 +5,7 @@ import './LandingPage.css';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
-import { textColor, colors } from '../utils/index.js';
+import { textColor, colors, primaryFont, secondaryFont, typeScale } from '../utils/index.js';
 
 const LandingContainerDiv = styled.div`
   margin-right: 150px;
@@ -37,7 +37,7 @@ const DemoLogIn = styled.button`
   outline: none;
   border: 1px solid black;
   cursor: pointer;
-  font-size: 16px;
+  font-size: ${typeScale.paragraph};
   transition: all 0.5s ease;
   color: ${textColor[100]};
 
@@ -49,16 +49,16 @@ const DemoLogIn = styled.button`
 `;
 
 const Header = styled.h1`
-  font-family: SF Pro Display;
+  font-family: ${primaryFont};
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
+  font-size: ${typeScale.header1};
   line-height: 57px;
   display: inline-block;
   color: ${textColor[100]};
 
   @media (max-width: 960px) {
-    font-size: 28px;
+    font-size: ${typeScale.header3};
     line-height: 37px;
   }
 `;
@@ -70,15 +70,15 @@ const HeaderColored = styled(Header)`
 `;
 
 const Text = styled.p`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
+  font-size: ${typeScale.header5};
   line-height: 35px;
   color: ${textColor[100]};
 
   @media (max-width: 960px) {
-    font-size: 15px;
+    font-size: ${typeScale.paragraph};
     line-height: 25px;
   }
 `;

@@ -4,15 +4,14 @@ import CardItem from './CardItem.js';
 import styled from 'styled-components';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-import { textColor } from '../utils/index';
+import { textColor, primaryFont, typeScale } from '../utils/index';
 
 const Title = styled.h1`
   position: absolute;
   color: ${textColor[200]};
-  font-family: SF Pro Display;
-  font-style: italic;
+  font-family: ${primaryFont};
   font-weight: 600;
-  font-size: 45px;
+  font-size: ${typeScale.header1};
   line-height: 40px;
   text-align: center;
   z-index: 31;
@@ -54,7 +53,7 @@ const Cards = () => {
   return (
     <div className='cards'>
       <Title>
-        Newly Created Valorant Teams
+        New Valorant Teams
       </Title>
       <div className='cards__container'>
           <div className='cards__wrapper'>

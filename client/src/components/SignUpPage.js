@@ -8,7 +8,7 @@ import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-import { textColor, colors, neutrals, validationColors } from '../utils/index.js';
+import { textColor, colors, neutrals, validationColors, primaryFont, secondaryFont, typeScale } from '../utils/index.js';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -39,47 +39,45 @@ const ContentContainer = styled.div`
 `;
 
 const Title = styled.h1`
-position: absolute;
-color: ${textColor[200]};
-font-family: SF Pro Display;
-font-style: italic;
-font-weight: 600;
-font-size: 45px;
-line-height: 40px;
-text-align: center;
-z-index: 31;
-left: 30.5%;
-top: 2%;
-text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
-10px 20px 5px rgba(0,0,0,0.05),
--10px 20px 5px rgba(0,0,0,0.05);
-background: url(${smallBorder}) no-repeat;
-height: 80px;
-width: 660px;
-padding: 15px;
-transition: all 1s ease;
-
-@media (max-width: 1240px) {
-  left: 23.5%;
-}
-
-@media (max-width: 960px) {
-  left: 15.5%;
-}
-
-@media (max-width: 800px) {
-  font-size: 25px;
-  height: 50px;
-  width: 390px;
-  padding: 5px;
-  background: url(${extrasmallBorder}) no-repeat;
-  top: 4%;
-}
-
-@media (max-width: 500px) {
-  width: 290px;
+  position: absolute;
+  color: ${textColor[200]};
+  font-family: ${primaryFont};
+  font-size: ${typeScale.header1};
+  line-height: 50px;
+  text-align: center;
+  z-index: 31;
+  left: 30.5%;
   top: 2%;
-}
+  text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+  10px 20px 5px rgba(0,0,0,0.05),
+  -10px 20px 5px rgba(0,0,0,0.05);
+  background: url(${smallBorder}) no-repeat;
+  height: 80px;
+  width: 660px;
+  padding: 15px;
+  transition: all 1s ease;
+
+  @media (max-width: 1240px) {
+    left: 23.5%;
+  }
+
+  @media (max-width: 960px) {
+    left: 15.5%;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 25px;
+    height: 50px;
+    width: 390px;
+    padding: 5px;
+    background: url(${extrasmallBorder}) no-repeat;
+    top: 4%;
+  }
+
+  @media (max-width: 500px) {
+    width: 290px;
+    top: 2%;
+  }
 `;
 
 const Form = styled.form`
@@ -113,8 +111,6 @@ const ButtonATag = styled.a`
   max-width: 240px;
   height: 54px;
   padding: 8px;
-  font-size: 0.8rem;
-  font-weight: 900;
   color: ${colors.primary};
   text-align: center;
   text-decoration: none;
@@ -194,7 +190,7 @@ const ButtonText = styled.span`
   position: absolute;
   left: 0;
   top: 0;
-  font-size: 15px;
+  font-size: ${typeScale.paragraph};
 
   &:after {
     content: "";
@@ -225,12 +221,12 @@ const FormGroup = styled.div`
 `;
 
 const FormInput = styled.input`
-  font-family: inherit;
+  font-family: ${secondaryFont};
   width: 100%;
   border: 0;
   border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};
   outline: 0;
-  font-size: 1.3rem;
+  font-size: ${typeScale.header5};
   color: #fff;
   padding: 7px 0;
   background: transparent;
@@ -251,7 +247,7 @@ const FormLabel = styled.label`
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 1rem;
+  font-size: ${typeScale.paragraph};
   color: ${(props) => props.used ? `${validationColors[100]}` : `${neutrals.light[100]}`};
 `;
 
@@ -284,8 +280,8 @@ const WelcomeDiv = styled.div`
 const WelcomeText = styled.span`
   color: ${textColor[100]};
   font-weight: 600;
-  font-family: SF Pro Display;
-  font-size: 25px;
+  font-family: ${secondaryFont};
+  font-size: ${typeScale.header4};
   line-height: 40px;
   text-align: center;
   max-width: 800px;
@@ -301,7 +297,6 @@ const DisplayContainer = styled.div`
   flex-wrap: wrap;
   border-top: 1px solid ${textColor[100]};
   border-bottom: 1px solid ${textColor[100]};
-}
 `;
 
 const DisplayCard = styled.div`
@@ -323,10 +318,10 @@ const DisplayTitleContainer = styled.div`
 `;
 
 const DisplayTitle = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
+  font-size: ${typeScale.header4};
   line-height: 24px;
   color: ${neutrals.light[100]};
   text-align: center;
@@ -337,20 +332,20 @@ const DisplayEntryContainer = styled.div`
 `;
 
 const DisplayCardSteps = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: ${typeScale.header5};
   line-height: 18px;
   color: ${textColor.subText[500]};
   margin-right: 5px;
 `;
 
 const DisplayCardText = styled.span`
-  font-family: SF Pro Display;
+  font-family: ${secondaryFont};
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
+  font-size: ${typeScale.paragraph};
   line-height: 18px;
   color: ${textColor[100]};
 `;
@@ -695,12 +690,12 @@ const SignUpPage = ({ fetchCurrentUser }) => {
     if (!logInTime) {
       return (
         <div>
-          <Title>Create Account!</Title>
+          <Title>Create Account</Title>
         </div>
       )
     } else {
       return (
-        <Title>Account Created!</Title>
+        <Title>Account Created</Title>
       )
     }
   }
