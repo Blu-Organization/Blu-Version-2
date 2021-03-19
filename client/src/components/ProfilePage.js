@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Title1 from './subComponents/Title1.js';
 
 const ProfileContainerDiv = styled.div`
-  background-color: #090f16;
   color: #fff;
   height: 90vh;
 `;
@@ -10,9 +10,9 @@ const ProfileContainerDiv = styled.div`
 const ProfilePage = () => {
   return (
     <ProfileContainerDiv>
-      hello
+      <Title1>hello</Title1>
     </ProfileContainerDiv>
-  )
-}
+  );
+};
 
 export default ProfilePage;

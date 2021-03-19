@@ -6,16 +6,15 @@ import DefaultPageTheme from '../Themes/DefaultPageTheme';
 import ExplorePage from '../ExplorePage.js';
 
 const ExploreMore = () => {
-
   return (
     <div>
       <DefaultPageTheme>
         <Navbar />
-          <ExplorePage />
+        <ExplorePage />
         <Footer />
       </DefaultPageTheme>
     </div>
-  )
-}
+  );
+};
 
 export default ExploreMore;
