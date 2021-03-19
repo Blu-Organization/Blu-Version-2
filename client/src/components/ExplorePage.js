@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CardItem from './CardItem.js';
 import axios from 'axios';
-import { textColor, neutrals, colors, primaryFont, secondaryFont, typeScale } from '../utils/index';
-
+import {
+  textColor,
+  neutrals,
+  colors,
+  primaryFont,
+  secondaryFont,
+  typeScale,
+} from '../utils/index';
 
 const MainContentContainer = styled.div`
   margin: 0 60px;
@@ -58,7 +64,7 @@ const Title = styled.h1`
   min-width: 190px;
   margin: 10px 0px 25px;
   letter-spacing: 2px;
-  text-shadow: rgba(0,0,0,0.4) 0px 2px 2px;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px;
 `;
 
 const LeaderboardTitle = styled(Title)`
@@ -81,7 +87,7 @@ const ExploreMoreText = styled.span`
   font-size: ${typeScale.header5};
   padding: 15px;
   cursor: pointer;
-  color: #D2CEFF;
+  color: #d2ceff;
 
   &:hover {
     background: ${neutrals.dark[300]};
@@ -98,7 +104,6 @@ const SmallLines = styled.div`
   width: 100%;
 `;
 
-
 const TitleText = styled.span`
   font-family: ${primaryFont};
   font-style: normal;
@@ -113,7 +118,7 @@ const TitleSubText = styled.span`
   font-weight: 600;
   font-size: ${typeScale.header3};
   line-height: 38px;
-  color: #D3D3D3;
+  color: #d3d3d3;
 `;
 
 const CardsList = styled.div`
@@ -191,7 +196,7 @@ const LeaderboardEntry = styled.li`
   display: flex;
   padding: 0 20px 0 20px;
   align-items: center;
-  border-bottom: 1px solid rgba(231,231,231,0.5);
+  border-bottom: 1px solid rgba(231, 231, 231, 0.5);
 `;
 
 const TitleListEntry = styled(LeaderboardEntry)`
@@ -220,11 +225,9 @@ const Div15 = styled.div`
 `;
 
 const ExplorePage = () => {
-
   const [teamData, setTeamData] = useState([]);
   const [top10Teams, setTop10Teams] = useState([]);
   const [smallTeamData, setSmallTeamData] = useState([]);
-
 
   useEffect(() => {
     // fetch('https://na.api.riotgames.com/val/content/v1/contents?api_key=RGAPI-946cae44-0e44-4f0a-a843-3eca5a317588')
@@ -239,18 +242,20 @@ const ExplorePage = () => {
     //   })
     getTeamData();
     getTop10Teams();
-  }, [])
+  }, []);
 
   const randomNumberGenerator = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+  };
 
   const getTeamData = () => {
-    axios.get('/api/teams')
+    axios
+      .get('/api/teams')
       .then((res) => {
         let cardArr = [];
         for (let i = 0; i < 14; i++) {
-          const teamCard = res.data.rows[randomNumberGenerator(0, res.data.rows.length - 1)];
+          const teamCard =
+            res.data.rows[randomNumberGenerator(0, res.data.rows.length - 1)];
           cardArr.push(teamCard);
         }
         setSmallTeamData(cardArr);
@@ -258,67 +263,62 @@ const ExplorePage = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
-  }
+      });
+  };
 
   const getTop10Teams = () => {
-    axios.get('/api/top10teams')
+    axios
+      .get('/api/top10teams')
       .then((res) => {
         setTop10Teams(res.data.rows);
       })
       .catch((err) => {
         console.error(err);
-      })
-  }
-
+      });
+  };
 
   const displayTeamCards = () => {
-    return (
-      smallTeamData.map((team, index) => {
-        return (
-          <CardItem
-            key={index}
-            src={team.teamimage}
-            text={team.teamname}
-            textClass='small__cards__item__text'
-            label={team.tagname}
-            path='/gamelobby'
-            classSize='small__cards__item__link'
-          />
-        )
-      })
-    )
-  }
+    return smallTeamData.map((team, index) => {
+      return (
+        <CardItem
+          key={index}
+          src={team.teamimage}
+          text={team.teamname}
+          textClass='small__cards__item__text'
+          label={team.tagname}
+          path='/gamelobby'
+          classSize='small__cards__item__link'
+        />
+      );
+    });
+  };
 
   //Add star for top 3 or for just top 1 team.
 
   const displayTeamLeaderboards = () => {
-    return (
-      top10Teams.map((team, index) => {
-        return (
-          <LeaderboardEntry>
-            <Div10>
+    return top10Teams.map((team, index) => {
+      return (
+        <LeaderboardEntry>
+          <Div10>
             <LeaderboardRankText>{index + 1}</LeaderboardRankText>
-              {/* <RankImg src={team.teamrank} alt='radiant' /> */}
-            </Div10>
-            <Div10>
-              <LeaderboardText>{team.teamrating}</LeaderboardText>
-            </Div10>
-            <Div50TeamName>
-              <LeaderboardText>{team.teamname}</LeaderboardText>
-            </Div50TeamName>
-            <Div15>
-              <LeaderboardText>{team.teammembers}</LeaderboardText>
-            </Div15>
-            <Div15>
-              <LeaderboardText>{team.teamwins}</LeaderboardText>
-            </Div15>
-          </LeaderboardEntry>
-        )
-      })
-    )
-  }
-
+            {/* <RankImg src={team.teamrank} alt='radiant' /> */}
+          </Div10>
+          <Div10>
+            <LeaderboardText>{team.teamrating}</LeaderboardText>
+          </Div10>
+          <Div50TeamName>
+            <LeaderboardText>{team.teamname}</LeaderboardText>
+          </Div50TeamName>
+          <Div15>
+            <LeaderboardText>{team.teammembers}</LeaderboardText>
+          </Div15>
+          <Div15>
+            <LeaderboardText>{team.teamwins}</LeaderboardText>
+          </Div15>
+        </LeaderboardEntry>
+      );
+    });
+  };
 
   return (
     <div>
@@ -335,7 +335,6 @@ const ExplorePage = () => {
           </SearchButton>
         </SearchForm>
 
-
         <MainContentContainer>
           <TitleContainer>
             <TitleDiv>
@@ -347,9 +346,7 @@ const ExplorePage = () => {
             <TitleSubText>View all teams and their players</TitleSubText>
           </TitleContainer>
 
-          <CardsList>
-            {displayTeamCards()}
-          </CardsList>
+          <CardsList>{displayTeamCards()}</CardsList>
 
           <ExploreMoreFooter>
             <SmallLines></SmallLines>
@@ -366,34 +363,33 @@ const ExplorePage = () => {
               </LeaderboardTitle>
               <SmallLines></SmallLines>
             </TitleDiv>
-            <TitleSubText>Explore the top 100 Valorant Teams with the highest rating </TitleSubText>
+            <TitleSubText>
+              Explore the top 100 Valorant Teams with the highest rating{' '}
+            </TitleSubText>
           </TitleContainer>
 
           <LeaderboardsContainer>
-              <LeaderboardList>
+            <LeaderboardList>
+              <TitleListEntry>
+                <Div10>
+                  <LeaderboardsTitle>Rank</LeaderboardsTitle>
+                </Div10>
+                <Div10>
+                  <RatingTitle>Rating</RatingTitle>
+                </Div10>
+                <Div50>
+                  <BlueTitle>Team Name</BlueTitle>
+                </Div50>
+                <Div15>
+                  <BlueTitle>Members</BlueTitle>
+                </Div15>
+                <Div15>
+                  <WinsTitle>Wins</WinsTitle>
+                </Div15>
+              </TitleListEntry>
 
-                <TitleListEntry>
-                  <Div10>
-                    <LeaderboardsTitle>Rank</LeaderboardsTitle>
-                  </Div10>
-                  <Div10>
-                    <RatingTitle>Rating</RatingTitle>
-                  </Div10>
-                  <Div50>
-                    <BlueTitle>Team Name</BlueTitle>
-                  </Div50>
-                  <Div15>
-                    <BlueTitle>Members</BlueTitle>
-                  </Div15>
-                  <Div15>
-                    <WinsTitle>Wins</WinsTitle>
-                  </Div15>
-                </TitleListEntry>
-
-                {displayTeamLeaderboards()}
-
-              </LeaderboardList>
-
+              {displayTeamLeaderboards()}
+            </LeaderboardList>
           </LeaderboardsContainer>
 
           <ExploreMoreFooter>
@@ -403,11 +399,10 @@ const ExplorePage = () => {
             </ExploreMoreTitle>
             <SmallLines></SmallLines>
           </ExploreMoreFooter>
-
         </MainContentContainer>
       </ExploreMore>
     </div>
-  )
-}
+  );
+};
 
 export default ExplorePage;
