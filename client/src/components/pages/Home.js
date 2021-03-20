@@ -9,10 +9,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 
-//test commit
-
 const Home = ({ fetchCurrentUser }) => {
-
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');
     if (loggedInUser) {
@@ -23,20 +20,23 @@ const Home = ({ fetchCurrentUser }) => {
 
   return (
     <div>
-      <HomePageTheme >
+      <HomePageTheme>
         <Navbar />
         <HeroSection />
         <Cards />
         <Footer />
       </HomePageTheme>
     </div>
-  )
-}
+  );
+};
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    fetchCurrentUser
-  }, dispatch )
-}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      fetchCurrentUser,
+    },
+    dispatch
+  );
+};
 
 export default connect(() => ({}), mapDispatchToProps)(Home);

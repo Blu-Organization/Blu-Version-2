@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Title1 from './subComponents/Title1.js';
+import { Title1 } from './subComponents/Titles.js';
 
 const ProfileContainerDiv = styled.div`
   color: #fff;

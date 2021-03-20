@@ -1,9 +1,8 @@
 import React from 'react';
 import './Footer.css';
-import Button from './subComponents/Button.js';
+import { Button } from './subComponents/index';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 
 const Logo = styled.img`
   height: 90px;
@@ -71,7 +70,10 @@ const Footer = () => {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              <Logo src='images/blulogoalone.png' alt='blulogo' className='Logo'></Logo>
+              <Logo
+                src='images/blulogoalone.png'
+                alt='blulogo'
+                className='Logo'></Logo>
             </Link>
           </div>
           <small className='website-rights'>Blu © 2020</small>
@@ -80,40 +82,35 @@ const Footer = () => {
               className='social-icon-link facebook'
               to='/'
               target='_blank'
-              aria-label='Facebook'
-            >
+              aria-label='Facebook'>
               <i className='fab fa-facebook-f' />
             </Link>
             <Link
               className='social-icon-link instagram'
               to='/'
               target='_blank'
-              aria-label='Instagram'
-            >
+              aria-label='Instagram'>
               <i className='fab fa-instagram' />
             </Link>
             <Link
               className='social-icon-link youtube'
               to='/'
               target='_blank'
-              aria-label='Youtube'
-            >
+              aria-label='Youtube'>
               <i className='fab fa-youtube' />
             </Link>
             <Link
               className='social-icon-link twitter'
               to='/'
               target='_blank'
-              aria-label='Twitter'
-            >
+              aria-label='Twitter'>
               <i className='fab fa-twitter' />
             </Link>
             <Link
               className='social-icon-link twitter'
               to='/'
               target='_blank'
-              aria-label='LinkedIn'
-            >
+              aria-label='LinkedIn'>
               <i className='fab fa-linkedin' />
             </Link>
           </div>
@@ -121,6 +118,6 @@ const Footer = () => {
       </section>
     </div>
   );
-}
+};
 
 export default Footer;
