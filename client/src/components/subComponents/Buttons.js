@@ -1,7 +1,31 @@
 import React from 'react';
+import './Button.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { textColor, colors } from '../../utils/index.js';
+
+const STYLES = ['btn--primary', 'btn--outline'];
+
+const SIZES = ['btn--medium', 'btn--large'];
+
+const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => {
+  const checkButtonStyle = STYLES.includes(buttonStyle)
+    ? buttonStyle
+    : STYLES[0];
+
+  const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+
+  return (
+    <Link to='sign-up'>
+      <button
+        className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+        onClick={onClick}
+        type={type}>
+        {children}
+      </button>
+    </Link>
+  );
+};
 
 const ButtonDiv = styled.div`
   display: -webkit-box;
@@ -9,12 +33,12 @@ const ButtonDiv = styled.div`
   z-index: 20;
 
   -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-flow: column;
+  flex-flow: column;
 `;
 
 const ButtonATag = styled.a`
@@ -33,7 +57,7 @@ const ButtonATag = styled.a`
   z-index: 20;
 
   &:after {
-    content: "";
+    content: '';
     width: 1px;
     position: absolute;
     height: 8px;
@@ -41,13 +65,13 @@ const ButtonATag = styled.a`
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 
   &:before {
     right: 0;
     left: initial;
-    content: "";
+    content: '';
     width: 1px;
     position: absolute;
     height: 8px;
@@ -55,9 +79,8 @@ const ButtonATag = styled.a`
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
-
 `;
 
 const ButtonPTag = styled.p`
@@ -84,12 +107,12 @@ const ButtonBase = styled.span`
   z-index: 20;
 
   &:before {
-    content: "";
+    content: '';
     width: 2px;
     height: 2px;
     left: -1px;
     top: -1px;
-    background: #7089FF;
+    background: #7089ff;
     position: absolute;
     -webkit-transition: 0.3s ease-out all;
     transition: 0.3s ease-out all;
@@ -97,7 +120,7 @@ const ButtonBase = styled.span`
 `;
 
 const ButtonText = styled.span`
-  color: ${(props) => props.color ? props.color : `${textColor[100]}`};
+  color: ${(props) => (props.color ? props.color : `${textColor[100]}`)};
   z-index: 4;
   width: 100%;
   height: 100%;
@@ -109,7 +132,7 @@ const ButtonText = styled.span`
   z-index: 20;
 
   &:after {
-    content: "";
+    content: '';
     width: 4px;
     height: 4px;
     right: 0;
@@ -122,22 +145,25 @@ const ButtonText = styled.span`
   }
 `;
 
-const Button2 = ({location, onClick, text, onMouseOver, color }) => {
+const Button2 = ({ location, onClick, text, onMouseOver, color }) => {
   return (
     <ButtonDiv>
-      <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
+      <ButtonATag href='#' onClick={(e) => e.preventDefault()}>
         <ButtonPTag>
-          <span className="bg"></span>
+          <span className='bg'></span>
           <ButtonBase></ButtonBase>
           <Link to={location}>
-            <ButtonText color={color} onMouseOver={onMouseOver} onClick={onClick}>
+            <ButtonText
+              color={color}
+              onMouseOver={onMouseOver}
+              onClick={onClick}>
               {text}
             </ButtonText>
           </Link>
         </ButtonPTag>
       </ButtonATag>
     </ButtonDiv>
-  )
-}
+  );
+};
 
-export default Button2;
+export { Button, Button2 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button2 from './subComponents/Button2.js'
+import { Button2 } from './subComponents/index';
 import './Navbar.css';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
@@ -74,20 +74,18 @@ const OverLay = styled.div`
   pointer-events: ${(props) => (props.active ? 'auto' : 'none')};
 `;
 
-
 const Navbar = ({ fetchCurrentUser, currentUser }) => {
-
   const [clicked, setClicked] = useState(false);
   const [button, setButton] = useState(true);
   const [showDropDown, setShowDropDown] = useState(false);
 
   const handleClick = () => {
-    setClicked(!clicked)
-  }
+    setClicked(!clicked);
+  };
 
   const closeMobileMenu = () => {
     setClicked(false);
-  }
+  };
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -95,32 +93,40 @@ const Navbar = ({ fetchCurrentUser, currentUser }) => {
     } else {
       setButton(true);
     }
-  }
+  };
 
   const handleLogOut = () => {
     localStorage.clear();
     fetchCurrentUser('');
-  }
+  };
 
   const showDropDownMenu = () => {
     if (showDropDown) {
       return (
         <ProfileDropDown>
           <DropDownListContainer>
-            <Link className="drop-down-list-item" to='/profile'>Profile</Link>
-            <Link className="drop-down-list-item" to='/profile'>Friends</Link>
-            <Link className="drop-down-list-item" to='/settings'>Settings</Link>
-            <Link className="drop-down-list-item" to='/home' onClick={() => handleLogOut()}>Log Out</Link>
+            <Link className='drop-down-list-item' to='/profile'>
+              Profile
+            </Link>
+            <Link className='drop-down-list-item' to='/profile'>
+              Friends
+            </Link>
+            <Link className='drop-down-list-item' to='/settings'>
+              Settings
+            </Link>
+            <Link
+              className='drop-down-list-item'
+              to='/home'
+              onClick={() => handleLogOut()}>
+              Log Out
+            </Link>
           </DropDownListContainer>
         </ProfileDropDown>
-      )
+      );
     } else {
-      return (
-        <>
-        </>
-      )
+      return <></>;
     }
-  }
+  };
 
   const buttonFunc = () => {
     if (button && currentUser === '') {
@@ -129,79 +135,101 @@ const Navbar = ({ fetchCurrentUser, currentUser }) => {
           <Button2 location={'sign-up'} text={'Sign Up'}></Button2>
           <LengthOfButton></LengthOfButton>
         </div>
-      )
+      );
     } else {
       return (
         <DropDown>
-          <ProfileName onClick={() => {closeMobileMenu(); setShowDropDown(true);}}>
+          <ProfileName
+            onClick={() => {
+              closeMobileMenu();
+              setShowDropDown(true);
+            }}>
             {currentUser}
           </ProfileName>
           {showDropDownMenu()}
         </DropDown>
-      )
+      );
     }
-  }
+  };
 
   const logInFunc = () => {
     if (button && currentUser === '') {
       return (
         <NavItem>
-          <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>Log In</Link>
+          <Link className='nav-links' to='/log-in' onClick={closeMobileMenu}>
+            Log In
+          </Link>
         </NavItem>
-      )
+      );
     } else {
-      return (
-        <>
-        </>
-      )
+      return <></>;
     }
-  }
+  };
 
   useEffect(() => {
     showButton();
-  }, [])
+  }, []);
 
   window.addEventListener('resize', showButton);
-
 
   return (
     <div>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/home' className='navbar-logo' onClick={closeMobileMenu}><Logo src='images/blulogoalone.png' alt='blulogo' className='Logo'></Logo></Link>
+          <Link to='/home' className='navbar-logo' onClick={closeMobileMenu}>
+            <Logo
+              src='images/blulogoalone.png'
+              alt='blulogo'
+              className='Logo'></Logo>
+          </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={clicked ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
             <NavItem>
-              <Link className='nav-links' to='/home' onClick={closeMobileMenu}>Home</Link>
+              <Link className='nav-links' to='/home' onClick={closeMobileMenu}>
+                Home
+              </Link>
             </NavItem>
             <NavItem>
-              <Link className='nav-links' to='/aboutus' onClick={closeMobileMenu}>About Us</Link>
+              <Link
+                className='nav-links'
+                to='/aboutus'
+                onClick={closeMobileMenu}>
+                About Us
+              </Link>
             </NavItem>
             <NavItem>
-              <Link className='nav-links' to='/exploremore' onClick={closeMobileMenu}>Explore</Link>
+              <Link
+                className='nav-links'
+                to='/exploremore'
+                onClick={closeMobileMenu}>
+                Explore
+              </Link>
             </NavItem>
-              {logInFunc()}
-            <NavItem>
-              {buttonFunc()}
-            </NavItem>
+            {logInFunc()}
+            <NavItem>{buttonFunc()}</NavItem>
           </ul>
         </div>
-        <OverLay active={showDropDown} onClick={() => setShowDropDown(false)}></OverLay>
+        <OverLay
+          active={showDropDown}
+          onClick={() => setShowDropDown(false)}></OverLay>
       </nav>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUserReducer.user
-})
+  currentUser: state.currentUserReducer.user,
+});
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    fetchCurrentUser
-  }, dispatch )
-}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      fetchCurrentUser,
+    },
+    dispatch
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

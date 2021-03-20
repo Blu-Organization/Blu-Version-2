@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import './SignUpPage.css';
 import styled from 'styled-components';
 import axios from 'axios';
-import Button2 from './subComponents/Button2.js';
+import { Button2 } from './subComponents/index';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions/postActions.js';
 import { bindActionCreators } from 'redux';
 import smallBorder from '../images/smallborder.svg';
 import extrasmallBorder from '../images/extrasmallborder.svg';
-import { textColor, colors, neutrals, validationColors, primaryFont, secondaryFont, typeScale } from '../utils/index.js';
+import {
+  textColor,
+  colors,
+  neutrals,
+  validationColors,
+  primaryFont,
+  secondaryFont,
+  typeScale,
+} from '../utils/index.js';
 
 const LengthOfButton = styled.div`
   width: 250px;
@@ -48,9 +56,8 @@ const Title = styled.h1`
   z-index: 31;
   left: 30.5%;
   top: 2%;
-  text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
-  10px 20px 5px rgba(0,0,0,0.05),
-  -10px 20px 5px rgba(0,0,0,0.05);
+  text-shadow: 0px 15px 5px rgba(0, 0, 0, 0.1),
+    10px 20px 5px rgba(0, 0, 0, 0.05), -10px 20px 5px rgba(0, 0, 0, 0.05);
   background: url(${smallBorder}) no-repeat;
   height: 80px;
   width: 660px;
@@ -98,12 +105,12 @@ const ButtonDiv = styled.div`
   display: flex;
 
   -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-flow: column;
+  flex-flow: column;
 `;
 
 const ButtonATag = styled.a`
@@ -119,7 +126,7 @@ const ButtonATag = styled.a`
   margin: 10px 0;
 
   &:after {
-    content: "";
+    content: '';
     width: 1px;
     position: absolute;
     height: 8px;
@@ -127,13 +134,13 @@ const ButtonATag = styled.a`
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 
   &:before {
     right: 0;
     left: initial;
-    content: "";
+    content: '';
     width: 1px;
     position: absolute;
     height: 8px;
@@ -141,7 +148,7 @@ const ButtonATag = styled.a`
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 
   &:hover {
@@ -171,7 +178,7 @@ const ButtonBase = styled.span`
   border: 1px solid ${colors.primary};
 
   &:before {
-    content: "";
+    content: '';
     width: 2px;
     height: 2px;
     left: -1px;
@@ -193,7 +200,7 @@ const ButtonText = styled.span`
   font-size: ${typeScale.paragraph};
 
   &:after {
-    content: "";
+    content: '';
     width: 4px;
     height: 4px;
     right: 0;
@@ -224,7 +231,10 @@ const FormInput = styled.input`
   font-family: ${secondaryFont};
   width: 100%;
   border: 0;
-  border-bottom: ${(props) => props.used ? `2px solid ${validationColors[100]};` : `2px solid ${textColor[100]};`};
+  border-bottom: ${(props) =>
+    props.used
+      ? `2px solid ${validationColors[100]};`
+      : `2px solid ${textColor[100]};`};
   outline: 0;
   font-size: ${typeScale.header5};
   color: #fff;
@@ -237,7 +247,10 @@ const FormInput = styled.input`
     padding-bottom: 6px;
     font-weight: 700;
     border-width: 3px;
-    border-image: ${(props) => props.used ? `linear-gradient(to right, red, red)` : `linear-gradient(to right, ${colors.primary}, ${neutrals[100]})`};
+    border-image: ${(props) =>
+      props.used
+        ? `linear-gradient(to right, red, red)`
+        : `linear-gradient(to right, ${colors.primary}, ${neutrals[100]})`};
     border-image-slice: 1;
   }
 `;
@@ -248,7 +261,8 @@ const FormLabel = styled.label`
   display: block;
   transition: 0.2s;
   font-size: ${typeScale.paragraph};
-  color: ${(props) => props.used ? `${validationColors[100]}` : `${neutrals.light[100]}`};
+  color: ${(props) =>
+    props.used ? `${validationColors[100]}` : `${neutrals.light[100]}`};
 `;
 
 const InvalidFormWarningDiv = styled.div`
@@ -257,7 +271,8 @@ const InvalidFormWarningDiv = styled.div`
 `;
 
 const InvalidFormText = styled.span`
-  color: ${(props) => props.passwordColor ? props.passwordColor : `${validationColors[100]}`};
+  color: ${(props) =>
+    props.passwordColor ? props.passwordColor : `${validationColors[100]}`};
 `;
 
 const ValidFormText = styled.span`
@@ -288,7 +303,6 @@ const WelcomeText = styled.span`
   margin-top: 4em;
 `;
 
-
 const DisplayContainer = styled.div`
   display: flex;
   align-items: center;
@@ -302,7 +316,7 @@ const DisplayContainer = styled.div`
 const DisplayCard = styled.div`
   width: 350px;
   height: 470px;
-  background: linear-gradient(169.98deg,#5c5b89 2.82%,#9b938d 96.25%);
+  background: linear-gradient(169.98deg, #5c5b89 2.82%, #9b938d 96.25%);
   border-radius: 10px;
   transition: all 0.5s ease;
   margin: 2em;
@@ -354,9 +368,7 @@ const FormContainer = styled.div`
   margin-top: 5em;
 `;
 
-
 const SignUpPage = ({ fetchCurrentUser }) => {
-
   const [username, setUserName] = useState('');
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
@@ -386,72 +398,72 @@ const SignUpPage = ({ fetchCurrentUser }) => {
   //USERNAME VALIDATION
 
   const checkValidUsername = (username) => {
-
     //CHECK #1: SEE IF USERNAME IS BETWEEN 4 - 25 CHARACTERS LONG
     if (username.length >= 4 && username.length <= 25) {
       setUsernameLength(false);
       setinvalidUsername(false);
 
       //CHECK #2: SEE IF THE USERNAME EXISTS IN DATABASE
-        //check if username exisits inside our users database pool.
-        //if so continue to say username already taken
-        //if the username is not taken then say username available!
+      //check if username exisits inside our users database pool.
+      //if so continue to say username already taken
+      //if the username is not taken then say username available!
 
-      axios.get('/api/userUsername', {
-        params: {
-          username
-        }
-      })
-      .then((res) => {
-        if (res.data.rowCount > 0) {
-          setUsernameTaken(true);
-          setinvalidUsername(true);
-        } else {
-          setUsernameTaken(false);
-          setinvalidUsername(false);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+      axios
+        .get('/api/userUsername', {
+          params: {
+            username,
+          },
+        })
+        .then((res) => {
+          if (res.data.rowCount > 0) {
+            setUsernameTaken(true);
+            setinvalidUsername(true);
+          } else {
+            setUsernameTaken(false);
+            setinvalidUsername(false);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else {
       setUsernameLength(true);
       setinvalidUsername(true);
     }
-  }
+  };
 
   const notValidUserName = () => {
     if (usernameLength) {
       return (
-        <UsernameWarning>Usernames must be between 4 and 25 characters!</UsernameWarning>
-      )
+        <UsernameWarning>
+          Usernames must be between 4 and 25 characters!
+        </UsernameWarning>
+      );
     }
     if (usernameTaken) {
-      return (
-        <UsernameWarning>Username is already taken!</UsernameWarning>
-      )
+      return <UsernameWarning>Username is already taken!</UsernameWarning>;
     }
-  }
+  };
 
   //EMAIL VALIDATION
 
   const checkValidEmail = (email) => {
-
-    axios.get('/api/userEmail', {
-      params: {
-        email
-      }
-    })
-    .then((res) => {
-      if (res.data.rowCount > 0) {
-        setEmailTaken(true);
-      } else {
-        setEmailTaken(false);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    axios
+      .get('/api/userEmail', {
+        params: {
+          email,
+        },
+      })
+      .then((res) => {
+        if (res.data.rowCount > 0) {
+          setEmailTaken(true);
+        } else {
+          setEmailTaken(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     let generic = email.substr(email.indexOf('@'));
     let afterPeriod = generic.substr(generic.indexOf('.') + 1);
@@ -466,20 +478,16 @@ const SignUpPage = ({ fetchCurrentUser }) => {
     } else {
       setInvalidEmail(false);
     }
-  }
+  };
 
   const notValidEmail = () => {
     if (invalidEmail) {
-      return (
-        <UsernameWarning>Please enter a valid email!</UsernameWarning>
-      )
+      return <UsernameWarning>Please enter a valid email!</UsernameWarning>;
     }
     if (emailTaken) {
-      return (
-        <UsernameWarning>Email is already taken!</UsernameWarning>
-      )
+      return <UsernameWarning>Email is already taken!</UsernameWarning>;
     }
-  }
+  };
 
   const invalidFormText = () => {
     if (invalidUsername || invalidEmail || emailTaken || invalidPassword) {
@@ -487,15 +495,17 @@ const SignUpPage = ({ fetchCurrentUser }) => {
         <InvalidFormWarningDiv>
           <InvalidFormText>One or more fields are incorrect!</InvalidFormText>
         </InvalidFormWarningDiv>
-      )
+      );
     } else if (emptyForm) {
       return (
         <InvalidFormWarningDiv>
-          <InvalidFormText>Form is empty please provide more info!</InvalidFormText>
+          <InvalidFormText>
+            Form is empty please provide more info!
+          </InvalidFormText>
         </InvalidFormWarningDiv>
-      )
+      );
     }
-  }
+  };
 
   //PASSWORD VALIDATION
 
@@ -507,10 +517,10 @@ const SignUpPage = ({ fetchCurrentUser }) => {
       setPasswordStrength('Password Strength: Fair');
       setPasswordColor(validationColors[200]);
     } else {
-      setPasswordStrength('Password Strength: Strong')
+      setPasswordStrength('Password Strength: Strong');
       setPasswordColor(validationColors[300]);
     }
-  }
+  };
 
   const checkPasswordMatch = (confirmPassword) => {
     if (confirmPassword === password) {
@@ -520,7 +530,7 @@ const SignUpPage = ({ fetchCurrentUser }) => {
       setPasswordMatch(false);
       setInvalidPassword(true);
     }
-  }
+  };
 
   const checkPreviousPasswordMatch = (prevPassword) => {
     if (prevPassword === confirmPassword) {
@@ -530,7 +540,7 @@ const SignUpPage = ({ fetchCurrentUser }) => {
       setPasswordMatch(false);
       setInvalidPassword(true);
     }
-  }
+  };
 
   const passwordMatchText = () => {
     if (password.length > 0 || confirmPassword.length > 0) {
@@ -539,16 +549,18 @@ const SignUpPage = ({ fetchCurrentUser }) => {
           <Div>
             <ValidPasswordText>Passwords match!</ValidPasswordText>
           </Div>
-        )
+        );
       } else {
         return (
           <Div>
-            <InvalidFormText>Passwords do not match. Please try again</InvalidFormText>
+            <InvalidFormText>
+              Passwords do not match. Please try again
+            </InvalidFormText>
           </Div>
-        )
+        );
       }
     }
-  }
+  };
 
   //MONTH VALIDATION
 
@@ -558,23 +570,21 @@ const SignUpPage = ({ fetchCurrentUser }) => {
     } else {
       setValidMonth(false);
     }
-  }
+  };
 
   const monthText = () => {
     if (month !== 0) {
       if (!validMonth) {
         return (
           <Div>
-              <InvalidFormText>Please enter a valid Month!</InvalidFormText>
+            <InvalidFormText>Please enter a valid Month!</InvalidFormText>
           </Div>
-        )
+        );
       } else {
-        return (
-          <Div></Div>
-        )
+        return <Div></Div>;
       }
     }
-  }
+  };
 
   //DAY VALIDATION
 
@@ -584,23 +594,21 @@ const SignUpPage = ({ fetchCurrentUser }) => {
     } else {
       setValidDay(false);
     }
-  }
+  };
 
   const dayText = () => {
     if (day !== 0) {
       if (!validDay) {
         return (
           <Div>
-              <InvalidFormText>Please enter a valid Day!</InvalidFormText>
+            <InvalidFormText>Please enter a valid Day!</InvalidFormText>
           </Div>
-        )
+        );
       } else {
-        return (
-          <Div></Div>
-        )
+        return <Div></Div>;
       }
     }
-  }
+  };
 
   //YEAR VALIDATION
 
@@ -610,71 +618,88 @@ const SignUpPage = ({ fetchCurrentUser }) => {
     } else {
       setValidYear(false);
     }
-  }
+  };
 
   const yearText = () => {
     if (year !== 0) {
       if (!validYear) {
         return (
           <Div>
-              <InvalidFormText>Please enter a valid Year!</InvalidFormText>
+            <InvalidFormText>Please enter a valid Year!</InvalidFormText>
           </Div>
-        )
+        );
       } else {
-        return (
-          <Div></Div>
-        )
+        return <Div></Div>;
       }
     }
-  }
+  };
 
   //Able to log in without complete form.
   //Fix this please.
 
-  const createNewUser = (username, firstname,lastname, email, password, month, day, year ) => {
-    if (username.length && firstname.length && lastname.length && email.length && password.length && month > 0 && day > 0 && year > 0) {
+  const createNewUser = (
+    username,
+    firstname,
+    lastname,
+    email,
+    password,
+    month,
+    day,
+    year
+  ) => {
+    if (
+      username.length &&
+      firstname.length &&
+      lastname.length &&
+      email.length &&
+      password.length &&
+      month > 0 &&
+      day > 0 &&
+      year > 0
+    ) {
       if (!invalidUsername || invalidEmail) {
-        axios.post('/api/postUser', {
-          username,
-          firstname,
-          lastname,
-          email,
-          password,
-          month,
-          day,
-          year
-        })
-        .then((res) => {
-          setEmptyForm(false);
-          setCreatedUser(true);
-          setLogInTime(true);
-          console.log('successfully added user!');
-        })
-        .catch((err) => {
-          console.error(err);
-        })
+        axios
+          .post('/api/postUser', {
+            username,
+            firstname,
+            lastname,
+            email,
+            password,
+            month,
+            day,
+            year,
+          })
+          .then((res) => {
+            setEmptyForm(false);
+            setCreatedUser(true);
+            setLogInTime(true);
+            console.log('successfully added user!');
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
     } else {
       setEmptyForm(true);
     }
-  }
+  };
 
   const storeUser = () => {
     let user = {
-        username,
-        firstname,
-        lastname,
-        email,
-        password,
-        month,
-        day,
-        year
-    }
+      username,
+      firstname,
+      lastname,
+      email,
+      password,
+      month,
+      day,
+      year,
+    };
 
     //set the user into the local storage
     localStorage.setItem('user', JSON.stringify(user));
     fetchCurrentUser(username);
-  }
+  };
 
   const successfullyCreatedUser = () => {
     if (createdUser) {
@@ -682,9 +707,9 @@ const SignUpPage = ({ fetchCurrentUser }) => {
         <InvalidFormWarningDiv>
           <ValidFormText>Successfully Created Account!</ValidFormText>
         </InvalidFormWarningDiv>
-      )
+      );
     }
-  }
+  };
 
   const titleSwitch = () => {
     if (!logInTime) {
@@ -692,129 +717,238 @@ const SignUpPage = ({ fetchCurrentUser }) => {
         <div>
           <Title>Create Account</Title>
         </div>
-      )
+      );
     } else {
-      return (
-        <Title>Account Created</Title>
-      )
+      return <Title>Account Created</Title>;
     }
-  }
+  };
 
   const formContent = () => {
     if (!logInTime) {
       return (
         <>
           <Form>
-          <FormContainer></FormContainer>
-          <FormGroup className="form__group">
-            <FormInput used={invalidUsername} type="input" className="form__field" placeholder="userName" name="userName" required onChange={(e) => {setUserName(e.target.value); checkValidUsername(e.target.value)}} value={username} />
-            <FormLabel used={invalidUsername} htmlFor="userName" className="form__label">Username</FormLabel>
-            <Div>
-              {notValidUserName()}
-            </Div>
-          </FormGroup>
+            <FormContainer></FormContainer>
+            <FormGroup className='form__group'>
+              <FormInput
+                used={invalidUsername}
+                type='input'
+                className='form__field'
+                placeholder='userName'
+                name='userName'
+                required
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                  checkValidUsername(e.target.value);
+                }}
+                value={username}
+              />
+              <FormLabel
+                used={invalidUsername}
+                htmlFor='userName'
+                className='form__label'>
+                Username
+              </FormLabel>
+              <Div>{notValidUserName()}</Div>
+            </FormGroup>
 
-          <FormGroup className="form__group">
-            <FormInput type="input" className="form__field" placeholder="FirstName" name="firstName" required onChange={(e) => setFirstName(e.target.value)} />
-            <FormLabel htmlFor="firstName" className="form__label">First Name</FormLabel>
-          </FormGroup>
+            <FormGroup className='form__group'>
+              <FormInput
+                type='input'
+                className='form__field'
+                placeholder='FirstName'
+                name='firstName'
+                required
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <FormLabel htmlFor='firstName' className='form__label'>
+                First Name
+              </FormLabel>
+            </FormGroup>
 
-          <FormGroup className="form__group">
-            <FormInput type="input" className="form__field" placeholder="LastName" name="lastName" required onChange={(e) => setLastName(e.target.value)} />
-            <FormLabel htmlFor="lastName" className="form__label">Last Name</FormLabel>
-          </FormGroup>
+            <FormGroup className='form__group'>
+              <FormInput
+                type='input'
+                className='form__field'
+                placeholder='LastName'
+                name='lastName'
+                required
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <FormLabel htmlFor='lastName' className='form__label'>
+                Last Name
+              </FormLabel>
+            </FormGroup>
 
-          <FormGroup className="form__group">
-            <FormInput used={invalidEmail} type="input" className="form__field" placeholder="Email" name="email" required onChange={(e) => {setEmail(e.target.value);checkValidEmail(e.target.value)}} />
-            <FormLabel used={invalidEmail} htmlFor="email" className="form__label">Email</FormLabel>
-            <Div>
-              {notValidEmail()}
-            </Div>
-          </FormGroup>
+            <FormGroup className='form__group'>
+              <FormInput
+                used={invalidEmail}
+                type='input'
+                className='form__field'
+                placeholder='Email'
+                name='email'
+                required
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  checkValidEmail(e.target.value);
+                }}
+              />
+              <FormLabel
+                used={invalidEmail}
+                htmlFor='email'
+                className='form__label'>
+                Email
+              </FormLabel>
+              <Div>{notValidEmail()}</Div>
+            </FormGroup>
 
-          <FormGroup className="form__group">
-            <FormInput type="password" className="form__field" placeholder="password" name="password" required onChange={(e) => {setPassword(e.target.value); checkPasswordStrength(e.target.value); checkPreviousPasswordMatch(e.target.value);}} />
-            <FormLabel htmlFor="password" className="form__label">Password</FormLabel>
-            <Div>
-              <InvalidFormText passwordColor={passwordColor}>
-                {passwordStrength}
-              </InvalidFormText>
-            </Div>
-          </FormGroup>
-
-          <FormGroup className="form__group">
-            <FormInput type="password" className="form__field" placeholder="confirm password" name="confirm-password" required onChange={(e) => {setConfirmPassword(e.target.value);checkPasswordMatch(e.target.value);}} />
-            <FormLabel htmlFor="confirm-password" className="form__label">Confirm Password</FormLabel>
-            <Div>
-              {passwordMatchText()}
-            </Div>
-          </FormGroup>
-
-          <BirthdateContainer>
-            <FormGroup className="form__group">
-              <FormInput type="number" className="form__field" placeholder="Month" name="month" min="1" max="12"required onChange={(e) => {setMonth(e.target.value); checkValidMonth(e.target.value);}} />
-              <FormLabel htmlFor="month" className="form__label">Month</FormLabel>
+            <FormGroup className='form__group'>
+              <FormInput
+                type='password'
+                className='form__field'
+                placeholder='password'
+                name='password'
+                required
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  checkPasswordStrength(e.target.value);
+                  checkPreviousPasswordMatch(e.target.value);
+                }}
+              />
+              <FormLabel htmlFor='password' className='form__label'>
+                Password
+              </FormLabel>
               <Div>
-                {monthText()}
+                <InvalidFormText passwordColor={passwordColor}>
+                  {passwordStrength}
+                </InvalidFormText>
               </Div>
             </FormGroup>
-            <FormGroup className="form__group">
-              <FormInput type="number" className="form__field" placeholder="Day" name="day" required min="1" max="31" onChange={(e) => {setDay(e.target.value); checkValidDay(e.target.value);}} />
-              <FormLabel htmlFor="day" className="form__label">Day</FormLabel>
-              <Div>
-                {dayText()}
-              </Div>
-            </FormGroup>
-            <FormGroup className="form__group">
-              <FormInput type="number" className="form__field" placeholder="Year" name="year" required onChange={(e) => {setYear(e.target.value); checkValidYear(e.target.value);}} />
-              <FormLabel htmlFor="year" className="form__label">Year</FormLabel>
-              <Div>
-                {yearText()}
-              </Div>
-            </FormGroup>
-          </BirthdateContainer>
 
-        </Form>
-        <ButtonDiv>
-          <ButtonATag href="#" onClick={(e) => e.preventDefault()}>
-            <ButtonPTag>
-              <span className="bg"></span>
-              <ButtonBase></ButtonBase>
-                <ButtonText onClick={() =>
-                  {createNewUser(
-                    username,
-                    firstname,
-                    lastname,
-                    email,
-                    password,
-                    month,
-                    day,
-                    year
-                  ); storeUser();}}>Submit
+            <FormGroup className='form__group'>
+              <FormInput
+                type='password'
+                className='form__field'
+                placeholder='confirm password'
+                name='confirm-password'
+                required
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  checkPasswordMatch(e.target.value);
+                }}
+              />
+              <FormLabel htmlFor='confirm-password' className='form__label'>
+                Confirm Password
+              </FormLabel>
+              <Div>{passwordMatchText()}</Div>
+            </FormGroup>
+
+            <BirthdateContainer>
+              <FormGroup className='form__group'>
+                <FormInput
+                  type='number'
+                  className='form__field'
+                  placeholder='Month'
+                  name='month'
+                  min='1'
+                  max='12'
+                  required
+                  onChange={(e) => {
+                    setMonth(e.target.value);
+                    checkValidMonth(e.target.value);
+                  }}
+                />
+                <FormLabel htmlFor='month' className='form__label'>
+                  Month
+                </FormLabel>
+                <Div>{monthText()}</Div>
+              </FormGroup>
+              <FormGroup className='form__group'>
+                <FormInput
+                  type='number'
+                  className='form__field'
+                  placeholder='Day'
+                  name='day'
+                  required
+                  min='1'
+                  max='31'
+                  onChange={(e) => {
+                    setDay(e.target.value);
+                    checkValidDay(e.target.value);
+                  }}
+                />
+                <FormLabel htmlFor='day' className='form__label'>
+                  Day
+                </FormLabel>
+                <Div>{dayText()}</Div>
+              </FormGroup>
+              <FormGroup className='form__group'>
+                <FormInput
+                  type='number'
+                  className='form__field'
+                  placeholder='Year'
+                  name='year'
+                  required
+                  onChange={(e) => {
+                    setYear(e.target.value);
+                    checkValidYear(e.target.value);
+                  }}
+                />
+                <FormLabel htmlFor='year' className='form__label'>
+                  Year
+                </FormLabel>
+                <Div>{yearText()}</Div>
+              </FormGroup>
+            </BirthdateContainer>
+          </Form>
+          <ButtonDiv>
+            <ButtonATag href='#' onClick={(e) => e.preventDefault()}>
+              <ButtonPTag>
+                <span className='bg'></span>
+                <ButtonBase></ButtonBase>
+                <ButtonText
+                  onClick={() => {
+                    createNewUser(
+                      username,
+                      firstname,
+                      lastname,
+                      email,
+                      password,
+                      month,
+                      day,
+                      year
+                    );
+                    storeUser();
+                  }}>
+                  Submit
                 </ButtonText>
-            </ButtonPTag>
-          </ButtonATag>
-        </ButtonDiv>
+              </ButtonPTag>
+            </ButtonATag>
+          </ButtonDiv>
           {successfullyCreatedUser()}
           {invalidFormText()}
         </>
-      )
+      );
     } else {
       return (
         <>
           <WelcomeDiv>
-            <WelcomeText>Welcome to the Blu family! Start exploring the best Valorant Teams or create your own roster and schedule a match between another team!</WelcomeText>
+            <WelcomeText>
+              Welcome to the Blu family! Start exploring the best Valorant Teams
+              or create your own roster and schedule a match between another
+              team!
+            </WelcomeText>
           </WelcomeDiv>
           <DisplayContainer>
             <DisplayCard>
               <DisplayTitleContainer>
-                <DisplayTitle>
-                  Create a new Valorant Team
-                </DisplayTitle>
+                <DisplayTitle>Create a new Valorant Team</DisplayTitle>
               </DisplayTitleContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #1:</DisplayCardSteps>
-                <DisplayCardText>Choose a team name to represent your roster!</DisplayCardText>
+                <DisplayCardText>
+                  Choose a team name to represent your roster!
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #2:</DisplayCardSteps>
@@ -822,83 +956,109 @@ const SignUpPage = ({ fetchCurrentUser }) => {
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #3:</DisplayCardSteps>
-                <DisplayCardText>Invite your Valorant friends and add them to your team/roster.</DisplayCardText>
+                <DisplayCardText>
+                  Invite your Valorant friends and add them to your team/roster.
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #4:</DisplayCardSteps>
-                <DisplayCardText>Select specific roles for each player / champion to help organize your roster before competing.</DisplayCardText>
+                <DisplayCardText>
+                  Select specific roles for each player / champion to help
+                  organize your roster before competing.
+                </DisplayCardText>
               </DisplayEntryContainer>
               <div>
-                <Button2 color="#F5DBE2" location={''} text={'Create a Team'}></Button2>
+                <Button2
+                  color='#F5DBE2'
+                  location={''}
+                  text={'Create a Team'}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </DisplayCard>
             <DisplayCard>
               <DisplayTitleContainer>
-                <DisplayTitle>
-                  Join an existing Valorant Team
-                </DisplayTitle>
+                <DisplayTitle>Join an existing Valorant Team</DisplayTitle>
               </DisplayTitleContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #1:</DisplayCardSteps>
-                <DisplayCardText>Explore Valorant teams that are actively recruiting. </DisplayCardText>
+                <DisplayCardText>
+                  Explore Valorant teams that are actively recruiting.{' '}
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #2:</DisplayCardSteps>
-                <DisplayCardText>After choosing a Valorant team, send the team a request to join the roster. </DisplayCardText>
+                <DisplayCardText>
+                  After choosing a Valorant team, send the team a request to
+                  join the roster.{' '}
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #3:</DisplayCardSteps>
-                <DisplayCardText>If the team accepts your request, then you’re all set! Start chatting with your team and begin competing!</DisplayCardText>
+                <DisplayCardText>
+                  If the team accepts your request, then you’re all set! Start
+                  chatting with your team and begin competing!
+                </DisplayCardText>
               </DisplayEntryContainer>
               <div>
-                <Button2 color="#F5DBE2" location={''} text={'Explore Teams'}></Button2>
+                <Button2
+                  color='#F5DBE2'
+                  location={''}
+                  text={'Explore Teams'}></Button2>
                 <LengthOfButton></LengthOfButton>
               </div>
             </DisplayCard>
             <DisplayCard>
               <DisplayTitleContainer>
-                <DisplayTitle>
-                  Some important tips and rules!
-                </DisplayTitle>
+                <DisplayTitle>Some important tips and rules!</DisplayTitle>
               </DisplayTitleContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #1:</DisplayCardSteps>
-                <DisplayCardText>Bring the competetive spirit and drive.</DisplayCardText>
+                <DisplayCardText>
+                  Bring the competetive spirit and drive.
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #2:</DisplayCardSteps>
-                <DisplayCardText>Strive to reach to the top of the leaderboards!</DisplayCardText>
+                <DisplayCardText>
+                  Strive to reach to the top of the leaderboards!
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #3:</DisplayCardSteps>
-                <DisplayCardText>No rude, racial slurs, or bullying will be accepted.</DisplayCardText>
+                <DisplayCardText>
+                  No rude, racial slurs, or bullying will be accepted.
+                </DisplayCardText>
               </DisplayEntryContainer>
               <DisplayEntryContainer>
                 <DisplayCardSteps>Step #4:</DisplayCardSteps>
-                <DisplayCardText>Always have fun and enjoy this platform!</DisplayCardText>
+                <DisplayCardText>
+                  Always have fun and enjoy this platform!
+                </DisplayCardText>
               </DisplayEntryContainer>
             </DisplayCard>
           </DisplayContainer>
         </>
-      )
+      );
     }
-  }
+  };
 
   return (
     <MainContainer>
-    <ContentContainer>
-      {titleSwitch()}
-      {formContent()}
-    </ContentContainer>
+      <ContentContainer>
+        {titleSwitch()}
+        {formContent()}
+      </ContentContainer>
     </MainContainer>
-  )
-}
+  );
+};
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    fetchCurrentUser
-  }, dispatch )
-}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      fetchCurrentUser,
+    },
+    dispatch
+  );
+};
 
 export default connect(() => ({}), mapDispatchToProps)(SignUpPage);
