@@ -1,0 +1,120 @@
+.aboutus {
+  height: 125vh;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutus-container-pauls {
+  display: flex;
+  justify-content: center;
+  padding: 1em 2em;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+
+.aboutus-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.9);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 20px;
+  margin-right: 2em;
+}
+
+.aboutus-profile-pic-paul {
+  background: url('../images/paul.JPG') center center/cover no-repeat;
+  height: 207px;
+  width: 170px;
+  border-radius: 5px;
+}
+
+.aboutus-section::after {
+  content: '';
+  border-radius: 5px;
+  position: absolute;
+  /* z-index: -1; */
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.aboutus-section:hover {
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+
+.aboutus-section:hover::after {
+  opacity: 1;
+}
+
+.aboutus-header {
+  color: #efefef;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  padding: 10px;
+}
+
+.aboutus-header2 {
+  color: #efefef;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  padding: 10px;
+}
+
+.aboutus-text {
+  color: #efefef;
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  width: 200px;
+}
+
+.aboutus-icon-names {
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 960px) {
+  .aboutus-container-pauls {
+    flex-direction: column;
+  }
+
+  .aboutus-container-tracys {
+    flex-direction: column;
+  }
+
+  .aboutus-container-justins {
+    flex-direction: column;
+  }
+
+  .aboutus {
+    height: 283vh;
+  }
+}
